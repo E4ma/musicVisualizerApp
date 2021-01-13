@@ -6,39 +6,38 @@ const VisualizerPage = (props) => {
         <Container style={{ margin: 20 }}>
             <div style={{ margin: 20 }}>Navbar</div>
             <Container>
-            <Grid colummns={2}>
-                <Grid.Row>
-                    <Grid.Column>
-                       <div>
-                       <Button circular>Audio</Button>
-                       </div>
-                       <div>
-                       <Button circular>Background</Button>
-                       </div>
-                       <div>
-                       <Button circular>Icon</Button>
-                       </div>
-                       <div>
-                       <Button circular>Text</Button>
-                       </div>
-                        <div>
-                            <Button.Group>
-                                <Button>Export</Button>
-                                <Button.Or />
-                                <Button positive >Save</Button>
-                            </Button.Group>
-                        </div>
+                <Grid colummns={2}>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <div>
+                                <Button circular>Audio</Button>
+                            </div>
+                            <div>
+                                <Button circular>Background</Button>
+                            </div>
+                            <div>
+                                <Button circular>Icon</Button>
+                            </div>
+                            <div>
+                                <Button circular>Text</Button>
+                            </div>
+                            <div>
+                                <Button.Group>
+                                    <Button>Export</Button>
+                                    <Button.Or />
+                                    <Button positive >Save</Button>
+                                </Button.Group>
+                            </div>
 
-                    </Grid.Column>
-                    <Grid.Column >
-                        <Image src={props.children} alt='' />
-                        
+                        </Grid.Column>
+                        <Grid.Column >
+                            <Image src={props.children} alt='' />
 
-                    </Grid.Column>
+                        </Grid.Column>
 
-                </Grid.Row>
+                    </Grid.Row>
 
-            </Grid>
+                </Grid>
             </Container>
 
         </Container>
