@@ -1,10 +1,12 @@
 import React from 'react'
 import { Container, Grid, Button, Image } from 'semantic-ui-react'
+import PageNavbar from '../Components/Navbars/PageNavbar'
 
 const VisualizerPage = (props) => {
     return (
         <Container style={{ margin: 20 }}>
-            <div style={{ margin: 20 }}>Navbar</div>
+            {/* <div style={{ margin: 20 }}>Navbar</div> */}
+            <PageNavbar />
             <Container>
                 <Grid colummns={2}>
                     <Grid.Row>
