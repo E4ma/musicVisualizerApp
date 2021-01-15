@@ -8,6 +8,8 @@ import TemplatesPage from '../../Containers/TemplatesPage';
 import Login from '../Signin/Login';
 import Home from '../../Containers/Home';
 
+
+
 const NavbarButtons = () => {
     return (
 
