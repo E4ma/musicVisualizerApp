@@ -1,17 +1,11 @@
 import React from 'react'
 import { Container, Grid, Button, Image } from 'semantic-ui-react'
-import NavbarButtons from '../Components/Navbars/NavbarButtons'
-// import PageNavbar from '../Components/Navbars/PageNavbar'
 
 const VisualizerPage = (props) => {
     return (
         <Container style={{ margin: 10 }}>
             {/* <div style={{ margin: 20 }}>Navbar</div> */}
 
-            {/* <PageNavbar /> */}
-            <div className="ui container">
-                <NavbarButtons />
-            </div>
             <Container >
                 <Grid colummns={2}>
                     <Grid.Row>
@@ -19,15 +13,19 @@ const VisualizerPage = (props) => {
                             <div>
                                 <Button circular>Audio</Button>
                             </div>
+                            <br />
                             <div>
                                 <Button circular>Background</Button>
                             </div>
+                            <br />
                             <div>
                                 <Button circular>Icon</Button>
                             </div>
+                            <br />
                             <div>
                                 <Button circular>Text</Button>
                             </div>
+                            <br />
                             <div>
                                 <Button.Group>
                                     <Button>Export</Button>
@@ -37,6 +35,7 @@ const VisualizerPage = (props) => {
                             </div>
 
                         </Grid.Column>
+
                         <Grid.Column >
                             <Image src={props.children} alt='' />
 
