@@ -1,13 +1,18 @@
 import React from 'react'
 import { Container, Grid, Button, Image } from 'semantic-ui-react'
-import PageNavbar from '../Components/Navbars/PageNavbar'
+import NavbarButtons from '../Components/Navbars/NavbarButtons'
+// import PageNavbar from '../Components/Navbars/PageNavbar'
 
 const VisualizerPage = (props) => {
     return (
-        <Container style={{ margin: 20 }}>
+        <Container style={{ margin: 10 }}>
             {/* <div style={{ margin: 20 }}>Navbar</div> */}
-            <PageNavbar />
-            <Container>
+
+            {/* <PageNavbar /> */}
+            <div className="ui container">
+                <NavbarButtons />
+            </div>
+            <Container >
                 <Grid colummns={2}>
                     <Grid.Row>
                         <Grid.Column>

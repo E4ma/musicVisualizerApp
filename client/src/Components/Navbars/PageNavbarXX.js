@@ -7,6 +7,8 @@ import Login from '../Signin/Login';
 
 import Test from '../../Containers/Test';
 
+
+
 const PageNavbar = () => {
     return (
         <Router>
@@ -14,10 +16,10 @@ const PageNavbar = () => {
 
                 <NavbarButtons />
 
-                <Route path="/About" component={About} />
+                {/* <Route path="/About" component={About} />
                 <Route path="/Templates" component={TemplatesPage} />
                 <Route path="/Login" component={Login} />
-                <Route path="/Test" component={Test} />
+                <Route path="/Test" component={Test} /> */}
 
             </div>
         </Router>
