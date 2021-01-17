@@ -1,7 +1,8 @@
 
 import './App.css';
 import NavbarButtons from './Components/Navbars/NavbarButtons';
-import VisualizerPage from './Containers/VisualizerPage';
+// import NavbarButtons from './Components/LeftColumnItems/Navbars/NavbarButtons';
+// import VisualizerPage from './Containers/VisualizerPage';
 
 function App() {
   return (
