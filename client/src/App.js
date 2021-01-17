@@ -8,7 +8,7 @@ function App() {
     <div>
       <NavbarButtons />
 
-      {/* <VisualizerPage /> */}
+      <VisualizerPage />
 
     </div>
   );
