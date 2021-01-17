@@ -1,5 +1,5 @@
 import React, { createRef, useState, useEffect } from "react";
-import { Container, Grid, Button, Image } from "semantic-ui-react";
+import { Container, Grid, Button} from "semantic-ui-react";
 import AudioComponent from "../Components/LeftColumnItems/Audio";
 import songFile from "../audio/ImperialMarch60.wav";
 import songFile2 from "../audio/Rodriguez - Inner City Blues.mp3";
