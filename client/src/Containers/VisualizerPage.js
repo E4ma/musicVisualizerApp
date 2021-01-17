@@ -1,52 +1,61 @@
 import React from 'react'
-import { Container, Grid, Button, Image } from 'semantic-ui-react'
+import { Button, Card, ListGroup, Nav } from 'react-bootstrap'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Audio from '../Components/LeftColumnItems/Audio';
+import Background from '../Components/LeftColumnItems/Background';
 
-const VisualizerPage = (props) => {
+const VisualizerPage = () => {
     return (
-        <Container style={{ margin: 10 }}>
-            {/* <div style={{ margin: 20 }}>Navbar</div> */}
 
-            <Container >
-                <Grid colummns={2}>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <div>
-                                <Button circular>Audio</Button>
-                            </div>
-                            <br />
-                            <div>
-                                <Button circular>Background</Button>
-                            </div>
-                            <br />
-                            <div>
-                                <Button circular>Icon</Button>
-                            </div>
-                            <br />
-                            <div>
-                                <Button circular>Text</Button>
-                            </div>
-                            <br />
-                            <div>
-                                <Button.Group>
-                                    <Button>Export</Button>
-                                    <Button.Or />
-                                    <Button positive >Save</Button>
-                                </Button.Group>
-                            </div>
+        <Card style={{ width: '20rem' }}>
+            {/* <Card.Header>Featured</Card.Header> */}
+            <Router>
+                <ListGroup variant="flush">
+                    <Card.Body>
 
-                        </Grid.Column>
+                        <ListGroup.Item>
+                            <Nav.Link href="/Audio">
+                                <Button className="ui secondary button">Audio </Button>
+                            </Nav.Link>
+                        </ListGroup.Item>
 
-                        <Grid.Column >
-                            <Image src={props.children} alt='' />
+                        <ListGroup.Item>
+                            <Nav.Link href="/Background">
+                                <Button className="ui secondary button">Background </Button>
+                            </Nav.Link>
+                        </ListGroup.Item>
 
-                        </Grid.Column>
+                        <ListGroup.Item>
+                            <Button className="ui secondary button">Icon </Button>
+                        </ListGroup.Item>
 
-                    </Grid.Row>
+                        <ListGroup.Item>
+                            <Button className="ui secondary button">Text </Button>
+                        </ListGroup.Item>
 
-                </Grid>
-            </Container>
+                        <ListGroup.Item>
+                            <Button className="ui secondary button">Export </Button>
+                            <Button className="ui secondary button">Save </Button>
+                        </ListGroup.Item>
 
-        </Container>
+                    </Card.Body>
+                </ListGroup>
+
+
+                <Switch>
+                    <Route path="/Audio" exact component={Audio} />
+                    {/* <Audio />
+                    </Route> */}
+                    <Route path="/Background">
+                        <Background />
+                    </Route>
+                </Switch>
+
+            </Router>
+
+
+        </Card>
+
     )
 }
 

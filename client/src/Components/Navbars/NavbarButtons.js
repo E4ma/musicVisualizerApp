@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import pic2 from './Logo2.png';
 import About from '../../Containers/About';
 import TemplatesPage from '../../Containers/TemplatesPage';
-import Login from '../Signin/Login';
+// import Login from '../Signin/Login';
 import Home from '../../Containers/Home';
-
+import Login from '../../Containers/Signin/Login';
 
 
 const NavbarButtons = () => {

@@ -1,13 +1,15 @@
 import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 
-const Audio = () => {
-
+const Login = () => {
     return (
+        // <div className="ui container">
+        //     <h3>Hello Login Page</h3>
+        // </div>
 
         <Modal.Dialog centered>
             <Modal.Header closeButton>
-                <Modal.Title>Upload your audio track</Modal.Title>
+                <Modal.Title>Hello Login or Signup Page</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
@@ -19,7 +21,10 @@ const Audio = () => {
                 <Button variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal.Dialog>
+
     )
 }
 
-export default Audio
+export default Login
+
+

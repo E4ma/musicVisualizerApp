@@ -3,8 +3,8 @@ import VisualizerPage from './VisualizerPage'
 
 const Home = () => {
     return (
-        <div className="ui container">
-            <VisualizerPage />
+        <div className="ui container" >
+            <VisualizerPage  />
         </div>
     )
 }
