@@ -2,7 +2,7 @@ const express = require('express')
 const fileUpload = require('express-fileupload')
 const dotenv = require('dotenv')
 const app = express()
-//Needed for the process.env
+//Needed for the process.env code
 dotenv.config()
 //Used to keep private information hidden
 port = process.env.PORT
