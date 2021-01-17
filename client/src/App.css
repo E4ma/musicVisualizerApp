@@ -2,6 +2,23 @@
     background-color: rgb(15, 1, 1);
 } */
 
+.audioControl {
+    display: flex;
+    flex-direction:row;
+}
+.audioControl button{
+    border-radius: 20px;
+    height: 30px;
+  
+    padding:5px;
+}
+
+.songName {
+    position: absolute;
+    z-index:2;
+    top: 100px;
+    left: 350px;
+}
 
 
 /* .nav-buttons{
