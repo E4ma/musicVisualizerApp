@@ -18,7 +18,9 @@ app.post('/upload', (req, res) => {
   const file = req.files.file
 
   //This path decides where to send the file (React is the client)
-  file.mv(`${__dirname}/client/public/uploads/${file.name}`, (err) => {
+  // file.mv(`${__dirname}/client/public/uploads/${file.name}`, (err) => {
+
+  file.mv(`../client/public/uploads/${file.name}`, (err) => {
     //The error message if there is a server error
     if (err) {
       console.error(err)
