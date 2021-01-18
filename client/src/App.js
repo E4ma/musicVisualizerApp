@@ -7,8 +7,8 @@ import NavbarButtons from './Components/Navbars/NavbarButtons';
 function App() {
   return (
     <div>
-      <NavbarButtons />
 
+      <NavbarButtons />
       {/* <VisualizerPage /> */}
 
     </div>

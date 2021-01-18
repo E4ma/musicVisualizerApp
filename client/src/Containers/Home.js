@@ -1,10 +1,11 @@
 import React from 'react'
-import VisualizerPage from './VisualizerPage'
+import LeftColumn from '../Components/LeftColumnItems/LeftColumn'
+
 
 const Home = () => {
     return (
         <div className="ui container" >
-            <VisualizerPage  />
+            <LeftColumn />
         </div>
     )
 }
