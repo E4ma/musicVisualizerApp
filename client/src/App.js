@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Container } from 'react-bootstrap'
-import NavbarButtons from './Components/Navbars/NavbarButtons';
-import VisualizerPage from './Components/VisualizerPage';
+import Navigation from './Components/Navbars/Navigation';
 import About from './Components/About';
 import TemplatesPage from './Components/TemplatesPage';
 import Home from './Components/Home';
 import Login from './Components/Signin/Login';
-// import NavbarButtons from './Components/LeftColumnItems/Navbars/NavbarButtons';
-// import VisualizerPage from './Containers/VisualizerPage';
 
 const App = () => {
   const [route, setRoute] = useState('signout');
@@ -43,7 +39,7 @@ const App = () => {
 
   return (
     <>
-      <NavbarButtons isSignedIn={setIsSignedIn} onRouteChange={onRouteChange} />
+      <Navigation isSignedIn={setIsSignedIn} onRouteChange={onRouteChange} />
      {displayPage}
       {/* <Footer /> */}
     </>

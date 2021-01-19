@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Nav, Navbar, Button, ButtonGroup, Figure } from 'react-bootstrap';
-import image from './Images/image1.jpg';
+import { Container, Row, Col, Nav, Navbar, Button, ButtonGroup } from 'react-bootstrap';
 import Displayer from './Displayer';
 
 const Home = () => {
@@ -37,19 +36,8 @@ const Home = () => {
                 </Col>
 
                 <Col>
-                    <Figure>
-                        <Figure.Image
-                            width={800}
-                            height={850}
-                            alt="171x180"
-                            src={image}
-                        />
-                        <Figure.Caption>
-                            Visualizer here
-                        </Figure.Caption>
-                    </Figure>
 
-                    {/* <Displayer />  */}
+                    <Displayer /> 
                 </Col>
 
             </Row>

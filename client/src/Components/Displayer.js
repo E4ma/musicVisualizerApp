@@ -2,6 +2,8 @@ import React, { createRef, useState, useEffect } from 'react'
 import songFile from './audio/ImperialMarch60.wav'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
+
+
 let songs = [
   {
     name: 'ImperialMarch60',
@@ -38,7 +40,7 @@ const center_x = width / 2 - window.innerWidth / 16
 const center_y = height / 2
 let audioSource = new Audio(songs[0].songFile)
 
-const Displayer = ({ setBackgroundColor }) => {
+const Displayer = () => {
   const [audio, setAudio] = useState(audioSource)
   const [songList, setSongList] = useState(songs)
   const [canvas, setCanvas] = useState(createRef())
@@ -128,7 +130,7 @@ const Displayer = ({ setBackgroundColor }) => {
     }
     setCurrentSong(songNumber)
     setSongName(name)
-    setBackgroundColor(color)
+    // setBackgroundColor(color)
     setTextColor(fontColor)
   }
 
