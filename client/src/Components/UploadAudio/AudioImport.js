@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import axios from 'axios'
+import { Card } from 'react-bootstrap'
 
 const AudioUpload = () => {
   //Need to use a hook to set text in the label to the file namespace
@@ -40,40 +41,50 @@ const AudioUpload = () => {
 
   return (
     //The fragment allows to group children without creating extra nodes
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>Audio Upload</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          Select audio to upload
+        </Card.Subtitle>
+        <Card.Text>
+          <Fragment>
+            <div className="mb-2">
+              <form onSubmit={onSubmit}>
+                <div className="input-group mb-3">
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile02"
+                    onChange={onChange}
+                  />
+                  <input
+                    type="submit"
+                    value="UploadAudio"
+                    className="btn btn-primary btn-block"
+                  />
 
-    <Fragment>
-      <div className="mb-2">
-        <form onSubmit={onSubmit}>
-          <div className="input-group mb-3">
-            <input
-              type="file"
-              className="form-control"
-              id="inputGroupFile02"
-              onChange={onChange}
-            />
-            <input
-              type="submit"
-              value="UploadAudio"
-              className="btn btn-primary btn-block"
-            />
+                  <label
+                    className="id=inputGroupFile02"
+                    htmlFor="inputGroupFile02"
+                  ></label>
+                </div>
+              </form>
+            </div>
 
-            <label
-              className="id=inputGroupFile02"
-              htmlFor="inputGroupFile02"
-            ></label>
-          </div>
-        </form>
-      </div>
-
-      {/* {uploadedFile ? (
-        <div className="row mt-5">
-          <div className="col-md-6 m-auto">
-            <h3 className="text-center">{uploadedFile.filename}</h3>
-            <img style={{ width: '50%' }} src={uploadedFile.filepath} alt="" />
-          </div>
-        </div>
-      ) : null} */}
-    </Fragment>
+            {uploadedFile ? (
+              <div className="row mt-5">
+                <div className="col-md-6 m-auto">
+                  <h3 className="text-center">{uploadedFile.filename}</h3>
+                </div>
+              </div>
+            ) : (
+              <div>Upload files</div>
+            )}
+          </Fragment>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
