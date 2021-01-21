@@ -55,9 +55,28 @@ const Home = () => {
         </Col>
         <Col sm={9}>
           <Tab.Content>
+
+
+            {/* <Card style={{ width: '15rem' }}>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                <Card.Text> */}
+
             <Tab.Pane eventKey="uploadAudio">
               <ImportAudio />
             </Tab.Pane>
+
+            {/* </Card.Text>
+                <Card.Link href="#">Card Link</Card.Link>
+                <Card.Link href="#">Another Link</Card.Link>
+              </Card.Body>
+            </Card> */}
+
+            {/* 
+            <Tab.Pane eventKey="uploadAudio">
+              <ImportAudio />
+            </Tab.Pane> */}
             <Tab.Pane eventKey="second">{/* <Sonnet /> */}</Tab.Pane>
           </Tab.Content>
         </Col>
