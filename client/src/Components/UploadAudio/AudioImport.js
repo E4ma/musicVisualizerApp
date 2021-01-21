@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from 'react'
-import { Dropdown, DropdownButton, ButtonGroup } from 'react-bootstrap'
 import axios from 'axios'
 
 const AudioUpload = () => {
@@ -44,49 +43,36 @@ const AudioUpload = () => {
 
     <Fragment>
       <div className="mb-2">
-        {['right'].map((direction) => (
-          <DropdownButton
-            as={ButtonGroup}
-            key={direction}
-            id={`dropdown-button-drop-${direction}`}
-            drop={direction}
-            variant="secondary"
-            title={` Drop ${direction} `}
-          >
-            <Dropdown.Item eventKey="1">
-              <form onSubmit={onSubmit}>
-                <div className="input-group mb-3">
-                  <input
-                    type="file"
-                    className="form-control"
-                    id="inputGroupFile02"
-                    onChange={onChange}
-                  />
-                  <input
-                    type="submit"
-                    value="Upload"
-                    className="btn btn-primary btn-block"
-                  />
+        <form onSubmit={onSubmit}>
+          <div className="input-group mb-3">
+            <input
+              type="file"
+              className="form-control"
+              id="inputGroupFile02"
+              onChange={onChange}
+            />
+            <input
+              type="submit"
+              value="UploadAudio"
+              className="btn btn-primary btn-block"
+            />
 
-                  <label
-                    className="id=inputGroupFile02"
-                    htmlFor="inputGroupFile02"
-                  ></label>
-                </div>
-              </form>
-            </Dropdown.Item>
-          </DropdownButton>
-        ))}
+            <label
+              className="id=inputGroupFile02"
+              htmlFor="inputGroupFile02"
+            ></label>
+          </div>
+        </form>
       </div>
 
-      {uploadedFile ? (
+      {/* {uploadedFile ? (
         <div className="row mt-5">
           <div className="col-md-6 m-auto">
             <h3 className="text-center">{uploadedFile.filename}</h3>
-            <img style={{ width: '100%' }} src={uploadedFile.filepath} alt="" />
+            <img style={{ width: '50%' }} src={uploadedFile.filepath} alt="" />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </Fragment>
   )
 }
