@@ -33,13 +33,13 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
                 <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
 
                     <Navbar.Brand href="/Home">
-                        <img src={pic2} alt={""} width={100} height={70} />
+                        <img src={pic2} alt={""} width={80} height={80} />
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link onClick={() => onRouteChange('Home')} >Home</Nav.Link>
+                            <Nav.Link onClick={() => onRouteChange('home')} >Home</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('About')} >About</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('TemplatesPage')} >Templates</Nav.Link>
                             {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
@@ -51,7 +51,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             </>
         );
     }
-    
+
 }
 
 export default Navigation
