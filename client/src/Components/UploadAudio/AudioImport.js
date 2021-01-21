@@ -15,13 +15,14 @@ const AudioUpload = () => {
   }
 
   const onSubmit = async (e) => {
+    //used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', file)
 
     try {
       //Need to connect to the server
-      const res = await axios.post('/upload', formData, {
+      const res = await axios.post('http://localhost:5000/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       const { fileName, filePath } = res.data
@@ -48,7 +49,7 @@ const AudioUpload = () => {
           Select audio to upload
         </Card.Subtitle>
         <Card.Text>
-          <Fragment>
+          <>
             <div className="mb-2">
               <form onSubmit={onSubmit}>
                 <div className="input-group mb-3">
@@ -71,17 +72,18 @@ const AudioUpload = () => {
                 </div>
               </form>
             </div>
-
-            {uploadedFile ? (
-              <div className="row mt-5">
-                <div className="col-md-6 m-auto">
-                  <h3 className="text-center">{uploadedFile.filename}</h3>
+            {/* <div>
+              {uploadedFile ? (
+                <div className="row mt-5">
+                  <div className="col-md-6 m-auto">
+                    <h3 className="text-center">{uploadedFile.filename}</h3>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div>Upload files</div>
-            )}
-          </Fragment>
+              ) : (
+                <div>Upload files</div>
+              )}
+            </div> */}
+          </>
         </Card.Text>
       </Card.Body>
     </Card>
