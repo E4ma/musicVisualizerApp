@@ -23,7 +23,7 @@ const Home = () => {
               <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="Icon">Icon</Nav.Link>
+              <Nav.Link eventKey="Icon">Icon </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="text">Text</Nav.Link>

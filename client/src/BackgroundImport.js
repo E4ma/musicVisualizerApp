@@ -47,7 +47,7 @@ const BackgroundUpload = () => {
     <Card style={{ width: '17rem', top: '25px' }}>
       <Card.Body>
         <Card.Title>
-          Backgroundd Upload
+          Background Upload
         </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Select your own Background to upload</Card.Subtitle>
         <Card.Text>
