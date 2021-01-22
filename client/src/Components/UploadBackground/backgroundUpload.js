@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 
-const AudioUpload = () => {
+const BackgroundUpload = () => {
   //Need to use a hook to set text in the label to the file namespace
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
@@ -44,9 +44,9 @@ const AudioUpload = () => {
     //The fragment allows to group children without creating extra nodes
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>Audio Upload</Card.Title>
+        <Card.Title>Upload Background</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          Select audio to upload
+          Select a background to upload
         </Card.Subtitle>
         <Card.Text>
           <>
