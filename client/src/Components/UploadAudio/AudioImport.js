@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import axios from 'axios'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 
 const AudioUpload = () => {
@@ -44,9 +44,11 @@ const AudioUpload = () => {
   return (
     //The fragment allows to group children without creating extra nodes
 
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '17rem' }}>
       <Card.Body>
-        <Card.Title>Audio Upload</Card.Title>
+        <Card.Title>
+          Audio Upload
+        </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Select your own audio to upload</Card.Subtitle>
         <Card.Text>
 
@@ -64,7 +66,7 @@ const AudioUpload = () => {
                   />
                   <input
                     type="submit"
-                    value="UploadAudio"
+                    value="Upload Audio"
                     className="btn btn-primary btn-block"
                   />
 
@@ -89,8 +91,8 @@ const AudioUpload = () => {
 
 
         </Card.Text >
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Card.Link href="#">Cancel</Card.Link>
+        {/* <Card.Link href="#">Another Link</Card.Link> */}
       </Card.Body >
     </Card >
 
