@@ -49,7 +49,7 @@ const BackgroundUpload = () => {
           Select a background to upload
         </Card.Subtitle>
         <Card.Text>
-          <>
+          <Fragment>
             <div className="mb-2">
               <form onSubmit={onSubmit}>
                 <div className="input-group mb-3">
@@ -62,7 +62,7 @@ const BackgroundUpload = () => {
                   />
                   <input
                     type="submit"
-                    value="UploadAudio"
+                    value="Upload Background"
                     className="btn btn-primary btn-block"
                   />
 
@@ -84,11 +84,11 @@ const BackgroundUpload = () => {
                 <div>Upload files</div>
               )}
             </div> */}
-          </>
+          </Fragment>
         </Card.Text>
       </Card.Body>
     </Card>
   )
 }
 
-export default backgroundUpload
+export default BackgroundUpload
