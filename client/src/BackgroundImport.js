@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Card, Button } from 'react-bootstrap'
 
 
-const AudioUpload = () => {
+const BackgroundUpload = () => {
 
   //Need to use a hook to set text in the label to the file namespace
   const [file, setFile] = useState('')
@@ -47,9 +47,9 @@ const AudioUpload = () => {
     <Card style={{ width: '17rem', top: '25px' }}>
       <Card.Body>
         <Card.Title>
-          Audio Upload
+          Backgroundd Upload
         </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Select your own audio to upload</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">Select your own Background to upload</Card.Subtitle>
         <Card.Text>
 
 
@@ -66,7 +66,7 @@ const AudioUpload = () => {
                   />
                   <input
                     type="submit"
-                    value="Upload Audio"
+                    value="Upload Background"
                     className="btn btn-primary btn-block"
                   />
 
@@ -100,4 +100,4 @@ const AudioUpload = () => {
   )
 }
 
-export default AudioUpload
+export default BackgroundUpload
