@@ -2,7 +2,9 @@ import React, { useState, Fragment } from 'react'
 import axios from 'axios'
 import { Card, Button } from 'react-bootstrap'
 
-const AudioUpload = () => {
+
+const BackgroundUpload = () => {
+
   //Need to use a hook to set text in the label to the file namespace
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
@@ -15,14 +17,13 @@ const AudioUpload = () => {
   }
 
   const onSubmit = async (e) => {
-    //used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', file)
 
     try {
       //Need to connect to the server
-      const res = await axios.post('http://localhost:5000/upload', formData, {
+      const res = await axios.post('/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       const { fileName, filePath } = res.data
@@ -42,14 +43,18 @@ const AudioUpload = () => {
 
   return (
     //The fragment allows to group children without creating extra nodes
-    <Card style={{ width: '18rem' }}>
+
+    <Card style={{ width: '17rem', top: '25px' }}>
       <Card.Body>
-        <Card.Title>Audio Upload</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          Select audio to upload
-        </Card.Subtitle>
+        <Card.Title>
+          Background Upload
+        </Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">Select your own Background to upload</Card.Subtitle>
         <Card.Text>
-          <>
+
+
+
+          <Fragment>
             <div className="mb-2">
               <form onSubmit={onSubmit}>
                 <div className="input-group mb-3">
@@ -57,12 +62,11 @@ const AudioUpload = () => {
                     type="file"
                     className="form-control"
                     id="inputGroupFile02"
-                    accept="image/wav, image/mp3"
                     onChange={onChange}
                   />
                   <input
                     type="submit"
-                    value="UploadAudio"
+                    value="Upload Background"
                     className="btn btn-primary btn-block"
                   />
 
@@ -73,22 +77,27 @@ const AudioUpload = () => {
                 </div>
               </form>
             </div>
-            {/* <div>
-              {uploadedFile ? (
-                <div className="row mt-5">
-                  <div className="col-md-6 m-auto">
-                    <h3 className="text-center">{uploadedFile.filename}</h3>
-                  </div>
-                </div>
-              ) : (
-                <div>Upload files</div>
-              )}
-            </div> */}
-          </>
-        </Card.Text>
-      </Card.Body>
-    </Card>
+
+            {/* {uploadedFile ? (
+        <div className="row mt-5">
+          <div className="col-md-6 m-auto">
+            <h3 className="text-center">{uploadedFile.filename}</h3>
+            <img style={{ width: '50%' }} src={uploadedFile.filepath} alt="" />
+          </div>
+        </div>
+      ) : null} */}
+          </Fragment>
+
+
+
+        </Card.Text >
+        <Card.Link href="#">Cancel</Card.Link>
+        {/* <Card.Link href="#">Another Link</Card.Link> */}
+      </Card.Body >
+    </Card >
+
+
   )
 }
 
-export default AudioUpload
+export default BackgroundUpload

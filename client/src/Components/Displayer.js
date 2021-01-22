@@ -31,8 +31,14 @@ let analyser
 let ctx, x_end, y_end, bar_height
 
 // constants
-const width = window.innerWidth * (3 / 4) //
-const height = window.innerHeight
+const width = window.innerWidth * (1 / 2)  // it was (3/4)
+const height = window.innerHeight - 101
+// width 1280 and height 446
+
+
+console.log('default sizes: ', window.innerWidth, '/', window.innerHeight)
+console.log('new sizes: ', width, "/", height)
+
 const bars = 999 //  max 1030 - leave it in 555
 const bar_width = 2 //  good in 1
 const radius = 0 // innercircle
@@ -162,7 +168,7 @@ const Displayer = () => {
       </button>
       <canvas ref={canvas} />
       {/* <div className="songName"> */}
-        <h3 style={{ color: textColor }}>{songName}</h3>
+      <h3 style={{ color: textColor }}>{songName}</h3>
       {/* </div> */}
     </div>
   )
