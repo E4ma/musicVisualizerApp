@@ -10,7 +10,7 @@ const Home = () => {
                 <Col >
                     <Navbar variant="light" bg="transparent">
                         <Nav fill className="flex-column">
-                            <h1 style={{ textAlign: 'center' }}>Edit</h1>
+                            <h2 style={{ textAlign: 'center' }}>Edit</h2>
                             <Nav.Item>
                                 <Nav.Link href="/Audio">Audio</Nav.Link>
                             </Nav.Item>
