@@ -18,9 +18,8 @@ app.post('/upload', (req, res) => {
   }
   //will define what file is in React
   const file = req.files.file
-
+  console.log(req.files)
   //This path decides where to send the file (React is the client)
-  // file.mv(`${__dirname}/client/public/uploads/${file.name}`, (err) => {
   file.mv(`uploadedFiles/images/${file.name}`, (err) => {
     //The error message if there is a server error
     if (err) {
@@ -28,7 +27,7 @@ app.post('/upload', (req, res) => {
       return res.status(500).send(err)
     }
     //The code that coninues if a success
-    res.json({ fileName: file.name, filePath: `/uploads/${file.name}` })
+    res.json({ fileName: file.name, filePath: `/uploadFiles/${file.name}` })
   })
 })
 

@@ -57,7 +57,7 @@ const AudioUpload = () => {
                     type="file"
                     className="form-control"
                     id="inputGroupFile02"
-                    accept="image/wav, image/mp3"
+                    accept="image/gif, image/jpeg, image/jpg"
                     onChange={onChange}
                   />
                   <input
@@ -91,4 +91,4 @@ const AudioUpload = () => {
   )
 }
 
-export default AudioUpload
+export default backgroundUpload

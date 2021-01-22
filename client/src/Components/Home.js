@@ -34,11 +34,13 @@ const Home = () => {
               <Tab.Pane eventKey="uploadAudio">
                 <ImportAudio />
               </Tab.Pane>
-              <Tab.Pane eventKey="second">{/* <Sonnet /> */}</Tab.Pane>
+              <Tab.Pane eventKey="second">
+                <uploadBackground />
+              </Tab.Pane>
             </Tab.Content>
           </Col>
 
-          <Col style={{ width: '20rem' }}>
+          <Col style={{ width: '10rem' }}>
             <Displayer />
           </Col>
         </Row>
