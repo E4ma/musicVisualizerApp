@@ -15,7 +15,7 @@ const AudioUpload = () => {
   }
 
   const onSubmit = async (e) => {
-    //used to prevent submitting by accident by preventing normal submitting
+    // e.preventDefault() used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', file)
