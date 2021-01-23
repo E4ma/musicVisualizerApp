@@ -1,8 +1,19 @@
-import React, { createRef, useState, useEffect } from 'react'
+import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import songFile from './audio/ImperialMarch60.wav'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
 
+const UpdateWindowSize = () => {
+  const [size, setSize] = useState([1000, 1000])
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight])
+    }
+    window.addEventListener('resize', updateSize)
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+  return size
+}
 
 let songs = [
   {
@@ -31,22 +42,18 @@ let analyser
 let ctx, x_end, y_end, bar_height
 
 // constants
-const width = window.innerWidth * (1 / 2)  // it was (3/4)
-const height = window.innerHeight - 101
-// width 1280 and height 446
-
-
-console.log('default sizes: ', window.innerWidth, '/', window.innerHeight)
-console.log('new sizes: ', width, "/", height)
-
+// const width = window.innerWidth * (3 / 4) //
+// const width = 1000
+// const height = window.innerHeight
+// const height = 1000
 const bars = 999 //  max 1030 - leave it in 555
 const bar_width = 2 //  good in 1
 const radius = 0 // innercircle
-const center_x = width / 2 - window.innerWidth / 16
-const center_y = height / 2
+
 let audioSource = new Audio(songs[0].songFile)
 
 const Displayer = () => {
+  const [width, height] = UpdateWindowSize()
   const [audio, setAudio] = useState(audioSource)
   const [songList, setSongList] = useState(songs)
   const [canvas, setCanvas] = useState(createRef())
@@ -58,7 +65,8 @@ const Displayer = () => {
   const [frequency_array, setFrequencyArray] = useState()
   const [songName, setSongName] = useState(songs[0].name)
   const [textColor, setTextColor] = useState(songs[0].textColor)
-
+  const center_x = width / 2
+  const center_y = height / 2
   function animationLooper(canvas) {
     canvas.width = width
     canvas.height = height
@@ -147,7 +155,7 @@ const Displayer = () => {
   }
 
   return (
-    <div className="audioControl">
+    <div className="audioControl Background">
       <button
         onClick={togglePlay}
         style={
@@ -173,6 +181,5 @@ const Displayer = () => {
     </div>
   )
 }
-
 
 export default Displayer
