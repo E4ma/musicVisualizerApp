@@ -38,14 +38,15 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                        <Nav className="ml-auto" style={{ fontSize: 25 }} >
+                            {/* <Nav className="justify-content-end"> */}
                             <Nav.Link onClick={() => onRouteChange('home')} >Home</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('About')} >About</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('TemplatesPage')} >Templates</Nav.Link>
                             {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
-
                         </Nav>
-                        <Button onClick={() => onRouteChange('Login')} variant="outline-info">Sign In</Button>
+                        {/* <Button onClick={() => onRouteChange('Login')} variant="outline-info">Sign In</Button>                         */}
+                        <Button onClick={() => onRouteChange('Login')} variant="secondary">Sign In</Button>
                     </Navbar.Collapse>
                 </Navbar>
             </>
