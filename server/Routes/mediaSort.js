@@ -27,7 +27,7 @@ router.post('/icon', (req, res) => {
   })
 })
 
-//Upload endpoints for music and audio
+//Upload endpoints for music and audio not related to the icon
 router.post('/media', (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: 'no file found' })

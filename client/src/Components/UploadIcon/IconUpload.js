@@ -21,7 +21,7 @@ const IconUpload = () => {
     formData.append('file', file)
     console.log(formData)
     try {
-      //Need to connect to the server
+      //Need to connect to the server this is the endpoint
       const res = await axios.post(
         'http://localhost:5000/upload/icon',
         formData,

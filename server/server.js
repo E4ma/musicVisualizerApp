@@ -11,7 +11,6 @@ dotenv.config()
 
 //Middleware
 app.use(cors())
-//app.use(fileUpload())
 app.use('/upload', mediaSort)
 
 port = process.env.PORT
