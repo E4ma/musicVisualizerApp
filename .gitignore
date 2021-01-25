@@ -1,6 +1,7 @@
 client/.eslintcache
 client/.eslintcache
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 server/server.js
 server/node_modules/async/.gitmodules
@@ -12,6 +13,8 @@ server/node_modules/async/package.json
 server/node_modules/async/README.md
 server/node_modules/async/lib/async.js
 >>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
 server/node_modules/axios/CHANGELOG.md
 server/node_modules/axios/index.d.ts
 server/node_modules/axios/index.js
@@ -61,6 +64,7 @@ server/node_modules/cors/package.json
 server/node_modules/cors/README.md
 server/node_modules/cors/lib/index.js
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 server/node_modules/express-upload/.npmignore
 server/node_modules/express-upload/package.json
@@ -72,6 +76,8 @@ server/node_modules/express-upload/lib/processors/gm.js
 server/node_modules/express-upload/lib/processors/index.js
 server/node_modules/express-upload/lib/processors/to.js
 >>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
 server/node_modules/follow-redirects/debug.js
 server/node_modules/follow-redirects/http.js
 server/node_modules/follow-redirects/https.js
@@ -79,6 +85,7 @@ server/node_modules/follow-redirects/index.js
 server/node_modules/follow-redirects/LICENSE
 server/node_modules/follow-redirects/package.json
 server/node_modules/follow-redirects/README.md
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 server/node_modules/mkdirp/.npmignore
@@ -102,10 +109,13 @@ server/node_modules/mkdirp/test/sync.js
 server/node_modules/mkdirp/test/umask_sync.js
 server/node_modules/mkdirp/test/umask.js
 >>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
 server/node_modules/object-assign/index.js
 server/node_modules/object-assign/license
 server/node_modules/object-assign/package.json
 server/node_modules/object-assign/readme.md
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 server/node_modules/rimraf/AUTHORS
@@ -134,3 +144,5 @@ server/node_modules/temp/examples/pdfcreator.js
 server/node_modules/temp/lib/temp.js
 server/node_modules/temp/test/temp-test.js
 >>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
