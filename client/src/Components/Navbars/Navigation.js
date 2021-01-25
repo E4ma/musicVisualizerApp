@@ -30,22 +30,23 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
     } else {
         return (
             <>
-                <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
+                <Navbar bg="dark" variant="dark" expand="sm" sticky="top" >
 
                     <Navbar.Brand href="/Home">
                         <img src={pic2} alt={""} width={80} height={80} />
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                    <Navbar.Collapse id="basic-navbar-nav" >
+                        <Nav className="ml-auto" style={{ fontSize: 23 }} >
+                            {/* <Nav className="justify-content-end"> */}
                             <Nav.Link onClick={() => onRouteChange('home')} >Home</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('About')} >About</Nav.Link>
                             <Nav.Link onClick={() => onRouteChange('TemplatesPage')} >Templates</Nav.Link>
                             {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
-
                         </Nav>
-                        <Button onClick={() => onRouteChange('Login')} variant="outline-info">Sign In</Button>
+                        {/* <Button onClick={() => onRouteChange('Login')} variant="outline-info">Sign In</Button>                         */}
+                        <Button style={{ fontSize: 19 }} onClick={() => onRouteChange('Login')} variant="danger">Sign In</Button>
                     </Navbar.Collapse>
                 </Navbar>
             </>
