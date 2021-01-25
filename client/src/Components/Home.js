@@ -11,7 +11,8 @@ import {
 import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
 import Displayer from './Displayer'
-import AudioImport from './UploadAudio/AudioImport'
+import AudioImport from './UploadAudio/AudioUpload'
+import IconUpload from './UploadIcon/IconUpload'
 
 const Home = () => {
   return (
@@ -31,7 +32,7 @@ const Home = () => {
               <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="Icon">Icon </Nav.Link>
+              <Nav.Link eventKey="uploadIcon">Icon </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="text">Text</Nav.Link>
@@ -50,6 +51,9 @@ const Home = () => {
           </Tab.Pane>
           <Tab.Pane eventKey="uploadBackground">
             <BackgroundImport />
+          </Tab.Pane>
+          <Tab.Pane eventKey="uploadIcon">
+            <IconUpload />
           </Tab.Pane>
         </Tab.Content>
         {/* </Col> */}
