@@ -3,7 +3,6 @@ import '../home.css'
 import {
   Container,
   Card,
-  Jumbotron,
   Row,
   Col,
   Nav,
