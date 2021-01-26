@@ -19,7 +19,7 @@ const Home = () => {
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
         <Col sm={3}>
-          <Nav variant="pills" className="flex-column">
+          <Nav variant="pills" className="flex-column" bg="transparent">
             <br />
 
             <Nav.Item>
