@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
-        <Col sm={3}>
+        <Col sm={1}>
           <Nav variant="pills" className="flex-column" bg="transparent">
             <br />
 
@@ -50,23 +50,23 @@ const Home = () => {
           </Nav>
         </Col>
 
-        {/* <Col sm={9}> */}
-        <Tab.Content>
-          <Tab.Pane eventKey="uploadAudio">
-            <AudioImport />
-          </Tab.Pane>
-          <Tab.Pane eventKey="uploadBackground">
-            <BackgroundImport />
-          </Tab.Pane>
-          <Tab.Pane eventKey="uploadIcon">
-            <IconUpload />
-          </Tab.Pane>
-        </Tab.Content>
-        {/* </Col> */}
+        <Col sm={2}>
+          <Tab.Content>
+            <Tab.Pane eventKey="uploadAudio">
+              <AudioImport />
+            </Tab.Pane>
+            <Tab.Pane eventKey="uploadBackground">
+              <BackgroundImport />
+            </Tab.Pane>
+            <Tab.Pane eventKey="uploadIcon">
+              <IconUpload />
+            </Tab.Pane>
+          </Tab.Content>
+        </Col>
 
         {/* card for displaying the visualizer on the right panel*/}
 
-        <Col sm={3}>
+        <Col sm={1}>
           <br />
           <Card style={{ width: '70rem', height: '40rem' }}>
             <Card.Body>
