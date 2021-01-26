@@ -1,5 +1,11 @@
 client/.eslintcache
 client/.eslintcache
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
 server/server.js
 server/node_modules/async/.gitmodules
 server/node_modules/async/.npmignore
@@ -9,6 +15,12 @@ server/node_modules/async/Makefile
 server/node_modules/async/package.json
 server/node_modules/async/README.md
 server/node_modules/async/lib/async.js
+<<<<<<< HEAD
+=======
+>>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
+>>>>>>> origin/main
 server/node_modules/axios/CHANGELOG.md
 server/node_modules/axios/index.d.ts
 server/node_modules/axios/index.js
@@ -57,6 +69,12 @@ server/node_modules/cors/LICENSE
 server/node_modules/cors/package.json
 server/node_modules/cors/README.md
 server/node_modules/cors/lib/index.js
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
 server/node_modules/express-upload/.npmignore
 server/node_modules/express-upload/package.json
 server/node_modules/express-upload/README.md
@@ -66,6 +84,12 @@ server/node_modules/express-upload/lib/processors/accept.js
 server/node_modules/express-upload/lib/processors/gm.js
 server/node_modules/express-upload/lib/processors/index.js
 server/node_modules/express-upload/lib/processors/to.js
+<<<<<<< HEAD
+=======
+>>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
+>>>>>>> origin/main
 server/node_modules/follow-redirects/debug.js
 server/node_modules/follow-redirects/http.js
 server/node_modules/follow-redirects/https.js
@@ -73,6 +97,12 @@ server/node_modules/follow-redirects/index.js
 server/node_modules/follow-redirects/LICENSE
 server/node_modules/follow-redirects/package.json
 server/node_modules/follow-redirects/README.md
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
 server/node_modules/mkdirp/.npmignore
 server/node_modules/mkdirp/.travis.yml
 server/node_modules/mkdirp/index.js
@@ -93,10 +123,22 @@ server/node_modules/mkdirp/test/root.js
 server/node_modules/mkdirp/test/sync.js
 server/node_modules/mkdirp/test/umask_sync.js
 server/node_modules/mkdirp/test/umask.js
+<<<<<<< HEAD
+=======
+>>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
+>>>>>>> origin/main
 server/node_modules/object-assign/index.js
 server/node_modules/object-assign/license
 server/node_modules/object-assign/package.json
 server/node_modules/object-assign/readme.md
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/main
 server/node_modules/rimraf/AUTHORS
 server/node_modules/rimraf/LICENSE
 server/node_modules/rimraf/package.json
@@ -122,6 +164,7 @@ server/node_modules/temp/examples/grepcount.js
 server/node_modules/temp/examples/pdfcreator.js
 server/node_modules/temp/lib/temp.js
 server/node_modules/temp/test/temp-test.js
+<<<<<<< HEAD
 server/node_modules/.bin/is-ci
 server/node_modules/.bin/is-ci.cmd
 server/node_modules/.bin/is-ci.ps1
@@ -1367,3 +1410,8 @@ server/node_modules/xdg-basedir/index.js
 server/node_modules/xdg-basedir/license
 server/node_modules/xdg-basedir/package.json
 server/node_modules/xdg-basedir/readme.md
+=======
+>>>>>>> kurtbrch
+=======
+>>>>>>> newstructure
+>>>>>>> origin/main

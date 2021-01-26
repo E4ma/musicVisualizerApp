@@ -21,7 +21,7 @@ const BackgroundUpload = () => {
     formData.append('file', file)
 
     try {
-      //Need to connect to the server
+      //Need to connect to the server the endpoint is media
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,

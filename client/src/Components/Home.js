@@ -1,4 +1,5 @@
 import React from 'react'
+import '../home.css'
 import {
   Container,
   Card,
@@ -28,15 +29,19 @@ const Home = () => {
                 {/* <Button size="lg" block>Audio</Button> */}
               </Nav.Link>
             </Nav.Item>
+            <br />
             <Nav.Item>
               <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
             </Nav.Item>
+            <br />
             <Nav.Item>
               <Nav.Link eventKey="uploadIcon">Icon </Nav.Link>
             </Nav.Item>
+            <br />
             <Nav.Item>
               <Nav.Link eventKey="text">Text</Nav.Link>
             </Nav.Item>
+            <br />
             <ButtonGroup aria-label="Basic example">
               <Button variant="secondary">Export</Button>
               <Button variant="secondary">Save</Button>
