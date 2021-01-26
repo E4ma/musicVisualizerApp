@@ -2,7 +2,24 @@
     background-color: rgb(15, 1, 1);
 } */
 
+.Background {
+    background-image: url(./Components/Images/background1.jpg);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 50px;
+    left: -20vw;
+    height: calc(80vh - 100px);
+    width: 60vw;
 
+}
+
+canvas {
+    position:static;
+    width:100%;
+    height:100%;
+
+}
 
 /* .nav-buttons{
     background-color: black;
