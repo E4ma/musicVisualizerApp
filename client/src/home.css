@@ -1,3 +1,14 @@
 Nav.Item {
   margin: 40rem;
 }
+
+Card {
+  display: flex;
+  justify-content: center;
+}
+
+Card.body {
+  display: inline;
+  justify-content: flex;
+  align-items: center;
+}
