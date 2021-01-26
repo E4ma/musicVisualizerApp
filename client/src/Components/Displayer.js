@@ -81,9 +81,9 @@ const Displayer = () => {
       bar_height = frequency_array[i] * 1.5
 
       const x = center_x + Math.cos(rads * i) * radius
-      const y = center_y + Math.sin(rads * i) * radius
+      const y = center_y + Math.sin(rads * i) * radius          
       x_end = center_x + Math.cos(rads * i) * (radius + bar_height)
-      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)
+      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)       
 
       //draw a bar
       drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas)

@@ -5,20 +5,30 @@
 .Background {
     background-image: url(./Components/Images/background1.jpg);
     position: absolute;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 50px;
-    left: -20vw;
-    height: calc(80vh - 100px);
+    background-repeat: no-repeat;       
+    background-size: cover;       
+    top: 40px;       
+    left: -10vw;     
+    height: calc(80vh - 100px);    
     width: 60vw;
 
 }
 
 canvas {
     position:static;
-    width:100%;
-    height:100%;
+    width:100%;        
+    height:100%;       
 
+}
+
+.display {
+    margin-left:20px;      
+    margin-right:180px;     
+}
+
+.card {
+    top:20px;      
+    right:150px;    
 }
 
 /* .nav-buttons{
