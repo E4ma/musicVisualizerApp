@@ -3,11 +3,13 @@ import '../home.css'
 import {
   Container,
   Card,
+  Jumbotron,
   Row,
   Col,
   Nav,
   Button,
   ButtonGroup,
+  Jumbotron,
 } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
@@ -67,12 +69,15 @@ const Home = () => {
 
         <Col sm={3}>
           <br />
-          <Card style={{ width: '70rem', height: '40rem' }}>
+          {/* <Card style={{ width: '70rem', height: '40rem' }}>
             <Card.Body>
               <Card.Title>Visualizer</Card.Title>
               <Displayer />
             </Card.Body>
-          </Card>
+          </Card> */}
+          <Jumbotron>
+            <Displayer />
+          </Jumbotron>
         </Col>
       </Row>
     </Tab.Container>
