@@ -62,7 +62,7 @@ const Home = () => {
 
         <Col sm={3}>
           <br />
-          <Card style={{ width: '30rem' }}>
+          <Card style={{ width: '80rem' }}>
             <Card.Body>
               <Card.Title>Visualizer</Card.Title>
               <Displayer />
