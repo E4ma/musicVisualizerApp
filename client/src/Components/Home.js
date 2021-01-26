@@ -8,6 +8,7 @@ import {
   Nav,
   Button,
   ButtonGroup,
+  Jumbotron,
 } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
@@ -20,7 +21,7 @@ const Home = () => {
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
         <Col sm={3}>
-          <Nav variant="pills" className="flex-column">
+          <Nav variant="pills" className="flex-column" bg="transparent">
             <br />
 
             <Nav.Item>
@@ -67,12 +68,15 @@ const Home = () => {
 
         <Col sm={3}>
           <br />
-          <Card style={{ width: '30rem' }}>
+          {/* <Card style={{ width: '70rem', height: '40rem' }}>
             <Card.Body>
               <Card.Title>Visualizer</Card.Title>
               <Displayer />
             </Card.Body>
-          </Card>
+          </Card> */}
+          <Jumbotron>
+            <Displayer />
+          </Jumbotron>
         </Col>
       </Row>
     </Tab.Container>
