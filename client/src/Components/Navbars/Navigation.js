@@ -46,8 +46,10 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
               <Nav.Link onClick={() => onRouteChange('TemplatesPage')}>
                 Templates
               </Nav.Link>
+              <Nav.Link>My Account</Nav.Link>
               {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
             </Nav>
+            
             {/* <Button
               onClick={() => onRouteChange('Login')}
               variant="outline-info"
@@ -56,11 +58,12 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             </Button> */}
             <Button
               style={{ fontSize: 19 }}
-              onClick={() => onRouteChange('Login')}
               variant="danger"
             >
-              Sign In
+              Sign Out
             </Button>
+            
+            
           </Navbar.Collapse>
         </Navbar>
       </>

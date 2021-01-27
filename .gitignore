@@ -134,6 +134,9 @@ server/node_modules/object-assign/license
 server/node_modules/object-assign/package.json
 server/node_modules/object-assign/readme.md
 <<<<<<< HEAD
+client/.eslintcache
+=======
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -2594,3 +2597,4 @@ node_modules/xdg-basedir/index.js
 node_modules/xdg-basedir/license
 node_modules/xdg-basedir/package.json
 node_modules/xdg-basedir/readme.md
+>>>>>>> origin
