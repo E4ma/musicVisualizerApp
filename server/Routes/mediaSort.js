@@ -3,7 +3,7 @@ const fileUpload = require('express-fileupload')
 
 router.use(fileUpload())
 
-//max file size
+//max file size in bytes
 const fileSizeMax = 1000000
 //Upload endpoints
 //Upload endpoints for Icons
@@ -25,6 +25,10 @@ router.post('/icon', (req, res) => {
     fileName: file.name,
     filePath: `/uploadedFiles/icons/${file.name}`,
   })
+})
+
+router.get('/icon', (req, res) => {
+  then((res) => res.status(200).json({ msg: 'connected' }))
 })
 
 //Upload endpoints for music and audio not related to the icon
