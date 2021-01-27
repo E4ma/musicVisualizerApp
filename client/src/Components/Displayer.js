@@ -8,6 +8,7 @@ const UpdateWindowSize = () => {
   useLayoutEffect(() => {
     const updateSize = () => {
       setSize([window.innerWidth, window.innerHeight])
+      // console.log(window.innerWidth, window.innerHeight)
     }
     window.addEventListener('resize', updateSize)
     return () => window.removeEventListener('resize', updateSize)
@@ -65,6 +66,7 @@ const Displayer = () => {
   const [frequency_array, setFrequencyArray] = useState()
   const [songName, setSongName] = useState(songs[0].name)
   const [textColor, setTextColor] = useState(songs[0].textColor)
+  //changing the 2 lines below moves the canves
   const center_x = width / 2
   const center_y = height / 2
   function animationLooper(canvas) {
@@ -78,12 +80,13 @@ const Displayer = () => {
       const rads = (Math.PI * 2) / bars
 
       // Math is magical - you can make lots of visualizer
-      bar_height = frequency_array[i] * 1.5
+      // this 4.5 decides the canves size
+      bar_height = frequency_array[i] * 2.5
 
       const x = center_x + Math.cos(rads * i) * radius
-      const y = center_y + Math.sin(rads * i) * radius          
+      const y = center_y + Math.sin(rads * i) * radius
       x_end = center_x + Math.cos(rads * i) * (radius + bar_height)
-      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)       
+      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)
 
       //draw a bar
       drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas)
@@ -160,8 +163,10 @@ const Displayer = () => {
         onClick={togglePlay}
         style={
           isPaused
+            // this is the play/pause button colors
             ? { backgroundColor: 'yellow' }
             : { backgroundColor: 'green' }
+
         }
       >
         {isPaused ? 'Paused' : 'PLAYING !!!'}

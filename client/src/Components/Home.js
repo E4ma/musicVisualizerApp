@@ -27,7 +27,7 @@ const Home = () => {
             <Nav.Item>
               <Nav.Link eventKey="uploadAudio">
                 Audio
-                {/* <Button size="lg" block>Audio</Button> */}
+                {/* <Button size="sm">Audio</Button> */}
               </Nav.Link>
             </Nav.Item>
             <br />
