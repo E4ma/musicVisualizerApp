@@ -59,3 +59,4 @@ server/node_modules/object-assign/index.js
 server/node_modules/object-assign/license
 server/node_modules/object-assign/package.json
 server/node_modules/object-assign/readme.md
+client/.eslintcache
