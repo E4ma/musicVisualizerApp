@@ -2,6 +2,7 @@ import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import songFile from './audio/ImperialMarch60.wav'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
+import InsertIcon from './IconInteractions/InsertIcon'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -81,9 +82,9 @@ const Displayer = () => {
       bar_height = frequency_array[i] * 1.5
 
       const x = center_x + Math.cos(rads * i) * radius
-      const y = center_y + Math.sin(rads * i) * radius          
+      const y = center_y + Math.sin(rads * i) * radius
       x_end = center_x + Math.cos(rads * i) * (radius + bar_height)
-      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)       
+      y_end = center_y + Math.sin(rads * i) * (radius + bar_height)
 
       //draw a bar
       drawBar(x, y, x_end, y_end, frequency_array[i], ctx, canvas)
@@ -156,28 +157,33 @@ const Displayer = () => {
 
   return (
     <div className="audioControl Background">
-      <button
-        onClick={togglePlay}
-        style={
-          isPaused
-            ? { backgroundColor: 'yellow' }
-            : { backgroundColor: 'green' }
-        }
-      >
-        {isPaused ? 'Paused' : 'PLAYING !!!'}
-      </button>
+      <div classname="Wrapper">
+        <div className="buttonWrapper">
+          <button
+            onClick={togglePlay}
+            style={
+              isPaused
+                ? { backgroundColor: 'yellow' }
+                : { backgroundColor: 'green' }
+            }
+          >
+            {isPaused ? 'Paused' : 'PLAYING !!!'}
+          </button>
 
-      <button
-        onClick={() => {
-          changeSong((currentSong + 1) % 3)
-        }}
-      >
-        Change Song my Friend
-      </button>
-      <canvas ref={canvas} />
-      {/* <div className="songName"> */}
-      <h3 style={{ color: textColor }}>{songName}</h3>
-      {/* </div> */}
+          <button
+            onClick={() => {
+              changeSong((currentSong + 1) % 3)
+            }}
+          >
+            Change Song my Friend
+          </button>
+        </div>
+        <canvas ref={canvas} />
+        <InsertIcon />
+        {/* <div className="songName"> */}
+        <h3 style={{ color: textColor }}>{songName}</h3>
+        {/* </div> */}
+      </div>
     </div>
   )
 }
