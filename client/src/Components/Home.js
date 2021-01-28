@@ -14,7 +14,7 @@ import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
 import Displayer from './Displayer'
 import AudioImport from './UploadAudio/AudioUpload'
-import IconUpload from './UploadIcon/IconUpload'
+import IconUpload from './IconInteractions/IconUpload'
 
 const Home = () => {
   return (
