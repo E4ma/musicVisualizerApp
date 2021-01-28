@@ -47,9 +47,26 @@ canvas {
 
 .Abountscr {
 
-    /* background-image: url(./Components/Images/front_image1.png) ; */
-    /* background-color: rgb(16, 17, 17); */
-    /* background-size: cover;   */
   /* background-color:transparent !important; */
+  color: blanchedalmond;
+
+} 
+
+
+.card
+ {
+    /* border: 'solid'; */
+    color:  white;
+  /* background-color:transparent !important; */
+  background-color: rgba(143, 53, 53, 0.446) !important;
+
+} 
+
+.input
+ {
+    /* border: 'solid'; */
+    color:  rgb(66, 33, 33);
+  /* background-color:transparent !important; */
+  background-color: rgba(143, 53, 53, 0.446) !important;
 
 } 

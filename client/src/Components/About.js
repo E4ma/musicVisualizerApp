@@ -1,10 +1,11 @@
 import React from 'react'
-import '../App.css'
+
+// styling for About is in App.css
 
 
 const About = () => {
     return (
-        <div className="ui container ">
+        <div className="ui container Abountscr">
             <br></br>
             <h2>Turn your music into a killer video.</h2>
             <br></br>
@@ -17,6 +18,22 @@ const About = () => {
 
                 It only takes a few minutes to make a video. Use simple pre-set controls to enjoy your tracks
             </h4>
+            {/* SN: sorry this is illegal (below) */}
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

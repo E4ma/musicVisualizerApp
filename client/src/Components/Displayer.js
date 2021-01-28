@@ -164,7 +164,7 @@ const Displayer = () => {
         style={
           isPaused
             // this is the play/pause button colors
-            ? { backgroundColor: 'yellow' }
+            ? { backgroundColor: 'yellow', alignItems: "center" }
             : { backgroundColor: 'green' }
 
         }
