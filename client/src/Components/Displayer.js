@@ -1,5 +1,5 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
-import songFile from './audio/ImperialMarch60.wav'
+import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
 
@@ -18,7 +18,7 @@ const UpdateWindowSize = () => {
 
 let songs = [
   {
-    name: 'ImperialMarch60',
+    name: "Keep 'Em Coming",
     songFile: songFile,
     color: 'black',
     fontColor: 'black',
@@ -158,7 +158,7 @@ const Displayer = () => {
   }
 
   return (
-    <div className="audioControl Background">
+    <div className="audioControl Background ">
       <button
         onClick={togglePlay}
         style={
@@ -172,17 +172,20 @@ const Displayer = () => {
         {isPaused ? 'Paused' : 'PLAYING !!!'}
       </button>
 
-      <button
-        onClick={() => {
-          changeSong((currentSong + 1) % 3)
-        }}
-      >
+      <button onClick={() => { changeSong((currentSong + 1) % 3) }} >
         Change Song my Friend
       </button>
+
+      {/* Inserted by SN */}
+      <div style={{ color: 'whitesmoke' }}>
+        {songName}
+      </div>
+
+
       <canvas ref={canvas} />
-      {/* <div className="songName"> */}
-      <h3 style={{ color: textColor }}>{songName}</h3>
-      {/* </div> */}
+
+      {/* Removed by SN */}
+      {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
     </div>
   )
 }

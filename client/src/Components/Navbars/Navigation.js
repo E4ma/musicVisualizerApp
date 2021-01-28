@@ -8,7 +8,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
       <>
         <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
           <Navbar.Brand href="/Home">
-            <img src={pic2} alt={''} width={100} height={70} />
+            <img src={pic2} alt={''} width={80} height={80} />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -35,7 +35,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
       <>
         <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
           <Navbar.Brand href="/Home">
-            <img src={pic2} alt={''} width={100} height={70} />
+            <img src={pic2} alt={''} width={80} height={80} />
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -49,7 +49,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
               <Nav.Link>My Account</Nav.Link>
               {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
             </Nav>
-            
+
             {/* <Button
               onClick={() => onRouteChange('Login')}
               variant="outline-info"
@@ -62,8 +62,8 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             >
               Sign Out
             </Button>
-            
-            
+
+
           </Navbar.Collapse>
         </Navbar>
       </>
