@@ -164,24 +164,24 @@ const Displayer = () => {
         onClick={togglePlay}
         style={
           isPaused
-            // this is the play/pause button colors
-            ? { backgroundColor: 'yellow', alignItems: "center" }
+            ? // this is the play/pause button colors
+              { backgroundColor: 'yellow', alignItems: 'center' }
             : { backgroundColor: 'green' }
-
         }
       >
         {isPaused ? 'Paused' : 'PLAYING !!!'}
       </button>
 
-      <button onClick={() => { changeSong((currentSong + 1) % 3) }} >
+      <button
+        onClick={() => {
+          changeSong((currentSong + 1) % 3)
+        }}
+      >
         Change Song my Friend
       </button>
 
       {/* Inserted by SN */}
-      <div style={{ color: 'whitesmoke' }}>
-        {songName}
-      </div>
-
+      <div style={{ color: 'whitesmoke' }}>{songName}</div>
 
       <canvas ref={canvas} />
       <InsertIcon />
