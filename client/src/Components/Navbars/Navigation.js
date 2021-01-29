@@ -33,9 +33,9 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
     return (
       <>
         <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
-          <Navbar.Brand href="/Home">
+          <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
             <img src={pic2} alt={''} width={80} height={80} />
-            HummgingBird
+            HummingBird
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

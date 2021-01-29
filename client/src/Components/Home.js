@@ -8,13 +8,13 @@ import {
   Nav,
   Button,
   ButtonGroup,
-  Jumbotron,
 } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
 import Displayer from './Displayer'
 import AudioImport from './UploadAudio/AudioUpload'
 import IconUpload from './IconInteractions/IconUpload'
+import InsertIcon from './IconInteractions/InsertIcon'
 
 const Home = () => {
   return (
@@ -22,14 +22,16 @@ const Home = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
           <Col sm={2}>
-            <Nav variant="pills" className="flex-column" bg="transparent">
+            <Nav
+              variant="pills"
+              className="flex-column textbold"
+              bg="transparent"
+              style={{ fontWeight: 'bold' }}
+            >
               <br />
 
               <Nav.Item>
-                <Nav.Link eventKey="uploadAudio">
-                  Audio
-                  {/* <Button size="sm">Audio</Button> */}
-                </Nav.Link>
+                <Nav.Link eventKey="uploadAudio">Audio</Nav.Link>
               </Nav.Item>
               <br />
               <Nav.Item>
@@ -51,7 +53,7 @@ const Home = () => {
             </Nav>
           </Col>
 
-          <Col sm={3}>
+          <Col sm={2}>
             <Tab.Content>
               <Tab.Pane eventKey="uploadAudio">
                 <AudioImport />
@@ -67,17 +69,17 @@ const Home = () => {
 
           {/* card for displaying the visualizer on the right panel*/}
 
-          <Col sm={3}>
+          <Col classname="" sm={7}>
             <br />
-            {/* <Card style={{ width: '70rem', height: '40rem' }}>
+            <Card
+              className="visualizer"
+              // style={{ width: '70rem', height: '40rem' }}
+            >
               <Card.Body>
-                <Card.Title>Visualizer</Card.Title>
                 <Displayer />
+                <InsertIcon />
               </Card.Body>
-            </Card> */}
-            <Jumbotron>
-              <Displayer />
-            </Jumbotron>
+            </Card>
           </Col>
         </Row>
       </Tab.Container>

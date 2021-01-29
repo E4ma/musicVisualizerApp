@@ -45,15 +45,14 @@ const IconUpload = () => {
   }
 
   return (
-    //The fragment allows to group children without creating extra nodes
-    <Card style={{ width: '18rem', margin: '20px' }}>
+    <Card style={{ width: '18rem', margin: '24px' }}>
       <Card.Body>
         <Card.Title>Upload Icon</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
           Select an Icon to upload
         </Card.Subtitle>
         <Card.Text>
-          <Fragment>
+          <>
             <div className="mb-2">
               <form onSubmit={onSubmit}>
                 <div className="input-group mb-3">
@@ -77,7 +76,7 @@ const IconUpload = () => {
                 </div>
               </form>
             </div>
-          </Fragment>
+          </>
         </Card.Text>
       </Card.Body>
     </Card>

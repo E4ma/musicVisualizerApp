@@ -2,7 +2,6 @@ import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
-import InsertIcon from './IconInteractions/InsertIcon'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -159,34 +158,37 @@ const Displayer = () => {
   }
 
   return (
-    <div className="audioControl Background ">
-      <button
-        onClick={togglePlay}
-        style={
-          isPaused
-            ? // this is the play/pause button colors
-              { backgroundColor: 'yellow', alignItems: 'center' }
-            : { backgroundColor: 'green' }
-        }
-      >
-        {isPaused ? 'Paused' : 'PLAYING !!!'}
-      </button>
+    <div className="audioControlBackground">
+      <div className="canvasWrapper">
+        <canvas ref={canvas} />
+      </div>
+      <div className="buttonWrapper">
+        <button
+          onClick={togglePlay}
+          style={
+            isPaused
+              ? // this is the play/pause button colors
+                { backgroundColor: 'yellow', alignItems: 'center' }
+              : { backgroundColor: 'green' }
+          }
+        >
+          {isPaused ? 'Paused' : 'PLAYING !!!'}
+        </button>
 
-      <button
-        onClick={() => {
-          changeSong((currentSong + 1) % 3)
-        }}
-      >
-        Change Song my Friend
-      </button>
+        <button
+          onClick={() => {
+            changeSong((currentSong + 1) % 3)
+          }}
+        >
+          Change Song my Friend
+        </button>
 
-      {/* Inserted by SN */}
-      <div style={{ color: 'whitesmoke' }}>{songName}</div>
+        {/* Inserted by SN */}
+        <div style={{ color: 'whitesmoke' }}>{songName}</div>
 
-      <canvas ref={canvas} />
-      <InsertIcon />
-      {/* Removed by SN */}
-      {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
+        {/* Removed by SN */}
+        {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
+      </div>
     </div>
   )
 }

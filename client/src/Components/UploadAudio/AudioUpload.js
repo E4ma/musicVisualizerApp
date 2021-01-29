@@ -46,7 +46,7 @@ const AudioUpload = () => {
   }
 
   return (
-    <Card style={{ width: '18rem', margin: '20px' }}>
+    <Card style={{ width: '18rem', margin: '24px' }}>
       <Card.Body>
         <Card.Title>Audio Upload</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
@@ -77,17 +77,6 @@ const AudioUpload = () => {
                 </div>
               </form>
             </div>
-            {/* <div>
-              {uploadedFile ? (
-                <div className="row mt-5">
-                  <div className="col-md-6 m-auto">
-                    <h3 className="text-center">{uploadedFile.filename}</h3>
-                  </div>
-                </div>
-              ) : (
-                <div>Upload files</div>
-              )}
-            </div> */}
           </>
         </Card.Text>
       </Card.Body>
