@@ -2,13 +2,6 @@ Nav.Item {
   margin: 40rem;
 }
 
-Card {
-  display: flex;
-  justify-content: center;
-}
-
-Card.body {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+.jumbotron {
+  background-color: transparent !important;
 }

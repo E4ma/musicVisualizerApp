@@ -1,28 +1,104 @@
 /* .color-nav{
     background-color: rgb(15, 1, 1);
 } */
+/* Nav.Item {
+  margin: 40rem;
+} */
 
-.Background {
-    background-image: url(./Components/Images/background1.jpg);
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 50px;
-    left: -20vw;
-    height: calc(80vh - 100px);
-    width: 60vw;
+body {
+  font-family: 'Raleway' !important;
+  margin: 0;
+  /* <canvas ref="canvas" width={640} height={425} /> */
+  /* <img ref="image" src={cheese} className="hidden" /> */
+}
 
+.audioControlBackground {
+  background-image: url(./Components/Images/background1.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  align-self: center;
+  /* top: 40px;
+  left: 20vw; */
+  height: calc(60vh);
+  width: 50vw;
 }
 
 canvas {
-    position:static;
-    width:100%;
-    height:100%;
-
+  position: static;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+  z-index: 1;
 }
+.canvasWrapper {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+}
+/* .display {
+  /* margin-left: 20px;
+  margin-right: 130px; 
+} */
 
 /* .nav-buttons{
     background-color: black;
     justify-items: "right";
 } */
 
+.Frontscr {
+  background-image: url(./Components/Images/front_image1.png);
+  /* background-color: rgb(16, 17, 17); */
+  background-size: cover;
+  height: 100vh;
+}
+
+.Abountscr {
+  /* background-color:transparent !important; */
+  color: blanchedalmond;
+}
+
+.card {
+  /* border: 'solid'; */
+  /* top: 20px;
+  right: 150px; */
+  color: white;
+  /* background-color: transparent !important; */
+  background-color: rgba(55, 86, 165, 0.2) !important;
+}
+
+.nav {
+  /* display: flex;
+  justify-content: flex-end; */
+  margin-left: 20px;
+  margin-right: 350px;
+}
+
+.input {
+  /* border: 'solid'; */
+  color: rgb(66, 33, 33);
+  /* background-color:transparent !important; */
+  background-color: rgba(143, 53, 53, 0.446) !important;
+}
+
+.visualizer {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -350px;
+  position: relative;
+  z-index: 10;
+}
+
+.buttonWrapper {
+  position: relative;
+  z-index: 11;
+}

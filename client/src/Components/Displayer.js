@@ -1,14 +1,14 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
-import songFile from './audio/ImperialMarch60.wav'
+import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
-import InsertIcon from './IconInteractions/InsertIcon'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
   useLayoutEffect(() => {
     const updateSize = () => {
       setSize([window.innerWidth, window.innerHeight])
+      // console.log(window.innerWidth, window.innerHeight)
     }
     window.addEventListener('resize', updateSize)
     return () => window.removeEventListener('resize', updateSize)
@@ -18,7 +18,7 @@ const UpdateWindowSize = () => {
 
 let songs = [
   {
-    name: 'ImperialMarch60',
+    name: "Keep 'Em Coming",
     songFile: songFile,
     color: 'black',
     fontColor: 'black',
@@ -66,6 +66,7 @@ const Displayer = () => {
   const [frequency_array, setFrequencyArray] = useState()
   const [songName, setSongName] = useState(songs[0].name)
   const [textColor, setTextColor] = useState(songs[0].textColor)
+  //changing the 2 lines below moves the canves
   const center_x = width / 2
   const center_y = height / 2
   function animationLooper(canvas) {
@@ -79,7 +80,8 @@ const Displayer = () => {
       const rads = (Math.PI * 2) / bars
 
       // Math is magical - you can make lots of visualizer
-      bar_height = frequency_array[i] * 1.5
+      // this 4.5 decides the canves size
+      bar_height = frequency_array[i] * 2.5
 
       const x = center_x + Math.cos(rads * i) * radius
       const y = center_y + Math.sin(rads * i) * radius
@@ -156,30 +158,10 @@ const Displayer = () => {
   }
 
   return (
-    <div className="audioControl Background">
-      <button
-        onClick={togglePlay}
-        style={
-          isPaused
-            ? { backgroundColor: 'yellow' }
-            : { backgroundColor: 'green' }
-        }
-      >
-        {isPaused ? 'Paused' : 'PLAYING !!!'}
-      </button>
-
-      <button
-        onClick={() => {
-          changeSong((currentSong + 1) % 3)
-        }}
-      >
-        Change Song my Friend
-      </button>
-      <canvas ref={canvas} />
-      <InsertIcon />
-      {/* <div className="songName"> */}
-      <h3 style={{ color: textColor }}>{songName}</h3>
-      {/* </div> */}
+    <div className="audioControlBackground">
+      <div className="canvasWrapper">
+        <canvas ref={canvas} />
+      </div>
     </div>
   )
 }
