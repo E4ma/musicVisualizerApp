@@ -46,7 +46,7 @@ const IconUpload = () => {
 
   return (
     //The fragment allows to group children without creating extra nodes
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', margin: '20px' }}>
       <Card.Body>
         <Card.Title>Upload Icon</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">

@@ -14,7 +14,6 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link onClick={() => onRouteChange('home')}>Home</Nav.Link>
               {/* <Nav.Link onClick={() => onRouteChange('Profile')} >My Account</Nav.Link> */}
               <Nav.Link onClick={() => onRouteChange('TemplatesPage')}>
                 Templates
@@ -36,12 +35,12 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
         <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
           <Navbar.Brand href="/Home">
             <img src={pic2} alt={''} width={80} height={80} />
+            HummgingBird
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto" style={{ fontSize: 23 }}>
-              <Nav.Link onClick={() => onRouteChange('Home')}>Home</Nav.Link>
               <Nav.Link onClick={() => onRouteChange('About')}>About</Nav.Link>
               <Nav.Link onClick={() => onRouteChange('TemplatesPage')}>
                 Templates
@@ -56,14 +55,9 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
             >
               Sign In
             </Button> */}
-            <Button
-              style={{ fontSize: 19 }}
-              variant="danger"
-            >
+            <Button style={{ fontSize: 19 }} variant="danger">
               Sign Out
             </Button>
-
-
           </Navbar.Collapse>
         </Navbar>
       </>

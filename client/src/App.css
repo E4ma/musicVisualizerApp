@@ -26,10 +26,10 @@ canvas {
   height: 100%;
 }
 
-.display {
+/* .display {
   margin-left: 20px;
   margin-right: 180px;
-}
+} */
 
 /* .nav-buttons{
     background-color: black;
@@ -48,12 +48,18 @@ canvas {
 }
 
 .card {
+  /* top: 20px;
+  right: 150px; */
   /* border: 'solid'; */
   color: white;
   /* background-color:transparent !important; */
   background-color: rgba(53, 79, 143, 0.446) !important;
 }
 
+.nav {
+  margin-left: 20px;
+  margin-right: 350px;
+}
 .input {
   /* border: 'solid'; */
   color: rgb(66, 33, 33);
