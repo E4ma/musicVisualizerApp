@@ -6,7 +6,6 @@ import TemplatesPage from './Components/TemplatesPage'
 import Home from './Components/Home'
 import Login from './Components/Signin/Login'
 
-
 const App = () => {
   const [route, setRoute] = useState('signout')
   const [isSignedIn, setIsSignedIn] = useState(false)
@@ -37,12 +36,11 @@ const App = () => {
 
   return (
     <>
-      <div className='Frontscr'>
-        < Navigation isSignedIn={setIsSignedIn} onRouteChange={onRouteChange} />
+      <div className="Frontscr">
+        <Navigation isSignedIn={setIsSignedIn} onRouteChange={onRouteChange} />
         {displayPage}
-      </div >
+      </div>
     </>
-
   )
 }
 

@@ -1,14 +1,6 @@
 import React from 'react'
-import '../home.css'
-import {
-  Container,
-  Card,
-  Row,
-  Col,
-  Nav,
-  Button,
-  ButtonGroup,
-} from 'react-bootstrap'
+
+import { Card, Row, Col, Nav, Button, ButtonGroup } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import BackgroundImport from './UploadBackground/backgroundUpload'
 import Displayer from './Displayer'
@@ -21,7 +13,7 @@ const Home = () => {
     <div>
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
-          <Col sm={2}>
+          <Col md={2}>
             <Nav
               variant="pills"
               className="flex-column textbold"
@@ -53,7 +45,7 @@ const Home = () => {
             </Nav>
           </Col>
 
-          <Col sm={2}>
+          <Col md={'auto'}>
             <Tab.Content>
               <Tab.Pane eventKey="uploadAudio">
                 <AudioImport />
@@ -69,12 +61,9 @@ const Home = () => {
 
           {/* card for displaying the visualizer on the right panel*/}
 
-          <Col classname="" sm={7}>
+          <Col md xl={'auto'}>
             <br />
-            <Card
-              className="visualizer"
-              // style={{ width: '70rem', height: '40rem' }}
-            >
+            <Card className="visualizer">
               <Card.Body>
                 <Displayer />
                 <InsertIcon />

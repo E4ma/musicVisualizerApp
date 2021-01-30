@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 const AudioUpload = () => {
   //Need to use a hook to set text in the label to the file namespace
@@ -49,7 +49,7 @@ const AudioUpload = () => {
     <Card style={{ width: '18rem', margin: '24px' }}>
       <Card.Body>
         <Card.Title>Audio Upload</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
+        <Card.Subtitle className="mb-5 text-muted">
           Select audio to upload
         </Card.Subtitle>
         <Card.Text>
@@ -59,7 +59,7 @@ const AudioUpload = () => {
                 <div className="input-group mb-3">
                   <input
                     type="file"
-                    className="form-control"
+                    className="form-control "
                     id="inputGroupFile02"
                     accept="audio/wav, audio/mp3"
                     onChange={onChange}
@@ -67,7 +67,7 @@ const AudioUpload = () => {
                   <input
                     type="submit"
                     value="UploadAudio"
-                    className="btn btn-primary btn-block"
+                    className="btn btn-primary btn-block mt-6"
                   />
 
                   <label

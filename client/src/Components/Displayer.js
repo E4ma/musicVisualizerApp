@@ -1,4 +1,5 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
+import InsertIcon from './IconInteractions/InsertIcon'
 import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
@@ -159,9 +160,6 @@ const Displayer = () => {
 
   return (
     <div className="audioControlBackground">
-      <div className="canvasWrapper">
-        <canvas ref={canvas} />
-      </div>
       <div className="buttonWrapper">
         <button
           onClick={togglePlay}
@@ -188,6 +186,9 @@ const Displayer = () => {
 
         {/* Removed by SN */}
         {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
+      </div>
+      <div className="canvasWrapper">
+        <canvas ref={canvas} />
       </div>
     </div>
   )

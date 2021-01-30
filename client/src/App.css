@@ -8,8 +8,16 @@
 body {
   font-family: 'Raleway' !important;
   margin: 0;
+  color: blanchedalmond;
   /* <canvas ref="canvas" width={640} height={425} /> */
   /* <img ref="image" src={cheese} className="hidden" /> */
+}
+
+.Card.Body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 
 .audioControlBackground {
@@ -23,20 +31,6 @@ body {
   width: 50vw;
 }
 
-canvas {
-  position: static;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 80%;
-  z-index: 1;
-}
-.canvasWrapper {
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  margin-top: -100px;
-}
 /* .display {
   /* margin-left: 20px;
   margin-right: 130px; 
@@ -51,6 +45,7 @@ canvas {
   background-image: url(./Components/Images/front_image1.png);
   /* background-color: rgb(16, 17, 17); */
   background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
 }
 
@@ -68,6 +63,7 @@ canvas {
   color: white;
   /* background-color: transparent !important; */
   background-color: rgba(55, 86, 165, 0.2) !important;
+  height: 70vh;
 }
 
 .nav {
@@ -85,19 +81,34 @@ canvas {
 }
 
 .visualizer {
-  padding: 0;
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
 }
 
 .iconWrapper {
+  align-self: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: -350px;
   position: relative;
   z-index: 10;
+}
+
+canvas {
+  position: static;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 70%;
+  z-index: 1;
+}
+.canvasWrapper {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
 }
 
 .buttonWrapper {
