@@ -6,6 +6,7 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
 const mediaSort = require('./Routes/mediaSort')
+
 //Needed for the process.env code
 dotenv.config()
 //Used to keep private information hidden

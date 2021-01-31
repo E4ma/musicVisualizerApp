@@ -1,5 +1,5 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
-import InsertIcon from './IconInteractions/InsertIcon'
+// import InsertIcon from './IconInteractions/InsertIcon'
 import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
@@ -166,7 +166,7 @@ const Displayer = () => {
           style={
             isPaused
               ? // this is the play/pause button colors
-                { backgroundColor: 'yellow', alignItems: 'center' }
+                { backgroundColor: 'yellow' }
               : { backgroundColor: 'green' }
           }
         >
@@ -180,7 +180,8 @@ const Displayer = () => {
         >
           Change Song my Friend
         </button>
-
+      </div>
+      <div className="songInfoWrapper">
         {/* Inserted by SN */}
         <div style={{ color: 'whitesmoke' }}>{songName}</div>
 

@@ -59,15 +59,15 @@ const AudioUpload = () => {
                 <div className="input-group mb-3">
                   <input
                     type="file"
-                    className="form-control "
+                    className="form-control mb-5"
                     id="inputGroupFile02"
-                    accept="audio/wav, audio/mp3"
+                    accept="audio/wav, audio/mp3, audio/mpeg"
                     onChange={onChange}
                   />
                   <input
                     type="submit"
                     value="UploadAudio"
-                    className="btn btn-primary btn-block mt-6"
+                    className="btn btn-primary btn-block"
                   />
 
                   <label

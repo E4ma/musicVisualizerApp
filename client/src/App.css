@@ -91,11 +91,14 @@ body {
   align-self: center;
   display: flex;
   justify-content: center;
+  position: relative;
   margin-top: -350px;
   position: relative;
   z-index: 10;
 }
-
+.iconWrapper img {
+  position: static;
+}
 canvas {
   position: static;
   justify-content: center;
@@ -105,6 +108,7 @@ canvas {
   z-index: 1;
 }
 .canvasWrapper {
+  display: flex;
   align-self: center;
   display: flex;
   justify-content: center;
