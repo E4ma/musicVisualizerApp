@@ -46,10 +46,10 @@ const AudioUpload = () => {
   }
 
   return (
-    <Card style={{ width: '18rem', margin: '24px' }}>
+    <Card style={{ width: '18rem', margin: '20px' }}>
       <Card.Body>
         <Card.Title>Audio Upload</Card.Title>
-        <Card.Subtitle className="mb-5 text-muted">
+        <Card.Subtitle className="mb-2 text-muted">
           Select audio to upload
         </Card.Subtitle>
         <Card.Text>
