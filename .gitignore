@@ -5,6 +5,8 @@ client/.eslintcache
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
+server/node_modules/
+
 >>>>>>> origin/main
 server/server.js
 server/node_modules/async/.gitmodules
