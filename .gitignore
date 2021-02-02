@@ -6,7 +6,6 @@ client/.eslintcache
 <<<<<<< HEAD
 =======
 >>>>>>> origin/main
-server/server.js
 server/node_modules/async/.gitmodules
 server/node_modules/async/.npmignore
 server/node_modules/async/index.js
@@ -4156,3 +4155,4 @@ node_modules/which-typed-array/package.json
 node_modules/which-typed-array/README.md
 node_modules/which-typed-array/.github/FUNDING.yml
 node_modules/which-typed-array/test/index.js
+server/Routes/userRoutes.js

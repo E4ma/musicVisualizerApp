@@ -1,8 +1,11 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
+
 import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
-import InsertIcon from './IconInteractions/InsertIcon'
+import axios from 'axios'
+
+const songDirectory = require.context('http://localhost:5000/audioDemo', true)
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
