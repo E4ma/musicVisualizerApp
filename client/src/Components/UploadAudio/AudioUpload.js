@@ -40,6 +40,7 @@ const AudioUpload = () => {
         console.error('There is a problem with the server ' + err.message)
       } else {
         //This message is from the server if no file is uploaded
+        // console.error('we had an error??? ' + err.response.data.msg)
         console.error(err.response.data.msg)
       }
     }

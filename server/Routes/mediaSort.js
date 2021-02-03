@@ -8,8 +8,13 @@ router.use(fileUpload())
 const fileSizeMax = 100000000
 //Upload endpoints
 //Upload endpoints for Icons
+
+const AudioModel = require("../Model/AudioModel")
+
 router.post('/icon', (req, res) => {
   const file = req.files.file
+
+
 
   //defines what the max size that can be uploaded otherwise will get an error
   if (file.size > fileSizeMax) {
@@ -42,24 +47,67 @@ router.post('/media', async (req, res) => {
 
   //This path decides where to send the file (React is the client)
   const mediaType = file.mimetype
-  console.log(mediaType)
+  console.log('this is the media type-', mediaType)
 
   if (mediaType == 'audio/mpeg' || 'audio/mp3' || 'audio/flac' || 'audio/wav') {
     file.mv(`uploadedFiles/audio/${file.name}`)
 
+    console.log('inside if1..........:')
+
     const filePath = `uploadedFiles/audio/${file.name}`
 
-    const metadata = await mm.parseFile(`${filePath}`)
-    const parsedMetaData = util.inspect(metadata, {
-      showHidden: false,
-      depth: null,
-    })
-    console.log(`${parsedMetaData}`)
+    console.log('before filepath..........:', filePath)
+    // const metadata = await mm.parseFile(`${filePath}`)
+    console.log('after filepath..........:')
+    // const parsedMetaData = util.inspect(metadata, {
+    //   showHidden: false,
+    //   depth: null,
+    // })
+
+    console.log('inside if2..........:')
+
+    // console.log(`${parsedMetaData}`)
+
+    console.log('inside if3..........:')
+    // write to the DB here
+
+
     res.json({
       fileName: file.name,
       filePath: filePath,
-      metaData: parsedMetaData,
+      // metaData: parsedMetaData,
     })
+
+    console.log('WRITE TO MONGO..........:')
+    console.log(req.files)
+    const newAudio = new AudioModel({
+      // fileName,
+      // filePath,
+      fileName: file.name,
+      filePath: filePath
+    })
+    console.log('newAudio...', newAudio)
+    newAudio.save()
+    console.log('did it write to DB????...')
+
+
+    // console.log('inside if3..........:')
+    // // write to the DB here
+    // console.log('WRITE TO MONGO..........:')
+    // const newAudio = new AudioModel({
+    //   fileName,
+    //   filePath,
+    // });
+    // await newAudio.save()
+
+    // await newAudio.save(function (err, audio) {
+    //   if (err) {
+    //     console.log(err);
+    //     res.send(400, 'bad request');
+    //   }
+    //   console.log('record written to DB');
+    // });
+
   } else if (mediaType == 'image/jpeg' || 'image/jpg' || 'image/bmp') {
     file.mv(`uploadedFiles/images/${file.name}`)
     //The code that coninues if a success
