@@ -5,7 +5,7 @@ import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
 import axios from 'axios'
 
-const songDirectory = require.context('http://localhost:5000/audioDemo', true)
+// const songDirectory = require.context('http://localhost:5000/audioDemo', true)
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -169,7 +169,7 @@ const Displayer = () => {
           style={
             isPaused
               ? // this is the play/pause button colors
-                { backgroundColor: 'yellow' }
+              { backgroundColor: 'yellow' }
               : { backgroundColor: 'green' }
           }
         >
