@@ -6,6 +6,8 @@ const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
 const mediaSort = require('./Routes/mediaSort')
+// const audioDemo = require('./Routes/sendMedia')
+const userRoutes = require('./Routes/userRoutes')
 
 //Needed for the process.env code
 dotenv.config()
@@ -21,8 +23,11 @@ mongoose
   .catch((err) => console.error('Could not connect to MongoDB...', err))
 
 //Middleware
+app.use(express.json())
 app.use(cors())
 app.use('/upload', mediaSort)
+app.use('/user', userRoutes)
+// app.use('/audioDemo', audioDemo)
 
 port = process.env.PORT
 
