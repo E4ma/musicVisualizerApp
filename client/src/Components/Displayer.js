@@ -4,7 +4,7 @@ import songFile from './audio/TrimmedTrack2.mp3'
 import songFile2 from './audio/Rodriguez - Inner City Blues.mp3'
 import songFile3 from './audio/Lucky Dube-Too-Many-People.wav.mp3'
 
-
+import background from './Images/background1.jpg'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -161,7 +161,12 @@ const Displayer = () => {
   }
 
   return (
-    <div className="audioControlBackground">
+    <div
+      className="audioControlBackground"
+      style={{
+        backgroundImage: `url( ${background})`,
+      }}
+    >
       <div className="buttonWrapper">
         <button
           onClick={togglePlay}
