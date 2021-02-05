@@ -1,8 +1,24 @@
 import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
+import Login from '../Login';
 import pic2 from './Logo2.png'
 
 const Navigation = ({ onRouteChange, isSignedIn }) => {
+  
+  function openLogin(open){
+    if (open){
+      return 
+      <>
+      <Login />
+      </>
+    } else {
+      console.log('not working');
+    }
+
+      
+   
+  }
+
   if (isSignedIn === true) {
     return (
       <>
@@ -48,16 +64,14 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
               <Nav.Link>My Account</Nav.Link>
               {/* <Nav.Link onClick = {()=>onRouteChange('contact')}  variant="outline-info">Contact us</Nav.Link>  */}
             </Nav>
-
-            {/* <Button
-              onClick={() => onRouteChange('Login')}
-              variant="outline-info"
-            >
+            <Button 
+            onClick={() => openLogin()}
+            variant="outline-info">
               Sign In
-            </Button> */}
-            <Button style={{ fontSize: 19 }} variant="danger">
-              Sign Out
             </Button>
+            {/* <Button variant="outline-info">
+              Sign Up
+            </Button> */}
           </Navbar.Collapse>
         </Navbar>
       </>

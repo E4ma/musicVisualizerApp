@@ -4,7 +4,7 @@ import Navigation from './Components/Navbars/Navigation'
 import About from './Components/About'
 import TemplatesPage from './Components/TemplatesPage'
 import Home from './Components/Home'
-import Login from './Components/Signin/Login'
+import Login from './Components/Login'
 
 const App = () => {
   const [route, setRoute] = useState('signout')
@@ -23,13 +23,13 @@ const App = () => {
     } else if (route === 'signin') {
       setRoute({ isSignedIn: true })
     } else if (route === 'Home') {
-      setDisplayPage(<Home onRouteChange={onRouteChange} />)
+      setDisplayPage(<Home />)
     } else if (route === 'About') {
-      setDisplayPage(<About onRouteChange={onRouteChange} />)
+      setDisplayPage(<About />)
     } else if (route === 'TemplatesPage') {
       setDisplayPage(<TemplatesPage />)
     } else if (route === 'Login') {
-      setDisplayPage(<Login onRouteChange={onRouteChange} />)
+      setDisplayPage(<Login />)
     }
     setRoute({ route: route })
   }
