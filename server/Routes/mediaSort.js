@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const fileUpload = require('express-fileupload')
-const mm = require('music-metadata')
-const util = require('util')
+
 //enable the file upload
 router.use(fileUpload())
 //max file size
@@ -49,16 +48,9 @@ router.post('/media', async (req, res) => {
 
     const filePath = `uploadedFiles/audio/${file.name}`
 
-    const metadata = await mm.parseFile(`${filePath}`)
-    const parsedMetaData = util.inspect(metadata, {
-      showHidden: false,
-      depth: null,
-    })
-    console.log(`${parsedMetaData}`)
     res.json({
       fileName: file.name,
       filePath: filePath,
-      metaData: parsedMetaData,
     })
   } else if (mediaType == 'image/jpeg' || 'image/jpg' || 'image/bmp') {
     file.mv(`uploadedFiles/images/${file.name}`)
