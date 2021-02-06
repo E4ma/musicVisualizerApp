@@ -22,19 +22,6 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Could not connect to MongoDB...', err))
 
-//Connecting to the db
-// mongoose
-//   .connect('mongodb://localhost/UploadUserInfo', {
-//     useUnifiedTopology: true,
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//   })
-//   .then(() => {
-//     console.log('We are connected to MongoDB')
-//   })
-//   .catch((err) => {
-//     console.log(err.message)
-//   })
 
 //Middleware
 app.use(cors())
