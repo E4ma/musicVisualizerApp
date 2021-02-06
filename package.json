@@ -1,0 +1,28 @@
+{
+  "name": "musicVisualizerApp",
+  "version": "1.0.0",
+  "description": "https://www.figma.com/file/lRTWhf23TbetHuDLm5VJxX/Untitled?node-id=0%3A1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/E4ma/musicVisualizerApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/E4ma/musicVisualizerApp/issues"
+  },
+  "homepage": "https://github.com/E4ma/musicVisualizerApp#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "music-metadata": "^7.6.6",
+    "nodemon": "^2.0.7",
+    "util": "^0.12.3"
+  }
+}

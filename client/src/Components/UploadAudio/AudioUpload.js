@@ -10,6 +10,7 @@ const AudioUpload = () => {
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
+    console.log("N1",e.target.files)
     setFile(e.target.files[0])
     setFilename(e.target.files[0].name)
   }
@@ -18,6 +19,7 @@ const AudioUpload = () => {
     // e.preventDefault() used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
     const formData = new FormData()
+    console.log(file)
     formData.append('file', file)
 
     try {
@@ -25,9 +27,9 @@ const AudioUpload = () => {
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        },
+        // {
+        //   headers: { 'Content-Type': 'multipart/form-data' },
+        // },
       )
       const { fileName, filePath } = res.data
       console.log(res.headers)
@@ -36,11 +38,11 @@ const AudioUpload = () => {
       }
       setUploadedFile({ fileName, filePath })
     } catch (err) {
-      if (err.response.status === 500) {
+      if (err.status === 500) {
         console.error('There is a problem with the server ' + err.message)
       } else {
         //This message is from the server if no file is uploaded
-        console.error(err.response.data.msg)
+        console.error(err.message)
       }
     }
   }
