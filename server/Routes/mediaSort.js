@@ -53,55 +53,20 @@ router.post('/media', async (req, res) => {
 
   if (mediaType == 'audio/mpeg' || 'audio/mp3' || 'audio/flac' || 'audio/wav') {
     file.mv(`uploadedFiles/audio/${file.name}`)
-<<<<<<< HEAD
-
-    console.log('inside if1..........:')
-
-    const filePath = `uploadedFiles/audio/${file.name}`
-
-    console.log('before filepath..........:', filePath)
-    // const metadata = await mm.parseFile(`${filePath}`)
-    console.log('after filepath..........:')
-=======
     console.log('Line 50')
     const filePath = `uploadedFiles/audio/${file.name}`
     console.log('Line 52', filePath)
     // const metadata = await mm.parseFile(`${filePath}`)
     // console.log("Line 54" )
->>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     // const parsedMetaData = util.inspect(metadata, {
     //   showHidden: false,
     //   depth: null,
     // })
-<<<<<<< HEAD
-
-    console.log('inside if2..........:')
-
     // console.log(`${parsedMetaData}`)
-
-    console.log('inside if3..........:')
-    // write to the DB here
-
-
-=======
-    // console.log(`${parsedMetaData}`)
->>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     res.json({
       fileName: file.name,
       filePath: filePath,
       // metaData: parsedMetaData,
-<<<<<<< HEAD
-    })
-
-    console.log('WRITE TO MONGO..........:')
-    console.log(req.files)
-    const newAudio = new AudioModel({
-      // fileName,
-      // filePath,
-      fileName: file.name,
-      filePath: filePath
-=======
->>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     })
     console.log('newAudio...', newAudio)
     newAudio.save()

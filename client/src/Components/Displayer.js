@@ -2,11 +2,6 @@ import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 
 import axios from 'axios'
 
-<<<<<<< HEAD
-// const songDirectory = require.context('http://localhost:5000/audioDemo', true)
-
-=======
->>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
   useLayoutEffect(() => {
@@ -198,15 +193,9 @@ const Displayer = () => {
             width: '200px',
             backgroundColor: isPaused
               ? // this is the play/pause button colors
-<<<<<<< HEAD
-              { backgroundColor: 'yellow' }
-              : { backgroundColor: 'green' }
-          }
-=======
                 'yellow'
               : 'green',
           }}
->>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
         >
           {isPaused ? 'Play' : 'Pause'}
         </button>
