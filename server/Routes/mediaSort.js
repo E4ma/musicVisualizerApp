@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const fileUpload = require('express-fileupload')
-const mm = require('music-metadata')
-const util = require('util')
+const fs = require('fs')
+const path = require('path')
+
 //enable the file upload
 router.use(fileUpload())
 //max file size
@@ -35,12 +36,13 @@ router.post('/icon', (req, res) => {
 
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
+  // console.log(req.files)
   if (req.files === null) {
     return res.status(400).json({ msg: 'no file found' })
   }
   //will define what file is in React
   const file = req.files.file
-  console.log(file)
+  // console.log(file)
   if (file.size > fileSizeMax) {
     return res.status(413).json({ msg: 'File exceeds upload size' })
   }
@@ -51,6 +53,7 @@ router.post('/media', async (req, res) => {
 
   if (mediaType == 'audio/mpeg' || 'audio/mp3' || 'audio/flac' || 'audio/wav') {
     file.mv(`uploadedFiles/audio/${file.name}`)
+<<<<<<< HEAD
 
     console.log('inside if1..........:')
 
@@ -59,10 +62,18 @@ router.post('/media', async (req, res) => {
     console.log('before filepath..........:', filePath)
     // const metadata = await mm.parseFile(`${filePath}`)
     console.log('after filepath..........:')
+=======
+    console.log('Line 50')
+    const filePath = `uploadedFiles/audio/${file.name}`
+    console.log('Line 52', filePath)
+    // const metadata = await mm.parseFile(`${filePath}`)
+    // console.log("Line 54" )
+>>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     // const parsedMetaData = util.inspect(metadata, {
     //   showHidden: false,
     //   depth: null,
     // })
+<<<<<<< HEAD
 
     console.log('inside if2..........:')
 
@@ -72,10 +83,14 @@ router.post('/media', async (req, res) => {
     // write to the DB here
 
 
+=======
+    // console.log(`${parsedMetaData}`)
+>>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     res.json({
       fileName: file.name,
       filePath: filePath,
       // metaData: parsedMetaData,
+<<<<<<< HEAD
     })
 
     console.log('WRITE TO MONGO..........:')
@@ -85,6 +100,8 @@ router.post('/media', async (req, res) => {
       // filePath,
       fileName: file.name,
       filePath: filePath
+=======
+>>>>>>> 9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
     })
     console.log('newAudio...', newAudio)
     newAudio.save()
@@ -118,6 +135,24 @@ router.post('/media', async (req, res) => {
   } else {
     return res.status(500).send(console.error('Internal Server Error X|'))
   }
+})
+
+//export to displayer
+router.get('/list', async (req, res) => {
+  console.log('this is the req on line 80')
+  fs.readdir('./uploadedFiles/audio', (err, files) => {
+    if (err) console.log(err, 'Some error after line 81')
+    else {
+      files.forEach((file) => {
+        console.log(file, 'line 85')
+      })
+      res.json(files)
+    }
+  })
+})
+router.get('/media/:song', (req, res) => {
+  const song = req.params.song
+  res.sendFile(path.join(__dirname, `../uploadedFiles/audio/${song}`))
 })
 
 module.exports = router

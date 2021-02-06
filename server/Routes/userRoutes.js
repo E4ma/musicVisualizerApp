@@ -7,7 +7,7 @@ router.get('/image/:id', async (req, res) => {
   const user = await UserModel.findById({ _id: id })
   //Checking if user with the given id exists
   if (!user) {
-    return res.sendStatus(404)
+    return res.send(404)
   }
   // Setting response type to
   res.type('Content-Type', user.ProfileDp.ContentType)
@@ -30,9 +30,9 @@ router.post('/new', async (req, res) => {
     password,
   })
   //Extracting data and mimetype from req.files.file Commented files out to decide if needed
-  const { data, mimetype } = req.files.file
-  user.ProfileDp.Data = data
-  user.ProfileDp.ContentType = mimetype
+  // const { data, mimetype } = req.files.file
+  // user.ProfileDp.Data = data
+  // user.ProfileDp.ContentType = mimetype
   console.log('after the new UserModel')
   await user.save()
   // Sending user._id through res header
