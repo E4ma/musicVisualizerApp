@@ -1,31 +1,18 @@
-//Import Routes
 const express = require('express')
 // const fileuploader = require('express-fileupload')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
-// const app = express()
+const app = express()
 const mediaSort = require('./Routes/mediaSort')
-//const download = require('./Routes/download')
+const userRoutes = require('./Routes/userRoutes')
 
 //Models
-require('./UserModel')
-const userRoutes = require('./routes')
+require('./Model/UserModel')
 
-const app = express()
-// A middleware which will enable cors with various options like exposeHeader etc.
-app.use(cors({ exposeHeader: 'id' }))
-// A middleware which will extract req.body for us
-app.use(express.json())
-// A middleware which will extract re.files for us
-// app.use(fileuploader());
-
-// Routes
-app.use('/user', userRoutes)
-
-//Needed for the process.env code
+//Needed for the process.env code, Used to keep private information hidden
 dotenv.config()
-//Used to keep private information hidden
+
 
 //Connecting to the db
 mongoose
@@ -53,8 +40,14 @@ mongoose
 //Middleware
 app.use(cors())
 app.use('/upload', mediaSort)
-//app.use('/download', download)
+app.use('/user', userRoutes)
+// A middleware which will enable cors with various options like exposeHeader etc.
+app.use(cors({ exposeHeader: 'id' }))
+// A middleware which will extract req.body for us
+app.use(express.json())
+// A middleware which will extract re.files for us
+// app.use(fileuploader());
+
 
 port = process.env.PORT
-
 app.listen(port, () => console.log('listening on port ' + port) || 5000)

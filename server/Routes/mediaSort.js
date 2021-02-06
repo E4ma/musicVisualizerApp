@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload')
 const fs = require('fs')
 const path = require('path')
 
+
 //enable the file upload
 router.use(fileUpload())
 //max file size
@@ -55,7 +56,8 @@ router.post('/media', async (req, res) => {
     file.mv(`uploadedFiles/audio/${file.name}`)
     console.log('Line 50')
     const filePath = `uploadedFiles/audio/${file.name}`
-    console.log('Line 52', filePath)
+
+    //SN: METADATA stuff commented out for now!
     // const metadata = await mm.parseFile(`${filePath}`)
     // console.log("Line 54" )
     // const parsedMetaData = util.inspect(metadata, {
@@ -63,32 +65,26 @@ router.post('/media', async (req, res) => {
     //   depth: null,
     // })
     // console.log(`${parsedMetaData}`)
+
+
     res.json({
       fileName: file.name,
       filePath: filePath,
       // metaData: parsedMetaData,
     })
+
+
+    console.log('WRITE TO MONGO..........:')
+    console.log(req.files)
+    const newAudio = new AudioModel({
+      fileName: file.name,
+      filePath: filePath
+    })
     console.log('newAudio...', newAudio)
+    // This .save writes to the DB
     newAudio.save()
-    console.log('did it write to DB????...')
 
 
-    // console.log('inside if3..........:')
-    // // write to the DB here
-    // console.log('WRITE TO MONGO..........:')
-    // const newAudio = new AudioModel({
-    //   fileName,
-    //   filePath,
-    // });
-    // await newAudio.save()
-
-    // await newAudio.save(function (err, audio) {
-    //   if (err) {
-    //     console.log(err);
-    //     res.send(400, 'bad request');
-    //   }
-    //   console.log('record written to DB');
-    // });
 
   } else if (mediaType == 'image/jpeg' || 'image/jpg' || 'image/bmp') {
     file.mv(`uploadedFiles/images/${file.name}`)

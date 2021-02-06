@@ -23,4 +23,5 @@ yarn-error.log
 *.tgz
 =======
 
-client/.eslintcache~9f6cac678f3f6a40a0561bf1a06f75ab7a8100a0
+client/.eslintcache
+
