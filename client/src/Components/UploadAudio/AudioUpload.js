@@ -7,6 +7,7 @@ const AudioUpload = () => {
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
+  const [currentUser, setCurrentUser] = useState('USER001')
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -29,12 +30,12 @@ const AudioUpload = () => {
           headers: { 'Content-Type': 'multipart/form-data' },
         },
       )
-      const { fileName, filePath } = res.data
+      const { currentUser, fileName, filePath } = res.data
       console.log(res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
-      setUploadedFile({ fileName, filePath })
+      setUploadedFile({ currentUser, fileName, filePath })
     } catch (err) {
       if (err.response.status === 500) {
         console.error('There is a problem with the server ' + err.message)

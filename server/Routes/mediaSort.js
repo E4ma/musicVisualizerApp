@@ -16,8 +16,6 @@ const AudioModel = require("../Model/AudioModel")
 router.post('/icon', (req, res) => {
   const file = req.files.file
 
-
-
   //defines what the max size that can be uploaded otherwise will get an error
   if (file.size > fileSizeMax) {
     return res.status(413).json({ msg: 'File exceeds upload size' })
@@ -28,6 +26,8 @@ router.post('/icon', (req, res) => {
   }
 
   file.mv(`uploadedFiles/icons/${file.name}`)
+
+  console.log(file)
 
   res.json({
     fileName: file.name,
@@ -75,6 +75,7 @@ router.post('/media', async (req, res) => {
 
 
     console.log('WRITE TO MONGO..........:')
+    console.log('Current-User............:', res.currentUser)
     console.log(req.files)
     const newAudio = new AudioModel({
       fileName: file.name,
