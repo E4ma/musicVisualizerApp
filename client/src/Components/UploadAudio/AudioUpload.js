@@ -7,7 +7,9 @@ const AudioUpload = () => {
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
-  const [currentUser, setCurrentUser] = useState('USER001')
+  const [currentUser, setCurrentUser] = useState('USR------1')
+
+  console.log('USER.....:', currentUser);
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -23,6 +25,16 @@ const AudioUpload = () => {
 
     try {
       //Need to connect to the server the endpoint is media
+      // const res = await axios({
+      //   method: 'post',
+      //   url: 'http://localhost:5000/upload/media',
+      //   body: {
+      //     formData,
+      //     headers: { 'Content-Type': 'multipart/form-data' },
+      //     // body: currentUser
+      //   }
+      // }
+      // )
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
@@ -30,12 +42,12 @@ const AudioUpload = () => {
           headers: { 'Content-Type': 'multipart/form-data' },
         },
       )
-      const { currentUser, fileName, filePath } = res.data
+      const { fileName, filePath } = res.data
       console.log(res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
-      setUploadedFile({ currentUser, fileName, filePath })
+      setUploadedFile({ fileName, filePath })
     } catch (err) {
       if (err.response.status === 500) {
         console.error('There is a problem with the server ' + err.message)
@@ -45,6 +57,7 @@ const AudioUpload = () => {
         console.error(err.response.data.msg)
       }
     }
+
   }
 
   return (

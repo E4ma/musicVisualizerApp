@@ -26,6 +26,7 @@ mongoose
 //Middleware
 app.use(cors())
 app.use('/upload', mediaSort)
+app.use('/currentUser', mediaSort)
 app.use('/user', userRoutes)
 // A middleware which will enable cors with various options like exposeHeader etc.
 app.use(cors({ exposeHeader: 'id' }))
