@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navbar, Nav, Button, Modal, Form, Row, Col } from 'react-bootstrap'
-import pic2 from './Logo2.png'
+import pic from './Logo9.GIF'
 
 const Navigation = ({ onRouteChange }) => {
 
@@ -105,8 +105,8 @@ const Navigation = ({ onRouteChange }) => {
     <>
       <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
         <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
-          <img src={pic2} alt={''} width={80} height={80} />
-            HummingBird
+          <img src={pic} alt={''} width={80} height={80} />
+            The HummingBird
           </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
