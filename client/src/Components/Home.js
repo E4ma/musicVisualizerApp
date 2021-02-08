@@ -2,11 +2,9 @@ import React from 'react'
 
 import { Card, Row, Col, Nav, Button, ButtonGroup } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
-import BackgroundImport from './UploadBackground/backgroundUpload'
 import Displayer from './Displayer'
-import AudioImport from './UploadAudio/AudioUpload'
-import IconUpload from './IconInteractions/IconUpload'
-import InsertIcon from './IconInteractions/InsertIcon'
+import FileUpload from './MediaInteractions/FileUpload'
+import InsertIcon from './MediaInteractions/InsertIcon'
 
 const Home = () => {
   return (
@@ -31,7 +29,7 @@ const Home = () => {
               </Nav.Item>
               <br />
               <Nav.Item>
-                <Nav.Link eventKey="uploadIcon">Icon </Nav.Link>
+                <Nav.Link eventKey="uploadIcon">Icon</Nav.Link>
               </Nav.Item>
               <br />
               <Nav.Item>
@@ -47,14 +45,14 @@ const Home = () => {
 
           <Col md={'auto'}>
             <Tab.Content>
-              <Tab.Pane eventKey="uploadAudio">
-                <AudioImport />
+              <Tab.Pane eventKey="uploadAudio" mediaType="audio">
+                <FileUpload mediaType="Audio" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadBackground">
-                <BackgroundImport />
+                <FileUpload mediaType="Background" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadIcon">
-                <IconUpload />
+                <FileUpload mediaType="Icon" />
               </Tab.Pane>
             </Tab.Content>
           </Col>

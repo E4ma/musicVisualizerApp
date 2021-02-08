@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 
-const BackgroundUpload = () => {
+const FileUpload = (props) => {
   //Need to use a hook to set text in the label to the file namespace
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
@@ -15,7 +15,7 @@ const BackgroundUpload = () => {
   }
 
   const onSubmit = async (e) => {
-    //used to prevent submitting by accident by preventing normal submitting
+    // e.preventDefault() used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', file)
@@ -30,6 +30,7 @@ const BackgroundUpload = () => {
         },
       )
       const { fileName, filePath } = res.data
+      console.log(res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
@@ -39,18 +40,18 @@ const BackgroundUpload = () => {
         console.error('There is a problem with the server ' + err.message)
       } else {
         //This message is from the server if no file is uploaded
+        // console.error('we had an error??? ' + err.response.data.msg)
         console.error(err.response.data.msg)
       }
     }
   }
 
   return (
-    //The fragment allows to group children without creating extra nodes
-    <Card style={{ width: '18rem', margin: '24px' }}>
+    <Card style={{ width: '16rem', margin: '16px' }}>
       <Card.Body>
-        <Card.Title>Upload Background</Card.Title>
+        <Card.Title>{props.mediaType} Upload</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          Select a background to upload
+          Select {props.mediaType} to Upload
         </Card.Subtitle>
         <Card.Text>
           <>
@@ -59,14 +60,14 @@ const BackgroundUpload = () => {
                 <div className="input-group mb-3">
                   <input
                     type="file"
-                    className="form-control"
+                    className="form-control mb-5"
                     id="inputGroupFile02"
-                    accept="image/gif, image/jpeg, image/jpg"
+                    accept={`${props.mediaType}/wav, ${props.mediaType}/mp3, ${props.mediaType}/mpeg`}
                     onChange={onChange}
                   />
                   <input
                     type="submit"
-                    value="Upload Background"
+                    value={`Upload ${props.mediaType}`}
                     className="btn btn-primary btn-block"
                   />
 
@@ -84,4 +85,4 @@ const BackgroundUpload = () => {
   )
 }
 
-export default BackgroundUpload
+export default FileUpload
