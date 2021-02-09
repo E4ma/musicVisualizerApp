@@ -5,6 +5,7 @@ import pic from './Logo9.GIF'
 
 const Navigation = ({ onRouteChange }) => {
 
+  // for open/close of signin/signup modals 
   const [show, setShow] = useState(false);
   const [register, setRegister] = useState(false);
 
@@ -17,6 +18,75 @@ const Navigation = ({ onRouteChange }) => {
     handleClose() || setRegister(true);
   }
 
+  //API
+
+  const [signUpMessage, setSignUpMessage] = useState("");
+
+const createUser = () => {
+  let userInfo = {
+    firstname: this.name.firstname.value,
+    lastname: this.name.lastname.value,
+    username: this.name.username.value,
+    email: this.name.email.value,
+    password: this.name.password.value
+  };
+
+  fetch('/new', {
+    method: 'POST',
+    headers: {'Content-type':'application/json'},
+    body:JSON.stringify(userInfo)
+  }).then(r=>r.json()).then(res=>{
+    if(res){
+      setSignUpMessage("New User created successfully");
+    }
+  })
+}
+
+//The modals
+
+if (register === true) {
+  return (
+
+    <Modal show={register} onHide={handleRegisterClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Sign Up</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group >
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="firstname" placeholder="Enter first name" />
+          </Form.Group>
+          <Form.Group >
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control type="text" name="lastname" placeholder="Enter last name" />
+          </Form.Group>
+          <Form.Group >
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" name="username" placeholder="Create a Username" />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+  </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" name="password" placeholder="Password" />
+          </Form.Group>
+          <Button onClick={createUser} variant="primary" type="submit">
+            Sign Up
+</Button>
+<p>{signUpMessage}</p>
+        </Form>
+      </Modal.Body>
+    </Modal>
+
+  );
+} 
+
   if (show === true) {
     return (
 
@@ -27,17 +97,18 @@ const Navigation = ({ onRouteChange }) => {
         <Modal.Body>
         <Form>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" name="username" placeholder="username" />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" name="password" placeholder="Password" />
             </Form.Group>
             <Button variant="primary" type="submit">
               Submit
   </Button>
+  
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -51,49 +122,9 @@ const Navigation = ({ onRouteChange }) => {
     );
   }
 
-  if (register === true) {
-    return (
-
-      <Modal show={register} onHide={handleRegisterClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign Up</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group >
-              <Form.Label>First Name</Form.Label>
-              <Form.Control type="name" placeholder="Enter first name" />
-            </Form.Group>
-            <Form.Group >
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control type="name" placeholder="Enter last name" />
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-    </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-  </Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
-
-    );
-  } else {
-    console.log("register not working");
-  }
 
 
-
+//Navbar
 
   return (
     <>
