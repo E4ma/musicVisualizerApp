@@ -119,3 +119,31 @@ canvas {
   position: relative;
   z-index: 11;
 }
+
+
+.btn1 {
+  background-color: rgb(9, 82, 177);
+  border: none;
+  color: whitesmoke;
+  padding: 10px 20px;
+  text-align: center;
+  margin: 10px 1px;
+  border-radius: 22px;
+  width: 100%;
+}
+
+
+/* :focus is when button clicked */
+.btn1:focus {
+  /* outline: none; */
+  outline-width: 1px;
+  outline-style: dashed;
+  outline-color:  #2b62d8;
+}
+
+.btn1:hover {
+  background-color: #2b62d8;
+  color: rgb(5, 3, 3);
+}
+
+
