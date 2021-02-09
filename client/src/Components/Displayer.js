@@ -1,6 +1,6 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
-
 import axios from 'axios'
+import background from './Images/background1.jpg'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -181,7 +181,10 @@ const Displayer = () => {
   }, [])
 
   return (
-    <div className="audioControlBackground">
+    <div
+      className="audioControlBackground"
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className="buttonWrapper">
         <button
           onClick={() => {
