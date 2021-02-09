@@ -25,23 +25,16 @@ const Navigation = ({ onRouteChange }) => {
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Row>
-              <Col>
-                <Form.Control placeholder="First name" />
-              </Col>
-              <Col>
-                <Form.Control placeholder="Last name" />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Control placeholder="Email address" />
-              </Col>
-              <Col>
-                <Form.Control placeholder="Password" />
-              </Col>
-            </Row>
+        <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" />
+            </Form.Group>
             <Button variant="primary" type="submit">
               Submit
   </Button>
@@ -51,7 +44,7 @@ const Navigation = ({ onRouteChange }) => {
           <Button
             onClick={registerClicked}
             variant="Light"
-          >Register</Button>
+          >Sign Up</Button>
         </Modal.Footer>
       </Modal>
 
@@ -63,7 +56,7 @@ const Navigation = ({ onRouteChange }) => {
 
       <Modal show={register} onHide={handleRegisterClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
