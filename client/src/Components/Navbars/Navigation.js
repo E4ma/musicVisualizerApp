@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Navbar, Nav, Button, Modal, Form, Row, Col } from 'react-bootstrap'
 import pic from './Logo9.GIF'
+// import pic from './Logo1sn.png'
 
 const Navigation = ({ onRouteChange }) => {
 
@@ -12,8 +13,8 @@ const Navigation = ({ onRouteChange }) => {
   const handleRegister = () => setRegister(true);
   const handleRegisterClose = () => setRegister(false);
 
-  function registerClicked(){
-   handleClose() || setRegister(true);
+  function registerClicked() {
+    handleClose() || setRegister(true);
   }
 
   if (show === true) {
@@ -24,7 +25,7 @@ const Navigation = ({ onRouteChange }) => {
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
+          <Form>
             <Row>
               <Col>
                 <Form.Control placeholder="First name" />
@@ -44,18 +45,18 @@ const Navigation = ({ onRouteChange }) => {
             <Button variant="primary" type="submit">
               Submit
   </Button>
-  </Form>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button
-          onClick={registerClicked}
-          variant="Light"
+            onClick={registerClicked}
+            variant="Light"
           >Register</Button>
         </Modal.Footer>
       </Modal>
 
     );
-  } 
+  }
 
   if (register === true) {
     return (
@@ -65,8 +66,8 @@ const Navigation = ({ onRouteChange }) => {
           <Modal.Title>Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
-        <Form.Group >
+          <Form>
+            <Form.Group >
               <Form.Label>First Name</Form.Label>
               <Form.Control type="name" placeholder="Enter first name" />
             </Form.Group>
@@ -105,7 +106,8 @@ const Navigation = ({ onRouteChange }) => {
     <>
       <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
         <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
-          <img src={pic} alt={''} width={80} height={80} />
+          {/* <img src={pic} alt={''} width={80} height={80} /> */}
+          <img src={pic} alt={''} width={50} height={50} />
             The HummingBird
           </Navbar.Brand>
 
@@ -117,19 +119,19 @@ const Navigation = ({ onRouteChange }) => {
               Templates
               </Nav.Link>
             {/* <Nav.Link>My Account</Nav.Link> */}
-           <Button
-           onClick={handleLogin}
-           variant="outline-secondary"
-           >Sign In</Button>
-     <Button
-          onClick={handleRegister}
-            variant="outline-info">
-            Sign Up
+            <Button
+              onClick={handleLogin}
+              variant="outline-secondary"
+            >Sign In</Button>
+            <Button
+              onClick={handleRegister}
+              variant="outline-info">
+              Sign Up
             </Button>
 
           </Nav>
 
-     
+
         </Navbar.Collapse>
       </Navbar>
     </>
