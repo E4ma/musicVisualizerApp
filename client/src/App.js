@@ -4,7 +4,6 @@ import Navigation from './Components/Navbars/Navigation'
 import About from './Components/About'
 import TemplatesPage from './Components/TemplatesPage'
 import Home from './Components/Home'
-import Login from './Components/Login'
 
 const App = () => {
   const [route, setRoute] = useState('signout')
@@ -28,8 +27,6 @@ const App = () => {
       setDisplayPage(<About />)
     } else if (route === 'TemplatesPage') {
       setDisplayPage(<TemplatesPage />)
-    } else if (route === 'Login') {
-      setDisplayPage(<Login />)
     }
     setRoute({ route: route })
   }
