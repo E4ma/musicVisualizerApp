@@ -5,6 +5,7 @@ import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
+import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
   return (
@@ -45,14 +46,14 @@ const Home = () => {
 
           <Col md={'auto'}>
             <Tab.Content>
-              <Tab.Pane eventKey="uploadAudio" mediaType="audio">
-                <FileUpload mediaType="Audio" />
+              <Tab.Pane eventKey="uploadAudio" mediatype="audio">
+                <FileUpload mediatype="Audio" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadBackground">
-                <FileUpload mediaType="Background" />
+                <FileUpload mediatype="Background" filetype="image" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadIcon">
-                <FileUpload mediaType="Icon" />
+                <FileUpload mediatype="Icon" filetype="image" />
               </Tab.Pane>
             </Tab.Content>
           </Col>
