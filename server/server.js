@@ -38,12 +38,7 @@ app.use('/createUser', storeUser)
 
 
 app.use('/upload', mediaSort)
-<<<<<<< HEAD
-app.use('/currentUser', mediaSort)
-app.use('/user', userRoutes)
-=======
 // app.use('/user', userRoutes)
->>>>>>> 27837bdfb330d5f4d5b79a0d3ae30c68e87a7f19
 // A middleware which will enable cors with various options like exposeHeader etc.
 // app.use(cors({ exposeHeader: 'id' }))
 
