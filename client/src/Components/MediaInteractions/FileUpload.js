@@ -8,6 +8,9 @@ const FileUpload = (props) => {
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
+  const [currentUser, setCurrentUser] = useState('USR------1')
+
+  console.log('USER.....:', currentUser);
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -23,6 +26,16 @@ const FileUpload = (props) => {
 
     try {
       //Need to connect to the server the endpoint is media
+      // const res = await axios({
+      //   method: 'post',
+      //   url: 'http://localhost:5000/upload/media',
+      //   body: {
+      //     formData,
+      //     headers: { 'Content-Type': 'multipart/form-data' },
+      //     // body: currentUser
+      //   }
+      // }
+      // )
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
@@ -45,6 +58,7 @@ const FileUpload = (props) => {
         console.error(err.response.data.msg)
       }
     }
+
   }
   // If the audio button is selected
   if (props.mediatype == 'Audio') {

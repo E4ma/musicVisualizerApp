@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Navbar, Nav, Button, Modal, Form, Row, Col } from 'react-bootstrap'
 import pic from './Logo9.GIF'
 // import pic from './Logo1sn.png'
+import Axios from 'axios'
 
 const Navigation = ({ onRouteChange }) => {
 
@@ -18,29 +19,44 @@ const Navigation = ({ onRouteChange }) => {
     handleClose() || setRegister(true);
   }
 
-  //API
+ // Event handlers for SignUp
+const url = "http://localhost:5000/createUser/newUser"
+const  [data, setData] = useState({
+  firstname: "",
+  lastname: "",
+  username: "",
+  email: "",
+  password: ""
+})
 
-  const [signUpMessage, setSignUpMessage] = useState("");
-
-const createUser = () => {
-  let userInfo = {
-    firstname: this.name.firstname.value,
-    lastname: this.name.lastname.value,
-    username: this.name.username.value,
-    email: this.name.email.value,
-    password: this.name.password.value
-  };
-
-  fetch('/new', {
-    method: 'POST',
-    headers: {'Content-type':'application/json'},
-    body:JSON.stringify(userInfo)
-  }).then(r=>r.json()).then(res=>{
-    if(res){
-      setSignUpMessage("New User created successfully");
+ const registerForm = e => {
+  e.preventDefault();
+  Axios.post(url, {
+    firstname: data.firstname,
+    lastname: data.lastname,
+    username: data.username,
+    email: data.email,
+    password: data.password
+  })
+  .then(res => {
+    console.log(res.data)
+  }).catch(err => {
+    if (err.res){
+      console.log("this is a response error", err.res);
+    } else if (err.req){
+      console.log("this is a request error", err.req);
+    } else {
+      console.log("error", err)
     }
   })
-}
+ }
+
+ function handleSignup(e){
+   const newuser = {...data}
+   newuser[e.target.name] = e.target.value
+   setData(newuser)
+  //  console.log(newuser)
+ }
 
 //The modals
 
@@ -52,34 +68,48 @@ if (register === true) {
         <Modal.Title>Sign Up</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={(e) => registerForm(e)}>
           <Form.Group >
             <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" name="firstname" placeholder="Enter first name" />
+            <Form.Control type="text" name="firstname" placeholder="Enter first name"
+                                 value={data.firstname} 
+                                 onChange={(e) => handleSignup(e)}
+            />
           </Form.Group>
           <Form.Group >
             <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" name="lastname" placeholder="Enter last name" />
+            <Form.Control type="text" name="lastname" placeholder="Enter last name" 
+                                             value={data.lastname} 
+                                             onChange={(e) => handleSignup(e)}
+            />
           </Form.Group>
           <Form.Group >
             <Form.Label>Username</Form.Label>
-            <Form.Control type="text" name="username" placeholder="Create a Username" />
+            <Form.Control type="text" name="username" placeholder="Create a Username"
+                                value={data.username} 
+                                onChange={(e) => handleSignup(e)}
+            />
           </Form.Group>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Control type="email" name="email" placeholder="Enter email"
+                                       value={data.email} 
+                                       onChange={(e) => handleSignup(e)}
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
   </Form.Text>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name="password" placeholder="Password" />
+            <Form.Control type="password" name="password" placeholder="Password" 
+                        value={data.password} 
+                        onChange={(e) => handleSignup(e)}
+            />
           </Form.Group>
-          <Button onClick={createUser} variant="primary" type="submit">
+          <Button variant="primary" type="submit">
             Sign Up
 </Button>
-<p>{signUpMessage}</p>
         </Form>
       </Modal.Body>
     </Modal>

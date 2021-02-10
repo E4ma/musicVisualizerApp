@@ -17,30 +17,70 @@ const Home = () => {
               variant="pills"
               className="flex-column textbold"
               bg="transparent"
-              style={{ fontWeight: 'bold' }}
-            >
+              style={{ fontWeight: 'bold' }} >
+              <br />
               <br />
 
+              {/*------ Audio -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="uploadAudio">Audio</Nav.Link>
+                <Nav.Link eventKey="uploadAudio" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
+                  <button className='btn1'>Audio</button>
+                </Nav.Link>
               </Nav.Item>
               <br />
+              <br />
+
+              {/*------ Background -----*/}
+              <Nav.Item>
+                <Nav.Link eventKey="uploadBackground" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
+                  <button className='btn1'>Background</button>
+                </Nav.Link>
+              </Nav.Item>
+              <br />
+              <br />
+
+
+              {/*------ Icon -----*/}
+              <Nav.Item>
+                <Nav.Link eventKey="uploadIcon" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
+                  <button className='btn1'>Icon</button>
+                </Nav.Link>
+              </Nav.Item>
+              <br />
+              <br />
+
+              {/*------ Text -----*/}
+              <Nav.Item>
+                <Nav.Link eventKey="home" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
+                  <button className='btn1'>Visualizer</button>
+                </Nav.Link>
+              </Nav.Item>
+
+              {/* <br />
               <Nav.Item>
                 <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
               </Nav.Item>
-              <br />
-              <Nav.Item>
+              <br /> */}
+
+              {/* <Nav.Item>
                 <Nav.Link eventKey="uploadIcon">Icon</Nav.Link>
               </Nav.Item>
-              <br />
-              <Nav.Item>
-                <Nav.Link eventKey="text">Text</Nav.Link>
+              <br /> */}
+
+              {/* SN disabled the Text Upload for now.............. */}
+
+              {/* <Nav.Item>
+                <Nav.Link eventKey="text">Visualizer Mode</Nav.Link>
               </Nav.Item>
-              <br />
-              <ButtonGroup aria-label="Basic example">
+              <br /> */}
+
+              {/* SN disabled the Export/Save for now............... */}
+              {/* <ButtonGroup aria-label="Basic example">
                 <Button variant="secondary">Export</Button>
                 <Button variant="secondary">Save</Button>
-              </ButtonGroup>
+              </ButtonGroup> */}
+
+
             </Nav>
           </Col>
 
@@ -70,8 +110,8 @@ const Home = () => {
             </Card>
           </Col>
         </Row>
-      </Tab.Container>
-    </div>
+      </Tab.Container >
+    </div >
   )
 }
 
