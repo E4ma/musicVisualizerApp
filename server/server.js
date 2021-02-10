@@ -3,11 +3,15 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
+//this before routes to enable cors for all routes
+app.use(cors())
 const mediaSort = require('./Routes/mediaSort')
-const userRoutes = require('./Routes/userRoutes')
+// const userRoutes = require('./Routes/userRoutes')
+const storeUser = require('./Routes/storeUser')
+
 
 //Models
-require('./Model/UserModel')
+// require('./Model/UserModel')
 
 //Needed for the process.env code, Used to keep private information hidden
 dotenv.config()
@@ -24,14 +28,25 @@ mongoose
 
 
 //Middleware
-app.use(cors())
+// A middleware which will extract req.body for us...allows express read req.body
+app.use(express.json())
+//endpoint to add new user
+app.use('/createUser', storeUser)
+
+
+
+
+
 app.use('/upload', mediaSort)
+<<<<<<< HEAD
 app.use('/currentUser', mediaSort)
 app.use('/user', userRoutes)
+=======
+// app.use('/user', userRoutes)
+>>>>>>> 27837bdfb330d5f4d5b79a0d3ae30c68e87a7f19
 // A middleware which will enable cors with various options like exposeHeader etc.
-app.use(cors({ exposeHeader: 'id' }))
-// A middleware which will extract req.body for us
-app.use(express.json())
+// app.use(cors({ exposeHeader: 'id' }))
+
 // A middleware which will extract re.files for us
 // app.use(fileuploader());
 

@@ -1,7 +1,19 @@
 const mongoose = require('mongoose')
 
 let user_Schema = new mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 255,
+  },
+  lastname: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 255,
+  },
+  username: {
     type: String,
     required: true,
     minlength: 3,
@@ -18,11 +30,13 @@ let user_Schema = new mongoose.Schema({
     required: true,
     minlength: 5,
     maxlength: 1024,
-  },
-  ProfileDp: {
-    Data: Buffer,
-    ContentType: String,
-  },
+  }
 })
 
 module.exports = mongoose.model('User', user_Schema)
+
+// ,
+//   ProfileDp: {
+//     Data: Buffer,
+//     ContentType: String,
+//   },
