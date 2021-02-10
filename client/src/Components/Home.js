@@ -22,7 +22,7 @@ const Home = () => {
               <br />
 
               {/*------ Audio -----*/}
-              <Nav.Item>
+              <Nav.Item >
                 <Nav.Link eventKey="uploadAudio" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
                   <button className='btn1'>Audio</button>
                 </Nav.Link>

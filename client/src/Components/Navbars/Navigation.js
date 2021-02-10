@@ -168,7 +168,7 @@ const Navigation = ({ onRouteChange }) => {
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto" style={{ fontSize: 23 }}>
+          <Nav className="ml-auto" style={{ fontSize: 22 }}>
             <Nav.Link onClick={() => onRouteChange('About')} className="navItem" >About</Nav.Link>
             <Nav.Link onClick={() => onRouteChange('TemplatesPage')} className="navItem">
               Templates

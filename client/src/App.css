@@ -130,10 +130,11 @@ canvas {
   margin: 10px 1px;
   border-radius: 22px;
   width: 100%;
+  font-size: 22px;
 }
 
 
-/* :focus is when button clicked */
+/* :focus means when a button is clicked */
 .btn1:focus {
   /* outline: none; */
   outline-width: 1px;
