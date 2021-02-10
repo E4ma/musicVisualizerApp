@@ -22,7 +22,5 @@ yarn-error.log
 *.zip
 *.tgz
 =======
-
 client/.eslintcache
 
-client/.eslintcache
