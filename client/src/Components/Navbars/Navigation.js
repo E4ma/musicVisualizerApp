@@ -20,7 +20,7 @@ const Navigation = ({ onRouteChange }) => {
   }
 
  // Event handlers for SignUp
-const url = "http://localhost:5000/users/user"
+const url = "http://localhost:5000/createUser/newUser"
 const  [data, setData] = useState({
   firstname: "",
   lastname: "",

@@ -30,11 +30,13 @@ let user_Schema = new mongoose.Schema({
     required: true,
     minlength: 5,
     maxlength: 1024,
-  },
-  ProfileDp: {
-    Data: Buffer,
-    ContentType: String,
-  },
+  }
 })
 
 module.exports = mongoose.model('User', user_Schema)
+
+// ,
+//   ProfileDp: {
+//     Data: Buffer,
+//     ContentType: String,
+//   },

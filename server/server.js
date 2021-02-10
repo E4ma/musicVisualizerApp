@@ -29,10 +29,12 @@ mongoose
 // A middleware which will extract req.body for us...allows express read req.body
 app.use(express.json())
 //endpoint to add new user
-app.use('/users', storeUser)
+app.use('/createUser', storeUser)
 
 
 app.use(cors())
+
+
 app.use('/upload', mediaSort)
 // app.use('/user', userRoutes)
 // A middleware which will enable cors with various options like exposeHeader etc.

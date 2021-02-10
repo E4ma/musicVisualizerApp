@@ -2,26 +2,34 @@ const express = require("express")
 const User = require('../Model/UserModel')
 const router = express.Router()
 
+router.use(function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    req.header("Access-Control-Allow-Origin", "*")
+    req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  })
 
-
-router.get("/users", async (req, res) => {
-	const users = ["sample", "sally"]
-	res.send({
-        users: users
-    })
+router.get("/", (req, res) => {
+	res.send(req.body)
 })
 
-router.post('/create_user', async (req, res) => {
-    req.body = createUser
-    let createUser = new User({
-              firstname,
-              lastname,
-              username,
-              email,
-              password
+
+router.post('/newUser', (req, res) => {
+    //creating new user with req.body, matching model
+    let {
+        firstname,
+        lastname,
+        username,
+        email,
+        password
+      } = req.body
+    // res.send(req.body)
+    User.create(req.body, (error, user) => {
+        res.redirect('/')
+        console.log(req.body)
     })
-    await createUser.save()
-    res.status(200).send(`Welcome to Hummingbird ${req.body.firstname}`)
+
+   
 })
 
 module.exports = router
