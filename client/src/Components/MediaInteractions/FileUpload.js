@@ -60,7 +60,7 @@ const FileUpload = (props) => {
     }
   }
   // If the audio button is selected
-  if (props.mediatype == 'Audio') {
+  if (props.mediatype === 'Audio') {
     return (
       <Card style={{ width: '16rem', margin: '16px' }}>
         <Card.Body>
@@ -101,7 +101,7 @@ const FileUpload = (props) => {
       </Card>
     )
   }
-  if (props.mediatype == 'Background') {
+  if (props.mediatype === 'Background') {
     return (
       <Card style={{ width: '16rem', margin: '16px' }}>
         <Card.Body>
