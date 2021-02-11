@@ -31,7 +31,7 @@ mongoose
 // A middleware which will extract req.body for us...allows express read req.body
 app.use(express.json())
 //endpoint to add new user
-app.use('/createUser', storeUser)
+app.use('/register', storeUser)
 
 
 

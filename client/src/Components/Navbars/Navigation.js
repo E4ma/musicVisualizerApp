@@ -20,7 +20,7 @@ const Navigation = ({ onRouteChange }) => {
   }
 
  // Event handlers for SignUp
-const url = "http://localhost:5000/createUser/newUser"
+const url = "http://localhost:5000/register/signUp"
 const  [data, setData] = useState({
   firstname: "",
   lastname: "",
@@ -63,7 +63,7 @@ const  [data, setData] = useState({
 if (register === true) {
   return (
 
-    <Modal show={register} onHide={handleRegisterClose}>
+    <Modal show={register} onHide={handleRegisterClose} animation="false">
       <Modal.Header closeButton>
         <Modal.Title>Sign Up</Modal.Title>
       </Modal.Header>
