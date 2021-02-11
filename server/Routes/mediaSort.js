@@ -16,8 +16,6 @@ const AudioModel = require("../Model/AudioModel")
 router.post('/icon', (req, res) => {
   const file = req.files.file
 
-
-
   //defines what the max size that can be uploaded otherwise will get an error
   if (file.size > fileSizeMax) {
     return res.status(413).json({ msg: 'File exceeds upload size' })
@@ -29,15 +27,26 @@ router.post('/icon', (req, res) => {
 
   file.mv(`uploadedFiles/icons/${file.name}`)
 
+  console.log(file)
+
   res.json({
     fileName: file.name,
     filePath: `/uploadedFiles/icons/${file.name}`,
   })
 })
 
+
+
+
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
-  // console.log(req.files)
+  console.log(req.files)
+  // console.log('Current-User....line44........:', req.body);
+  // console.log('Current-User....line45........:', res.body);
+  // console.log('Current-User....line46........:', req);
+  // console.log('Current-User....line47........:', res);
+
+
   if (req.files === null) {
     return res.status(400).json({ msg: 'no file found' })
   }
@@ -54,7 +63,7 @@ router.post('/media', async (req, res) => {
 
   if (mediaType == 'audio/mpeg' || 'audio/mp3' || 'audio/flac' || 'audio/wav') {
     file.mv(`uploadedFiles/audio/${file.name}`)
-    console.log('Line 50')
+    console.log('Line 75')
     const filePath = `uploadedFiles/audio/${file.name}`
 
     //SN: METADATA stuff commented out for now!
@@ -75,6 +84,7 @@ router.post('/media', async (req, res) => {
 
 
     console.log('WRITE TO MONGO..........:')
+    // console.log('Current-User............:', file.currentUser)
     console.log(req.files)
     const newAudio = new AudioModel({
       fileName: file.name,
