@@ -25,17 +25,6 @@ const FileUpload = (props) => {
     formData.append('file', file)
 
     try {
-      //Need to connect to the server the endpoint is media
-      // const res = await axios({
-      //   method: 'post',
-      //   url: 'http://localhost:5000/upload/media',
-      //   body: {
-      //     formData,
-      //     headers: { 'Content-Type': 'multipart/form-data' },
-      //     // body: currentUser
-      //   }
-      // }
-      // )
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
