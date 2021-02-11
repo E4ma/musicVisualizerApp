@@ -25,6 +25,10 @@ const Home = () => {
               </Nav.Item>
               <br />
               <Nav.Item>
+                <Nav.Link eventKey="hide">Hide</Nav.Link>
+              </Nav.Item>
+              <br />
+              <Nav.Item>
                 <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
               </Nav.Item>
               <br />
