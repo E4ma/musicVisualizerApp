@@ -19,6 +19,7 @@ const Navigation = ({ onRouteChange }) => {
     handleClose() || setRegister(true);
   }
 
+<<<<<<< HEAD
   // Event handlers for SignUp
   const url = "http://localhost:5000/createUser/newUser"
   const [data, setData] = useState({
@@ -27,6 +28,26 @@ const Navigation = ({ onRouteChange }) => {
     username: "",
     email: "",
     password: ""
+=======
+ // Event handlers for SignUp
+const url = "http://localhost:5000/register/signUp"
+const  [data, setData] = useState({
+  firstname: "",
+  lastname: "",
+  username: "",
+  email: "",
+  password: ""
+})
+
+ const registerForm = e => {
+  e.preventDefault();
+  Axios.post(url, {
+    firstname: data.firstname,
+    lastname: data.lastname,
+    username: data.username,
+    email: data.email,
+    password: data.password
+>>>>>>> 9d9c706010b5a18290c449bf0565a69d28b4f474
   })
 
   const registerForm = e => {
@@ -60,6 +81,7 @@ const Navigation = ({ onRouteChange }) => {
 
   //The modals
 
+<<<<<<< HEAD
   if (register === true) {
     return (
 
@@ -98,6 +120,43 @@ const Navigation = ({ onRouteChange }) => {
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
+=======
+    <Modal show={register} onHide={handleRegisterClose} animation="false">
+      <Modal.Header closeButton>
+        <Modal.Title>Sign Up</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={(e) => registerForm(e)}>
+          <Form.Group >
+            <Form.Label>First Name</Form.Label>
+            <Form.Control type="text" name="firstname" placeholder="Enter first name"
+                                 value={data.firstname} 
+                                 onChange={(e) => handleSignup(e)}
+            />
+          </Form.Group>
+          <Form.Group >
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control type="text" name="lastname" placeholder="Enter last name" 
+                                             value={data.lastname} 
+                                             onChange={(e) => handleSignup(e)}
+            />
+          </Form.Group>
+          <Form.Group >
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" name="username" placeholder="Create a Username"
+                                value={data.username} 
+                                onChange={(e) => handleSignup(e)}
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" name="email" placeholder="Enter email"
+                                       value={data.email} 
+                                       onChange={(e) => handleSignup(e)}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+>>>>>>> 9d9c706010b5a18290c449bf0565a69d28b4f474
   </Form.Text>
             </Form.Group>
             <Form.Group controlId="formBasicPassword">

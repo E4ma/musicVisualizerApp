@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Card, Row, Col, Nav, Button, ButtonGroup } from 'react-bootstrap'
+import { Card, Row, Col, Nav } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
-import Playlist from './MediaInteractions/Playlist'
+// import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
   return (
@@ -17,14 +17,27 @@ const Home = () => {
               variant="pills"
               className="flex-column textbold"
               bg="transparent"
-              style={{ fontWeight: 'bold' }} >
+              style={{ fontWeight: 'bold' }}
+            >
               <br />
               <br />
 
               {/*------ Audio -----*/}
+<<<<<<< HEAD
               <Nav.Item >
                 <Nav.Link eventKey="uploadAudio" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
                   <button className='btn1'>Audio</button>
+=======
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="uploadAudio"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Audio</button>
+>>>>>>> 9d9c706010b5a18290c449bf0565a69d28b4f474
                 </Nav.Link>
               </Nav.Item>
               <br />
@@ -32,18 +45,29 @@ const Home = () => {
 
               {/*------ Background -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="uploadBackground" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
-                  <button className='btn1'>Background</button>
+                <Nav.Link
+                  eventKey="uploadBackground"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Background</button>
                 </Nav.Link>
               </Nav.Item>
               <br />
               <br />
 
-
               {/*------ Icon -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="uploadIcon" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
-                  <button className='btn1'>Icon</button>
+                <Nav.Link
+                  eventKey="uploadIcon"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Icon</button>
                 </Nav.Link>
               </Nav.Item>
               <br />
@@ -51,36 +75,16 @@ const Home = () => {
 
               {/*------ Text -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="home" style={{ borderRadius: '22px', backgroundColor: 'transparent' }} >
-                  <button className='btn1'>Visualizer</button>
+                <Nav.Link
+                  eventKey="home"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Visualizer</button>
                 </Nav.Link>
               </Nav.Item>
-
-              {/* <br />
-              <Nav.Item>
-                <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
-              </Nav.Item>
-              <br /> */}
-
-              {/* <Nav.Item>
-                <Nav.Link eventKey="uploadIcon">Icon</Nav.Link>
-              </Nav.Item>
-              <br /> */}
-
-              {/* SN disabled the Text Upload for now.............. */}
-
-              {/* <Nav.Item>
-                <Nav.Link eventKey="text">Visualizer Mode</Nav.Link>
-              </Nav.Item>
-              <br /> */}
-
-              {/* SN disabled the Export/Save for now............... */}
-              {/* <ButtonGroup aria-label="Basic example">
-                <Button variant="secondary">Export</Button>
-                <Button variant="secondary">Save</Button>
-              </ButtonGroup> */}
-
-
             </Nav>
           </Col>
 
@@ -110,8 +114,8 @@ const Home = () => {
             </Card>
           </Col>
         </Row>
-      </Tab.Container >
-    </div >
+      </Tab.Container>
+    </div>
   )
 }
 
