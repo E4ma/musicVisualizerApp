@@ -259,7 +259,7 @@ const Navigation = ({ onRouteChange }) => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="sm" sticky="top">
+      <Navbar style={{ backgroundColor: 'black' }} variant="dark" expand="sm" sticky="top">
         <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
           {/* <img src={pic} alt={''} width={80} height={80} /> */}
           <img src={pic} alt={''} height={'30%'} width={'30%'} />
@@ -268,15 +268,17 @@ const Navigation = ({ onRouteChange }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto" style={{ fontSize: 23 }}>
-            <Nav.Link onClick={() => onRouteChange('About')}>About</Nav.Link>
-            <Nav.Link onClick={() => onRouteChange('TemplatesPage')}>
+            <Nav.Link onClick={() => onRouteChange('About')} style={{ color: 'white' }}>
+              About
+              </Nav.Link>
+            <Nav.Link onClick={() => onRouteChange('TemplatesPage')} style={{ color: 'white' }}>
               Templates
             </Nav.Link>
             {/* <Nav.Link>My Account</Nav.Link> */}
-            <Button onClick={handleLogin} variant="outline-secondary">
+            <Button onClick={handleLogin} variant="outline-secondary" size='lg'>
               Sign In
             </Button>
-            <Button onClick={handleRegister} variant="outline-info">
+            <Button onClick={handleRegister} variant="outline-info" size='lg'>
               Sign Up
             </Button>
           </Nav>
