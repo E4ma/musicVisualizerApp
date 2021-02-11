@@ -177,10 +177,12 @@ const Navigation = ({ onRouteChange }) => {
             <Button className="navItem"
               onClick={handleLogin}
               variant="outline-secondary"
-            >Sign In</Button>
+              size='lg'>
+              Sign In</Button>
             <Button className="navItem"
               onClick={handleRegister}
-              variant="outline-info">
+              variant="outline-info"
+              size='lg'>
               Sign Up
             </Button>
 
