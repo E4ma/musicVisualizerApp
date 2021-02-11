@@ -1,10 +1,11 @@
 import React from 'react'
 
-import { Card, Row, Col, Nav, Button, ButtonGroup } from 'react-bootstrap'
+import { Card, Row, Col, Nav } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
+// import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
   return (
@@ -19,44 +20,78 @@ const Home = () => {
               style={{ fontWeight: 'bold' }}
             >
               <br />
+              <br />
 
+              {/*------ Audio -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="uploadAudio">Audio</Nav.Link>
+                <Nav.Link
+                  eventKey="uploadAudio"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Audio</button>
+                </Nav.Link>
               </Nav.Item>
               <br />
+              <br />
+
+              {/*------ Background -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="hide">Hide</Nav.Link>
+                <Nav.Link
+                  eventKey="uploadBackground"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Background</button>
+                </Nav.Link>
               </Nav.Item>
               <br />
+              <br />
+
+              {/*------ Icon -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="uploadBackground">Background</Nav.Link>
+                <Nav.Link
+                  eventKey="uploadIcon"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Icon</button>
+                </Nav.Link>
               </Nav.Item>
               <br />
-              <Nav.Item>
-                <Nav.Link eventKey="uploadIcon">Icon</Nav.Link>
-              </Nav.Item>
               <br />
+
+              {/*------ Text -----*/}
               <Nav.Item>
-                <Nav.Link eventKey="text">Text</Nav.Link>
+                <Nav.Link
+                  eventKey="home"
+                  style={{
+                    borderRadius: '22px',
+                    backgroundColor: 'transparent',
+                  }}
+                >
+                  <button className="btn1">Visualizer</button>
+                </Nav.Link>
               </Nav.Item>
-              <br />
-              <ButtonGroup aria-label="Basic example">
-                <Button variant="secondary">Export</Button>
-                <Button variant="secondary">Save</Button>
-              </ButtonGroup>
             </Nav>
           </Col>
 
           <Col md={'auto'}>
             <Tab.Content>
-              <Tab.Pane eventKey="uploadAudio" mediaType="audio">
-                <FileUpload mediaType="Audio" />
+              <Tab.Pane eventKey="uploadAudio" mediatype="audio">
+                <FileUpload mediatype="Audio" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadBackground">
-                <FileUpload mediaType="Background" />
+                <FileUpload mediatype="Background" filetype="image" />
               </Tab.Pane>
               <Tab.Pane eventKey="uploadIcon">
-                <FileUpload mediaType="Icon" />
+                <FileUpload mediatype="Icon" filetype="image" />
               </Tab.Pane>
             </Tab.Content>
           </Col>

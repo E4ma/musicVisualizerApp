@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
+import Playlist from './Playlist'
 
 const FileUpload = (props) => {
   //Need to use a hook to set text in the label to the file namespace
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
+  const [currentUser, setCurrentUser] = useState('USR------1')
+
+  console.log('USER.....:', currentUser)
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -22,6 +26,16 @@ const FileUpload = (props) => {
 
     try {
       //Need to connect to the server the endpoint is media
+      // const res = await axios({
+      //   method: 'post',
+      //   url: 'http://localhost:5000/upload/media',
+      //   body: {
+      //     formData,
+      //     headers: { 'Content-Type': 'multipart/form-data' },
+      //     // body: currentUser
+      //   }
+      // }
+      // )
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
@@ -45,13 +59,94 @@ const FileUpload = (props) => {
       }
     }
   }
+  // If the audio button is selected
+  if (props.mediatype == 'Audio') {
+    return (
+      <Card style={{ width: '16rem', margin: '16px' }}>
+        <Card.Body>
+          <Card.Title>{props.mediatype} Upload</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            Select {props.mediatype} to Upload
+          </Card.Subtitle>
+          <Card.Text>
+            <>
+              <div className="mb-2">
+                <form onSubmit={onSubmit}>
+                  <div className="input-group mb-3">
+                    <input
+                      type="file"
+                      className="form-control mb-5"
+                      id="inputGroupFile02"
+                      accept={`${props.mediatype}/wav, ${props.mediatype}/mp3, ${props.mediatype}/mpeg`}
+                      onChange={onChange}
+                    />
+                    <input
+                      type="submit"
+                      value={`Upload ${props.mediatype}`}
+                      // className="btn btn-primary btn-block"
+                      className="btn1"
+                    />
 
+                    <label
+                      className="id=inputGroupFile02"
+                      htmlFor="inputGroupFile02"
+                    ></label>
+                  </div>
+                </form>
+              </div>
+            </>
+          </Card.Text>
+        </Card.Body>
+        <Playlist />
+      </Card>
+    )
+  }
+  if (props.mediatype == 'Background') {
+    return (
+      <Card style={{ width: '16rem', margin: '16px' }}>
+        <Card.Body>
+          <Card.Title>{props.mediatype} Upload</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            Select {props.mediatype} to Upload
+          </Card.Subtitle>
+          <Card.Text>
+            <>
+              <div className="mb-2">
+                <form onSubmit={onSubmit}>
+                  <div className="input-group mb-3">
+                    <input
+                      type="file"
+                      className="form-control mb-5"
+                      id="inputGroupFile02"
+                      accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
+                      onChange={onChange}
+                    />
+                    <input
+                      type="submit"
+                      value={`Upload ${props.mediatype}`}
+                      // className="btn btn-primary btn-block"
+                      className="btn1"
+                    />
+
+                    <label
+                      className="id=inputGroupFile02"
+                      htmlFor="inputGroupFile02"
+                    ></label>
+                  </div>
+                </form>
+              </div>
+            </>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    )
+  }
   return (
     <Card style={{ width: '16rem', margin: '16px' }}>
       <Card.Body>
-        <Card.Title>{props.mediaType} Upload</Card.Title>
+        <Card.Title>{props.mediatype} Upload</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          Select {props.mediaType} to Upload
+          Select {props.mediatype} to Upload
         </Card.Subtitle>
         <Card.Text>
           <>
@@ -62,13 +157,14 @@ const FileUpload = (props) => {
                     type="file"
                     className="form-control mb-5"
                     id="inputGroupFile02"
-                    accept={`${props.mediaType}/wav, ${props.mediaType}/mp3, ${props.mediaType}/mpeg`}
+                    accept={`${props.filetype}/gif, ${props.filetype}/png, ${props.filetype}/jpg`}
                     onChange={onChange}
                   />
                   <input
                     type="submit"
-                    value={`Upload ${props.mediaType}`}
-                    className="btn btn-primary btn-block"
+                    value={`Upload ${props.mediatype}`}
+                    // className="btn btn-primary btn-block"
+                    className="btn1"
                   />
 
                   <label

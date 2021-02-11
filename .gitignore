@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 client/.eslintcache
 
 # OSX - all .DS_Store files
@@ -22,7 +23,8 @@ yarn-error.log
 *.zip
 *.tgz
 =======
-
 client/.eslintcache
 
+=======
 client/.eslintcache
+>>>>>>> 27837bdfb330d5f4d5b79a0d3ae30c68e87a7f19
