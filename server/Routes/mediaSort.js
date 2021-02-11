@@ -3,7 +3,6 @@ const fileUpload = require('express-fileupload')
 const fs = require('fs')
 const path = require('path')
 
-
 //enable the file upload
 router.use(fileUpload())
 //max file size
@@ -11,7 +10,7 @@ const fileSizeMax = 100000000
 //Upload endpoints
 //Upload endpoints for Icons
 
-const AudioModel = require("../Model/AudioModel")
+const AudioModel = require('../Model/AudioModel')
 
 router.post('/icon', (req, res) => {
   const file = req.files.file
@@ -35,9 +34,6 @@ router.post('/icon', (req, res) => {
   })
 })
 
-
-
-
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
   console.log(req.files)
@@ -45,7 +41,6 @@ router.post('/media', async (req, res) => {
   // console.log('Current-User....line45........:', res.body);
   // console.log('Current-User....line46........:', req);
   // console.log('Current-User....line47........:', res);
-
 
   if (req.files === null) {
     return res.status(400).json({ msg: 'no file found' })
@@ -61,9 +56,14 @@ router.post('/media', async (req, res) => {
   const mediaType = file.mimetype
   console.log('this is the media type-', mediaType)
 
-  if (mediaType == 'audio/mpeg' || 'audio/mp3' || 'audio/flac' || 'audio/wav') {
+  if (
+    mediaType === 'audio/mpeg' ||
+    mediaType === 'audio/mp3' ||
+    mediaType === 'audio/flac' ||
+    mediaType === 'audio/wav'
+  ) {
     file.mv(`uploadedFiles/audio/${file.name}`)
-    console.log('Line 75')
+
     const filePath = `uploadedFiles/audio/${file.name}`
 
     //SN: METADATA stuff commented out for now!
@@ -75,34 +75,40 @@ router.post('/media', async (req, res) => {
     // })
     // console.log(`${parsedMetaData}`)
 
-
     res.json({
       fileName: file.name,
       filePath: filePath,
       // metaData: parsedMetaData,
     })
 
-
     console.log('WRITE TO MONGO..........:')
     // console.log('Current-User............:', file.currentUser)
     console.log(req.files)
     const newAudio = new AudioModel({
       fileName: file.name,
-      filePath: filePath
+      filePath: filePath,
     })
     console.log('newAudio...', newAudio)
     // This .save writes to the DB
     newAudio.save()
-
-
-
-  } else if (mediaType == 'image/jpeg' || 'image/jpg' || 'image/bmp') {
+  } else if (
+    mediaType === 'image/jpeg' ||
+    mediaType === 'image/jpg' ||
+    mediaType === 'image/bmp'
+  ) {
     file.mv(`uploadedFiles/images/${file.name}`)
     //The code that coninues if a success
     res.json({
       fileName: file.name,
       filePath: `/uploadedFiles/images/${file.name}`,
     })
+    // console.log('WRITE TO MONGO..........:')
+    // // console.log('Current-User............:', file.currentUser)
+    // console.log(req.files)
+    // const newBackground = new backgroundModel({
+    //   fileName: file.name,
+    //   filePath: filePath,
+    // })
   } else {
     return res.status(500).send(console.error('Internal Server Error X|'))
   }
@@ -112,10 +118,10 @@ router.post('/media', async (req, res) => {
 router.get('/list', async (req, res) => {
   console.log('this is the req on line 80')
   fs.readdir('./uploadedFiles/audio', (err, files) => {
-    if (err) console.log(err, 'Some error after line 81')
+    if (err) console.log(err, 'Some error in router.get /list')
     else {
       files.forEach((file) => {
-        console.log(file, 'line 85')
+        file
       })
       res.json(files)
     }
