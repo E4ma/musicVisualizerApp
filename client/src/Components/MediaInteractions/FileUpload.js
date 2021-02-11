@@ -10,7 +10,7 @@ const FileUpload = (props) => {
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
 
-  console.log('USER.....:', currentUser);
+  console.log('USER.....:', currentUser)
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -58,7 +58,6 @@ const FileUpload = (props) => {
         console.error(err.response.data.msg)
       }
     }
-
   }
   // If the audio button is selected
   if (props.mediatype == 'Audio') {
@@ -84,7 +83,8 @@ const FileUpload = (props) => {
                     <input
                       type="submit"
                       value={`Upload ${props.mediatype}`}
-                      className="btn btn-primary btn-block"
+                      // className="btn btn-primary btn-block"
+                      className="btn1"
                     />
 
                     <label
@@ -124,7 +124,8 @@ const FileUpload = (props) => {
                     <input
                       type="submit"
                       value={`Upload ${props.mediatype}`}
-                      className="btn btn-primary btn-block"
+                      // className="btn btn-primary btn-block"
+                      className="btn1"
                     />
 
                     <label
@@ -162,7 +163,8 @@ const FileUpload = (props) => {
                   <input
                     type="submit"
                     value={`Upload ${props.mediatype}`}
-                    className="btn btn-primary btn-block"
+                    // className="btn btn-primary btn-block"
+                    className="btn1"
                   />
 
                   <label

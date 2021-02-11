@@ -120,7 +120,6 @@ canvas {
   z-index: 11;
 }
 
-
 .btn1 {
   background-color: rgb(9, 82, 177);
   border: none;
@@ -132,13 +131,12 @@ canvas {
   width: 100%;
 }
 
-
 /* :focus is when button clicked */
 .btn1:focus {
   /* outline: none; */
   outline-width: 1px;
   outline-style: dashed;
-  outline-color:  #2b62d8;
+  outline-color: #2b62d8;
 }
 
 .btn1:hover {
@@ -146,4 +144,11 @@ canvas {
   color: rgb(5, 3, 3);
 }
 
-
+.playlistTab {
+  height: 60%;
+}
+.tabScroll {
+  background-color: rgba(55, 86, 165, 0.6);
+  height: 80%;
+  overflow-y: scroll;
+}

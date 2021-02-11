@@ -18,9 +18,9 @@ const Playlist = () => {
   return (
     <>
       <br />
-      <Card.Body style={{ backgroundColor: 'black' }}>
+      <Card.Body className="playlistTab">
         <Card.Title>Playlist</Card.Title>
-        <Card.Text>
+        <Card.Text className="tabScroll">
           <div>
             <ol>
               {playlist?.map((song) => {
