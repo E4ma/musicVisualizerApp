@@ -28,28 +28,6 @@ const Navigation = ({ onRouteChange }) => {
     password: '',
   })
 
-  // const registerForm = (e) => {
-  //   e.preventDefault()
-  //   Axios.post(url, {
-  //     firstname: data.firstname,
-  //     lastname: data.lastname,
-  //     username: data.username,
-  //     email: data.email,
-  //     password: data.password,
-  //   })
-  //     .then((res) => {
-  //       console.log(res.data)
-  //     })
-  //     .catch((err) => {
-  //       if (err.res) {
-  //         console.log('this is a response error', err.res)
-  //       } else if (err.req) {
-  //         console.log('this is a request error', err.req)
-  //       } else {
-  //         console.log('error', err)
-  //       }
-  //     })
-
   const registerForm = (e) => {
     e.preventDefault()
     Axios.post(url, {
