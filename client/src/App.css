@@ -5,10 +5,25 @@
   margin: 40rem;
 } */
 
+html {
+  background: url(./Components/Images/hummingbirdbackground1.png) no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 body {
   font-family: 'Raleway' !important;
   margin: 0;
   color: blanchedalmond;
+  background: url(./Components/Images/hummingbirdbackground1.png) no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   /* <canvas ref="canvas" width={640} height={425} /> */
   /* <img ref="image" src={cheese} className="hidden" /> */
 }
@@ -41,35 +56,37 @@ body {
     justify-items: "right";
 } */
 
-.slider1{
+.slider1 {
   width: 50%;
   height: 20px;
   background: red;
-  appearance:none;
+  appearance: none;
 }
-.slider{
+.slider {
   width: 50%;
   height: 20px;
   background: rgb(89, 0, 255);
-  appearance:none;
+  appearance: none;
 }
-.sliders{
-  width:70vw;
-  bottom:-60px;
-  position:absolute;
-  display:flex;
+.sliders {
+  width: 70vw;
+  bottom: -60px;
+  position: absolute;
+  display: flex;
 }
-.sliders>div{width: 3%;}
+.sliders > div {
+  width: 3%;
+}
 
+/* .Frontscr {
+  background-image: url(./Components/Images/hummingbirdbackground1.png);
 
-.Frontscr {
-  background-image: url(./Components/Images/front_image1.png);
-  /* background-color: rgb(16, 17, 17); */
+   background-color: rgb(16, 17, 17); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-}
-
+} */
 .Abountscr {
   /* background-color:transparent !important; */
   color: blanchedalmond;
@@ -125,15 +142,15 @@ canvas {
   justify-content: center;
   align-items: center; */
   width: 100%;
-  height: 70vh;
+  height: 60vh;
   z-index: 1;
 }
+
 .canvasWrapper {
-  /* display: flex;
+  /* display: flex; */
   align-self: center;
-  display: flex;
   justify-content: center;
-  margin-top: -100px; */
+  /* margin-top: -100px; */
 }
 
 .buttonWrapper {
