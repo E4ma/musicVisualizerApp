@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import Playlist from './Playlist'
@@ -9,6 +9,7 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
+  const [playlist, setPlaylist] = useState()
 
   console.log('USER.....:', currentUser)
 
@@ -21,6 +22,7 @@ const FileUpload = (props) => {
   const onSubmit = async (e) => {
     // e.preventDefault() used to prevent submitting by accident by preventing normal submitting
     e.preventDefault()
+
     const formData = new FormData()
     formData.append('file', file)
 
@@ -33,7 +35,7 @@ const FileUpload = (props) => {
         },
       )
       const { fileName, filePath } = res.data
-      console.log(res.headers)
+      console.log('These are the headers', res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
@@ -48,6 +50,24 @@ const FileUpload = (props) => {
       }
     }
   }
+  // Gets the playlist and sends to the Playlist Component
+
+  const getPlaylist = () => {
+    axios
+      .get('http://localhost:5000/upload/list')
+      .then((res) => {
+        console.log('this is the res', res)
+        return res.data
+      })
+      .then((playlist) => {
+        console.log('This is the playlist', playlist)
+        setPlaylist(playlist)
+      })
+  }
+  useEffect(() => {
+    getPlaylist()
+  }, [])
+
   // If the audio button is selected
   if (props.mediatype === 'Audio') {
     return (
@@ -71,9 +91,10 @@ const FileUpload = (props) => {
                     />
                     <input
                       type="submit"
-                      value={`Upload ${props.mediatype}`}
+                      value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn1"
+                      onClick={() => getPlaylist()}
                     />
 
                     <label
@@ -86,7 +107,7 @@ const FileUpload = (props) => {
             </>
           </Card.Text>
         </Card.Body>
-        <Playlist />
+        <Playlist playlist={playlist} />
       </Card>
     )
   }
@@ -112,7 +133,7 @@ const FileUpload = (props) => {
                     />
                     <input
                       type="submit"
-                      value={`Upload ${props.mediatype}`}
+                      value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn1"
                     />
@@ -151,7 +172,7 @@ const FileUpload = (props) => {
                   />
                   <input
                     type="submit"
-                    value={`Upload ${props.mediatype}`}
+                    value={`Submit`}
                     // className="btn btn-primary btn-block"
                     className="btn1"
                   />

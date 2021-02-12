@@ -37,10 +37,6 @@ router.post('/icon', (req, res) => {
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
   console.log(req.files)
-  // console.log('Current-User....line44........:', req.body);
-  // console.log('Current-User....line45........:', res.body);
-  // console.log('Current-User....line46........:', req);
-  // console.log('Current-User....line47........:', res);
 
   if (req.files === null) {
     return res.status(400).json({ msg: 'no file found' })
@@ -116,7 +112,6 @@ router.post('/media', async (req, res) => {
 
 //export to displayer
 router.get('/list', async (req, res) => {
-  console.log('this is the req on line 80')
   fs.readdir('./uploadedFiles/audio', (err, files) => {
     if (err) console.log(err, 'Some error in router.get /list')
     else {

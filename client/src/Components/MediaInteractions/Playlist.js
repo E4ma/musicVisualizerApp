@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+
 import { Card } from 'react-bootstrap'
 
-const Playlist = () => {
-  const [playlist, setPlaylist] = useState()
-
-  useEffect(() => {
-    const getSongList = async () => {
-      let res = await axios.get('http://localhost:5000/upload/list')
-      const data = res.data
-      console.log('This is the list of songs', data)
-      setPlaylist(data)
-    }
-    getSongList()
-  }, [])
-
+const Playlist = (props) => {
   return (
     <>
       <br />
@@ -23,7 +11,7 @@ const Playlist = () => {
         <Card.Text className="tabScroll">
           <div>
             <ol>
-              {playlist?.map((song) => {
+              {props.playlist?.map((song) => {
                 return <li key={song}>{song}</li>
               })}
             </ol>
