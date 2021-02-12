@@ -63,8 +63,8 @@ const FileUpload = (props) => {
   }
   // Gets the playlist and sends to the Playlist Component
 
-  const getPlaylist = async () => {
-    await axios
+  const getPlaylist = () => {
+    axios
       .get('http://localhost:5000/upload/list')
       .then((res) => {
         console.log('this is the res', res)
@@ -105,7 +105,7 @@ const FileUpload = (props) => {
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn1"
-                      onClick={() => getPlaylist(setPlaylist(playlist))}
+                      onClick={() => getPlaylist()}
                     />
 
                     <label
