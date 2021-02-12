@@ -52,22 +52,21 @@ const FileUpload = (props) => {
   }
   // Gets the playlist and sends to the Playlist Component
 
-  const getPlaylist = async () => {
-    // axios.get('http://localhost:5000/upload/list')
-    // .then((res) => {
-    //   console.log('this is the res', res)
-    //   return res.data
-    // })
-    // .then((playlist) => {
-    //   console.log('This is the playlist', playlist)
-    //   setPlaylist(playlist)
-    // })
-    let res = axios.get('http://localhost:5000/upload/list')
-    res.data = playlist
+  const getPlaylist = () => {
+    axios
+      .get('http://localhost:5000/upload/list')
+      .then((res) => {
+        console.log('this is the res', res)
+        return res.data
+      })
+      .then((playlist) => {
+        // console.log('This is the playlist', playlist)
+        setPlaylist(playlist)
+      })
   }
   useEffect(() => {
     getPlaylist()
-  }, [])
+  }, [uploadedFile])
 
   // If the audio button is selected
   if (props.mediatype === 'Audio') {
@@ -108,7 +107,7 @@ const FileUpload = (props) => {
             </>
           </Card.Text>
         </Card.Body>
-        <Playlist playlist={playlist} />
+        <Playlist uploadedFile={uploadedFile} />
       </Card>
     )
   }
