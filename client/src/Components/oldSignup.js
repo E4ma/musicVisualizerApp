@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
-import { Navbar, Nav, Button, Modal, Form, Row, Col } from 'react-bootstrap'
-import pic from '../Images/logogrey.png'
-// import pic from './Logo1sn.png'
+
 import Axios from 'axios'
 
-const Navigation = ({ onRouteChange }) => {
   // for open/close of signin/signup modals
   const [show, setShow] = useState(false)
   const [register, setRegister] = useState(false)
@@ -232,38 +228,3 @@ const Navigation = ({ onRouteChange }) => {
       </Modal>
     )
   }
-
-  //Navbar
-
-  return (
-    <>
-      <Navbar style={{ backgroundColor: 'black' }} variant="dark" expand="sm" sticky="top">
-        <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
-          {/* <img src={pic} alt={''} width={80} height={80} /> */}
-          <img src={pic} alt={''} height={'30%'} width={'30%'} />
-        </Navbar.Brand>
-
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto" style={{ fontSize: 23 }}>
-            <Nav.Link onClick={() => onRouteChange('About')} style={{ color: 'white' }}>
-              About
-              </Nav.Link>
-            <Nav.Link onClick={() => onRouteChange('TemplatesPage')} style={{ color: 'white' }}>
-              Templates
-            </Nav.Link>
-            {/* <Nav.Link>My Account</Nav.Link> */}
-            <Button onClick={handleLogin} variant="outline-secondary" size='lg'>
-              Sign In
-            </Button>
-            <Button onClick={handleRegister} variant="outline-info" size='lg'>
-              Sign Up
-            </Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </>
-  )
-}
-
-export default Navigation
