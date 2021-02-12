@@ -9,7 +9,7 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
-  const [playlist, setPlaylist] = useState()
+  const [playlist, setPlaylist] = useState([])
 
   console.log('USER.....:', currentUser)
 
@@ -27,17 +27,6 @@ const FileUpload = (props) => {
     formData.append('file', file)
 
     try {
-      //Need to connect to the server the endpoint is media
-      // const res = await axios({
-      //   method: 'post',
-      //   url: 'http://localhost:5000/upload/media',
-      //   body: {
-      //     formData,
-      //     headers: { 'Content-Type': 'multipart/form-data' },
-      //     // body: currentUser
-      //   }
-      // }
-      // )
       const res = await axios.post(
         'http://localhost:5000/upload/media',
         formData,
@@ -63,17 +52,18 @@ const FileUpload = (props) => {
   }
   // Gets the playlist and sends to the Playlist Component
 
-  const getPlaylist = () => {
-    axios
-      .get('http://localhost:5000/upload/list')
-      .then((res) => {
-        console.log('this is the res', res)
-        return res.data
-      })
-      .then((playlist) => {
-        console.log('This is the playlist', playlist)
-        setPlaylist(playlist)
-      })
+  const getPlaylist = async () => {
+    // axios.get('http://localhost:5000/upload/list')
+    // .then((res) => {
+    //   console.log('this is the res', res)
+    //   return res.data
+    // })
+    // .then((playlist) => {
+    //   console.log('This is the playlist', playlist)
+    //   setPlaylist(playlist)
+    // })
+    let res = axios.get('http://localhost:5000/upload/list')
+    res.data = playlist
   }
   useEffect(() => {
     getPlaylist()
