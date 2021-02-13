@@ -1,21 +1,34 @@
-import React, { useState } from 'react'
-import { Navbar, Nav, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useState }  from 'react'
+import { useAuth } from "../contexts/AuthContext"
+import { Link, useHistory } from "react-router-dom"
+import { Navbar, Nav } from 'react-bootstrap'
 import pic from './Images/logogrey.png'
 // import pic from './Logo1sn.png'
 
-const Navigation = ({ onRouteChange }) => {
 
-  function handleLogin(){
+const Navigation = () => {
 
-    return
+const [error, setError] = useState("")
+const { currentUser, logout } = useAuth()
+const history = useHistory()
+
+async function handleLogout() {
+  setError("")
+
+  try {
+    await logout()
+    history.push("/login")
+  } catch {
+    setError("Failed to log out")
   }
+}
+
   //Navbar
 
   return (
     <>
       <Navbar style={{ backgroundColor: 'black' }} variant="dark" expand="sm" sticky="top">
-        <Navbar.Brand href="/Home" style={{ fontSize: 23 }}>
+        <Navbar.Brand href="/Login" style={{ fontSize: 23 }}>
           {/* <img src={pic} alt={''} width={80} height={80} /> */}
           <img src={pic} alt={''} height={'30%'} width={'30%'} />
         </Navbar.Brand>
@@ -23,25 +36,16 @@ const Navigation = ({ onRouteChange }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto" style={{ fontSize: 23 }}>
-            <Nav.Link onClick={() => onRouteChange('About')} style={{ color: 'white' }}>
-              About
-              </Nav.Link>
-            <Nav.Link onClick={() => onRouteChange('TemplatesPage')} style={{ color: 'white' }}>
-              Templates
-            </Nav.Link>
-            <Nav.Link>My Account</Nav.Link>
-            <Button  variant="outline-secondary" size='lg'>
-              Sign In
-            </Button>
-            <Button  variant="outline-info" size='lg'>
-              Sign Up
-            </Button> 
-            {/* <ul>
-            <li><Link to="/Home" style={{ color: 'white' }}>Home</Link></li>
-              <li><Link to="/About" style={{ color: 'white' }}>About</Link></li>
-              <li><Link to="/Login" style={{ color: 'white' }}>Sign In</Link></li>
-              <li><Link to="/Signup" style={{ color: 'white' }}>Sign Up</Link></li>
-            </ul> */}
+
+              <Nav.Item><Link to="/About" style={{ color: 'white' }}>About</Link></Nav.Item>
+<Nav.Item><Link to="/Home" style={{ color: 'white' }}>Editor</Link></Nav.Item>
+          <Nav.Item></Nav.Item>
+          <Nav.Item><Link to="/MyAccount" style={{ color: 'white' }}>Profile</Link></Nav.Item>
+          <Nav.Item></Nav.Item>
+<Nav.Item>          <Nav.Link style={{ color: 'white' }} variant="link" className="btn1" onClick={handleLogout}>
+            Log Out
+                </Nav.Link></Nav.Item>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>

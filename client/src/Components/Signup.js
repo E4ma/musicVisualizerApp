@@ -15,6 +15,7 @@ export default function Signup() {
   async function handleSubmit(e) {
     e.preventDefault()
 
+    //are passwords same?
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
       //and then exit
@@ -27,7 +28,7 @@ export default function Signup() {
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
-      setError("Failed to create an account")
+      setError("Failed to create an account. Password should be at least 6 characters")
     }
 
     setLoading(false)

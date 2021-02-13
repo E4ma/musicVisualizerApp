@@ -1,4 +1,5 @@
 import React from 'react'
+import Navigation from './Navigation'
 
 // styling for About is in App.css
 
@@ -6,6 +7,7 @@ import React from 'react'
 const About = () => {
     return (
         <div className="ui container Abountscr">
+            <Navigation />
             <br></br>
             <h2>Turn your music into a killer video.</h2>
             <br></br>

@@ -1,15 +1,18 @@
 import React from 'react'
-
 import { Card, Row, Col, Nav } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
+import Navigation from './Navigation'
 // import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
+
+
   return (
     <div>
+      <Navigation />
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
           <Col md={2}>
