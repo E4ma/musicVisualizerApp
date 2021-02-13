@@ -18,7 +18,7 @@ const About = () => {
                         <Card.Text>
                             <h4>No download needed. Jump into the web based editor and start customizing right away. The live video preview updates in real time and moves with your music.</h4>
                             <br></br>
-                            <h4>It only takes a few minutes to make a video. Use simple pre-set controls to enjoy your tracks</h4>
+                            <h4>It only takes a few minutes to make a video. Use simple pre-set controls to enjoy your tracks.</h4>
 
                         </Card.Text>
                         {/* <Displayer /> */}
@@ -30,7 +30,6 @@ const About = () => {
     )
 }
 
-export default About
 
 
 // const About = () => {
@@ -51,4 +50,4 @@ export default About
 //     )
 // }
 
-// export default About
+export default About
