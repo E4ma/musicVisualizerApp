@@ -30,7 +30,7 @@ function App(){
           <PrivateRoute exact path="/Home" component={Editor} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </AuthProvider>
