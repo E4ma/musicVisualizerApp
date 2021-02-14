@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import Navigation from './Navigation'
 import About from './About'
 // import TemplatesPage from './TemplatesPage'
-import Home from './Home'
-// import MyAccount from './MyAccount'
+import Editor from './Home'
+import Profile from './MyAccount'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from './ForgotPassword'
@@ -20,21 +20,14 @@ import UpdateProfile from './UpdateProfile'
 function App(){
 
   return(
-      <Container
-            className="d-flex align-items-center justify-content-center"
-            style={{ minHeight: "100vh" }}
-      >
-        <div className="w-100" style={{ maxWidth: "1400px" }}>
-
+ 
+    <div>
     <Router>
-      
-    {/* <Navigation /> */}
       <AuthProvider>
         <Switch>
-        <Route path="/About" component={About} />
-          <Route path="/Home" component={Home} />
-          {/* <PrivateRoute exact path="/" component={MyAccount} /> */}
-          <PrivateRoute exact path="/" component={Home} />
+          <Route path="/About" component={About} />
+          <PrivateRoute exact path="/MyAccount" component={Profile} />
+          <PrivateRoute exact path="/Home" component={Editor} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
@@ -42,9 +35,8 @@ function App(){
         </Switch>
       </AuthProvider>
     </Router>
-        </div>
+    </div>
 
-      </Container>
   )
 }
 

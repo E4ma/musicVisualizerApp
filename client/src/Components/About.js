@@ -6,8 +6,9 @@ import Navigation from './Navigation'
 
 const About = () => {
     return (
-        <div className="ui container Abountscr">
-            <Navigation />
+        <div>
+         <Navigation />
+            <div className="ui container Abountscr">
             <br></br>
             <h2>Turn your music into a killer video.</h2>
             <br></br>
@@ -36,6 +37,7 @@ const About = () => {
             <br></br>
             <br></br>
             <br></br>
+        </div>
         </div>
     )
 }

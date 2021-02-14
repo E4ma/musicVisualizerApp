@@ -13,12 +13,25 @@
   -o-background-size: cover;
   background-size: cover; */
 /* } */
+html {
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  overflow: hidden;
+  height: 800px;
+  min-height: 500px;
+  max-width: 100%;
+
+}
+
 body {
   font-family: 'Raleway' !important;
   margin: 0;
   color: blanchedalmond;
-  background: url(./Images/hummingbirdbackground1.png) no-repeat
-    center center fixed;
+  background: url(./Images/hummingbirdbackground1.png) no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -26,6 +39,16 @@ body {
 
   /* <canvas ref="canvas" width={640} height={425} /> */
   /* <img ref="image" src={cheese} className="hidden" /> */
+}
+
+#nav-wrap{
+  line-height: 15px;
+  color: #fff;
+}
+
+#nav-wrap #nav-item{
+  padding: 8px 13px;
+  font-size: 20px;
 }
 
 .Card.Body {
@@ -43,7 +66,7 @@ body {
   /* top: 40px;
   left: 20vw; */
   /* height: calc(60vh); */
-  width: 70vw;
+  width: auto;
 }
 
 /* .display {
@@ -69,9 +92,9 @@ body {
   appearance: none;
 }
 .sliders {
-  width: 70vw;
-  bottom: -60px;
-  position: absolute;
+  width: 60vw;
+  /* bottom: -60px; */
+  /* position: absolute; */
   display: flex;
 }
 .sliders > div {
@@ -125,6 +148,11 @@ body {
   align-items: center;
 }
 
+#display-box{
+margin-right: 10px;
+padding-right: 5px;
+}
+
 .iconWrapper {
   align-self: center;
   display: flex;
@@ -158,6 +186,18 @@ canvas {
   z-index: 11;
 }
 
+#editor-cont{
+  margin: 10px;
+  padding-right: 35px;
+  padding-top: 15px;
+}
+#tab-nav{
+  margin-left: 0px;
+}
+#tab-cont{
+  background-color: transparent;
+}
+
 .btn1 {
   background-color: rgb(9, 82, 177);
   border: none;
@@ -168,6 +208,7 @@ canvas {
   border-radius: 22px;
   width: 100%;
   font-size: 22px;
+  font-weight: bold;
 }
 
 

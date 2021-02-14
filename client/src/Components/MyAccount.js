@@ -2,6 +2,7 @@ import React, { useState } from "react"
   import { Card, Button, Alert } from "react-bootstrap"
   import { useAuth } from "../contexts/AuthContext"
   import { Link, useHistory } from "react-router-dom"
+import Navigation from "./Navigation"
   
   export default function Dashboard() {
     const styles = {
@@ -39,8 +40,9 @@ import React, { useState } from "react"
     }
   
     return (
-      <>
-        <Card>
+<div>
+  <Navigation />
+<Card>
           <Card.Body>
             <h2 className="text-center mb-4">Profile</h2>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -56,6 +58,6 @@ import React, { useState } from "react"
             Log Out
           </Button>
         </div>
-      </>
+</div>
     )
   }

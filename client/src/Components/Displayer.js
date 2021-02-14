@@ -1,6 +1,7 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
+import { Container } from 'react-bootstrap'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -196,7 +197,8 @@ const Displayer = () => {
   }, [])
 
   return (
-    <div
+   
+      <div
       className="audioControlBackground"
       style={{ backgroundImage: `url(${background})` }}
     >
@@ -239,8 +241,7 @@ const Displayer = () => {
       </div>
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
-      </div>
-      <div className="sliders">
+        <div className="sliders"> 
         {' '}
         <div>{sliderM}</div>
         <input
@@ -266,8 +267,11 @@ const Displayer = () => {
           }}
           value={sliderN}
         />
+        </div>
       </div>
+
     </div>
+    
   )
 }
 
