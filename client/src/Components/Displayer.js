@@ -1,6 +1,7 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
+import songList from './MediaInteractions/Playlist'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -37,7 +38,7 @@ const createAudioContext = () => {
   frequency_array = new Uint8Array(analyser.frequencyBinCount)
 }
 
-const Displayer = () => {
+const Displayer = (props) => {
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
   const [isPaused, setIsPaused] = useState(true)
@@ -53,6 +54,7 @@ const Displayer = () => {
       rafId = requestAnimationFrame(tick)
     }
   }, [sliderM, sliderN])
+
   const getSong = async (song) => {
     createAudioContext()
     const response = await axios.get(
@@ -190,10 +192,12 @@ const Displayer = () => {
     const getSongList = async () => {
       let res = await axios.get('http://localhost:5000/upload/list')
       setsongSelect(res.data)
-      console.log(setsongSelect)
+      //console.log(setsongSelect)
     }
     getSongList()
   }, [])
+
+  console.log('This is the songList that is being imported', songList)
 
   return (
     <div

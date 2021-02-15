@@ -35,7 +35,7 @@ const FileUpload = (props) => {
         },
       )
       const { fileName, filePath } = res.data
-      console.log('These are the headers', res.headers)
+      // console.log('These are the headers', res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
