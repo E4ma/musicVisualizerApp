@@ -1,67 +1,42 @@
 import React from 'react'
-import { Container, Card, Button } from "react-bootstrap";
+import { Container, Card, Modal, Jumbotron } from "react-bootstrap";
 // import Displayer from './Displayer'
 import Navigation from './Navigation'
 
+import vid1 from "./Vidoes/tunnel1.mp4";
+import vid2 from "./Vidoes/globe1.mp4";
 
 // styling for About is in App.css
 
 const About = () => {
     return (
-        <div>
-         <Navigation />
-            <div className="ui container Abountscr">
-            <br></br>
-            <h2>Turn your music into a killer video.</h2>
-            <br></br>
-            <h4>
-                We make it fast and easy to create custom music visualizers. You're one step closer to entertaining your audience with self made videos.
-            </h4>
-            <br></br>
-            <h4>
-                No download needed. Jump into the web based editor and start customizing right away. The live video preview updates in real time and moves with your music.
 
-                It only takes a few minutes to make a video. Use simple pre-set controls to enjoy your tracks
-            </h4>
-            {/* SN: sorry this is illegal (below) */}
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+        <div>
+            <Navigation />
+            <div>
+                <br></br>
+                <Modal.Dialog >
+                    <video src={vid1}
+                        controls autoPlay loop
+                    />
+                </Modal.Dialog>
+            </div>
+
+            <div>
+                <Jumbotron className='aboutScrStyles' >
+                    <h1>Turn your music into a visual!</h1>
+                    <br></br>
+                    <h4>HummingBird makes it fast and easy to create your </h4>
+                    <h4>own custom visualizers..</h4>
+                    <br></br>
+                    <p>
+                        <button className="btn2">Create</button>
+                    </p>
+                </Jumbotron>
+            </div >
         </div>
-        </div>
+
     )
 }
-
-
-
-// const About = () => {
-//     return (
-//         <div className="ui container Abountscr">
-//             <br></br>
-//             <h2>Turn your music into a killer video.</h2>
-//             <br></br>
-//             <h4>
-//                 We make it fast and easy to create custom music visualizers. You're one step closer to entertaining your audience with self made videos.
-//             </h4>
-//             <br></br>
-//             <h4>
-//                 No download needed. Jump into the web based editor and start customizing right away. The live video preview updates in real time and moves with your music.
-//                 It only takes a few minutes to make a video. Use simple pre-set controls to enjoy your tracks
-//             </h4>
-//         </div>
-//     )
-// }
 
 export default About

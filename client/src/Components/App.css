@@ -237,3 +237,22 @@ canvas {
   height: 80%;
   overflow-y: scroll;
 }
+
+.aboutScrStyles{
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: transparent!important;
+}
+
+/* .btn2 is used in About screen */
+.btn2 {
+    background-color: rgb(9, 82, 177);
+    border: none;
+    color: whitesmoke;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 10px 1px;
+    border-radius: 22px;
+    /* width: 100%; */
+    font-size: 22px;
+}
