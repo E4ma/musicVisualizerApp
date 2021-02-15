@@ -74,9 +74,8 @@ body {
   position: absolute;
   display: flex;
 }
-.sliders > div {
-  width: 3%;
-}
+.sliders > div {width: 3%;}
+
 
 /* .Frontscr {
   background-image: url(./Components/Images/hummingbirdbackground1.png);
@@ -130,12 +129,13 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -270px;
+  margin-top: -40vh;
   position: relative;
   z-index: 10;
 }
 .iconWrapper img {
   position: static;
+  
 }
 canvas {
   /* position: static;
@@ -195,4 +195,18 @@ canvas {
   background-color: rgba(55, 86, 165, 0.6);
   height: 80%;
   overflow-y: scroll;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .iconWrapper {
+    right: 40px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    /* position: relative; */
+    margin-top: -200px;
+    /* position: relative; */
+    z-index: 10;
+  }
 }

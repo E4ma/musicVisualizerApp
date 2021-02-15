@@ -20,7 +20,6 @@ const Home = () => {
               style={{ fontWeight: 'bold' }}
             >
               <br />
-              <br />
 
               {/*------ Audio -----*/}
               <Nav.Item>

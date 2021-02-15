@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 
-const Playlist = () => {
+const Playlist = ({uploadedFile}) => {
   const [playlist, setPlaylist] = useState()
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Playlist = () => {
       setPlaylist(data)
     }
     getSongList()
-  }, [])
+  }, [uploadedFile])
 
   return (
     <>
