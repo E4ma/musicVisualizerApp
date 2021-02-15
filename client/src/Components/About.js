@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Card, Modal, Jumbotron } from "react-bootstrap";
+import { Nav, Modal, Jumbotron } from "react-bootstrap";
+import { Link } from "react-router-dom"
 // import Displayer from './Displayer'
 import Navigation from './Navigation'
 
@@ -30,7 +31,11 @@ const About = () => {
                     <h4>own custom visualizers..</h4>
                     <br></br>
                     <p>
-                        <button className="btn2">Create</button>
+                        <Nav>
+                            <Nav.Item id="nav-item"><Link to="/Home" style={{ color: 'white' }}>
+                                <button className="btn2">Create</button>
+                            </Link></Nav.Item>
+                        </Nav>
                     </p>
                 </Jumbotron>
             </div >

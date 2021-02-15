@@ -207,8 +207,8 @@ canvas {
   margin: 10px 1px;
   border-radius: 22px;
   width: 100%;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 21px;
+  /* font-weight: bold; */
 }
 
 
@@ -255,4 +255,17 @@ canvas {
     border-radius: 22px;
     /* width: 100%; */
     font-size: 22px;
+}
+
+/* :focus means when a button is clicked */
+.btn2:focus {
+  /* outline: none; */
+  outline-width: 1px;
+  outline-style: dashed;
+  outline-color: #2b62d8;
+}
+
+.btn2:hover {
+  background-color: #2b62d8;
+  color: rgb(5, 3, 3);
 }
