@@ -1,54 +1,63 @@
-import React from 'react'
-import './profile.css'
-import { Row, Col } from 'react-bootstrap'
-
-const styles = {
-    root: {
-        width: "80%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        marginBottom: "105px",
-        marginTop: "105px",
-        background: "antiquewhite",
-        padding: "100px",
-        fontSize: "1.5rem",
-        borderRadius: "20px",
-        backgroundColor: "#357E85"
-    },
-    labelText: {
-        fontFamily: "Roboto",
-        fontSize: "2rem",
-        color: "#CCEBF4",
+import React, { useState } from "react"
+  import { Card, Button, Alert } from "react-bootstrap"
+  import { useAuth } from "../contexts/AuthContext"
+  import { Link, useHistory } from "react-router-dom"
+import Navigation from "./Navigation"
+  
+  export default function Dashboard() {
+    const styles = {
+        root: {
+            width: "80%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "105px",
+            marginTop: "105px",
+            background: "antiquewhite",
+            padding: "100px",
+            fontSize: "1.5rem",
+            borderRadius: "20px",
+            backgroundColor: "#357E85"
+        },
+        labelText: {
+            fontFamily: "Roboto",
+            fontSize: "2rem",
+            color: "#CCEBF4",
+        }
+      }    
+    const [error, setError] = useState("")
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+  
+    async function handleLogout() {
+      setError("")
+  
+      try {
+        await logout()
+        history.push("/login")
+      } catch {
+        setError("Failed to log out")
+      }
     }
-  }
-
-const MyAccount = () => {
+  
     return (
-        <div style={styles.root}  >
-            <div className='center' style={styles.labelText}>
-            <Row>
-                <Col> <label className='pr-3'>First Name:</label> </Col> 
-                <Col><div>My Firstname</div></Col>
-            </Row>
-            <Row>
-                <Col> <label className='pr-3'>Last Name:</label> </Col> 
-                <Col><div>My Lastname</div></Col>
-                {/* <Col><div>{user.picture}</div></Col> */}
-            </Row>
-            <Row>
-                <Col> <label className='pr-3'> Email:</label></Col>       
-                <Col>My email</Col>
-            </Row>
-            <Row>
-                {/* for the saved visualizer */}
-                <Col>  <label  className='pr-3'> Saved Visualizers:</label></Col>       
-                <Col>Visualizer or images</Col>
-            </Row>
-
-            </div>      
-
+<div>
+  <Navigation />
+<Card>
+          <Card.Body>
+            <h2 className="text-center mb-4">Profile</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <strong>Email:</strong> {currentUser.email}
+            <strong>Saved Visualizer:</strong>
+            <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+              Update Profile
+            </Link>
+          </Card.Body>
+        </Card>
+        <div className="w-100 text-center mt-2">
+          <Button variant="link" onClick={handleLogout}>
+            Log Out
+          </Button>
         </div>
-      );
-}
-
-export default MyAccount;
+</div>
+    )
+  }

@@ -1,0 +1,239 @@
+/* .color-nav{
+    background-color: rgb(15, 1, 1);
+} */
+/* Nav.Item {
+  margin: 40rem;
+} */
+
+/* html {
+  background: url(./Components/Images/hummingbirdbackground1.png) no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+/* } */
+html {
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  overflow: hidden;
+  height: 800px;
+  min-height: 500px;
+  max-width: 100%;
+
+}
+
+body {
+  font-family: 'Raleway' !important;
+  margin: 0;
+  color: blanchedalmond;
+  background: url(./Images/hummingbirdbackground1.png) no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  /* <canvas ref="canvas" width={640} height={425} /> */
+  /* <img ref="image" src={cheese} className="hidden" /> */
+}
+
+#nav-wrap{
+  line-height: 15px;
+  color: #fff;
+}
+
+#nav-wrap #nav-item{
+  padding: 8px 13px;
+  font-size: 20px;
+}
+
+.Card.Body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.audioControlBackground {
+  /* background-image: url(./Components/Images/background1.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* align-self: center; */
+  /* top: 40px;
+  left: 20vw; */
+  /* height: calc(60vh); */
+  width: auto;
+}
+
+/* .display {
+  /* margin-left: 20px;
+  margin-right: 130px; 
+} */
+
+/* .nav-buttons{
+    background-color: black;
+    justify-items: "right";
+} */
+
+.slider1 {
+  width: 50%;
+  height: 20px;
+  background: red;
+  appearance: none;
+}
+.slider {
+  width: 50%;
+  height: 20px;
+  background: rgb(89, 0, 255);
+  appearance: none;
+}
+.sliders {
+  width: 60vw;
+  /* bottom: -60px; */
+  /* position: absolute; */
+  display: flex;
+}
+.sliders > div {
+  width: 3%;
+}
+
+/* .Frontscr {
+  background-image: url(./Components/Images/hummingbirdbackground1.png);
+
+   background-color: rgb(16, 17, 17); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+.Abountscr {
+  /* background-color:transparent !important; */
+  color: blanchedalmond;
+}
+
+.card {
+  /* top: 20px;
+  right: 150px; */
+  /* border: 'solid'; */
+  /* top: 20px;
+  right: 150px; */
+  color: white;
+  /* background-color: transparent !important; */
+  background-color: rgba(55, 86, 165, 0.2) !important;
+  height: 70vh;
+}
+
+.nav {
+  /* display: flex;
+  justify-content: flex-end; */
+  margin-left: 20px;
+  margin-right: 350px;
+}
+
+.input {
+  /* border: 'solid'; */
+  color: rgb(66, 33, 33);
+  /* background-color:transparent !important; */
+  background-color: rgba(143, 53, 53, 0.446) !important;
+}
+
+.visualizer {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+#display-box{
+margin-right: 10px;
+padding-right: 5px;
+}
+
+.iconWrapper {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: -270px;
+  position: relative;
+  z-index: 10;
+}
+.iconWrapper img {
+  position: static;
+}
+canvas {
+  /* position: static;
+  justify-content: center;
+  align-items: center; */
+  width: 100%;
+  height: 60vh;
+  z-index: 1;
+}
+
+.canvasWrapper {
+  /* display: flex; */
+  align-self: center;
+  justify-content: center;
+  /* margin-top: -100px; */
+}
+
+.buttonWrapper {
+  position: relative;
+  z-index: 11;
+}
+
+#editor-cont{
+  margin: 10px;
+  padding-right: 35px;
+  padding-top: 15px;
+}
+#tab-nav{
+  margin-left: 0px;
+}
+#tab-cont{
+  background-color: transparent;
+}
+
+.btn1 {
+  background-color: rgb(9, 82, 177);
+  border: none;
+  color: whitesmoke;
+  padding: 10px 20px;
+  text-align: center;
+  margin: 10px 1px;
+  border-radius: 22px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+/* :focus means when a button is clicked */
+.btn1:focus {
+  /* outline: none; */
+  outline-width: 1px;
+  outline-style: dashed;
+  outline-color: #2b62d8;
+}
+
+.btn1:hover {
+  background-color: #2b62d8;
+  color: rgb(5, 3, 3);
+}
+
+
+.navItem {
+  color:white !important;
+}
+.playlistTab {
+  height: 60%;
+}
+.tabScroll {
+  background-color: rgba(55, 86, 165, 0.6);
+  height: 80%;
+  overflow-y: scroll;
+}
