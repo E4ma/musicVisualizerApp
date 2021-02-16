@@ -56,7 +56,7 @@ const FileUpload = (props) => {
     axios
       .get('http://localhost:5000/upload/list')
       .then((res) => {
-        console.log('this is the res', res)
+        // console.log('this is the res', res)
         return res.data
       })
       .then((playlist) => {

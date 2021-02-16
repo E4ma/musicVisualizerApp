@@ -2,37 +2,50 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 
-// const createAudioContext = () => {
-//   let audio = new Audio()
+let audio
+let audioContext
+let source
+let analyser
+let frequency_array
+const createAudioContext = () => {
+  audio = new Audio()
 
-//   let audioContext = new (window.AudioContext || window.webkitAudioContext)()
-//   let source = audioContext.createMediaElementSource(audio)
-//   let analyser = audioContext.createAnalyser()
-//   let source.connect(analyser)
-//   analyser.connect(audioContext.destination)
-//   let frequency_array = new Uint8Array(analyser.frequencyBinCount)
-// }
+  audioContext = new (window.AudioContext || window.webkitAudioContext)()
+  source = audioContext.createMediaElementSource(audio)
+  analyser = audioContext.createAnalyser()
+  source.connect(analyser)
+  analyser.connect(audioContext.destination)
+  frequency_array = new Uint8Array(analyser.frequencyBinCount)
+}
 
 const Playlist = (props) => {
-  const [playlist, setPlaylist] = useState()
-  // const getSong = async (song) => {
-  //   createAudioContext()
-  //   const response = await axios.get(
-  //     `http://localhost:5000/upload/media/${song}`,
-  //     { responseType: 'blob' },
-  //   )
-  //   audio.src = URL.createObjectURL(response.data)
-  //   audio.load()
-  //   // audio.play()
-  // }
+  const [playlist, setPlaylist] = useState([])
 
+  const getSong = async (song) => {
+    console.log('This is in getSong', song)
+    createAudioContext()
+    const response = await axios.request({
+      url: `http://localhost:5000/upload/media/${song}`,
+      responseType: 'blob',
+      method: 'GET',
+    })
+    audio.src = URL.createObjectURL(response.data)
+    // console.log('audio.src', audio.src)
+    audio.load()
+    // audio.play()
+  }
+
+  const getSongList = async () => {
+    let res = await axios.get('http://localhost:5000/upload/list')
+    const data = res.data
+    console.log('This is data', data)
+
+    setPlaylist(data)
+    console.log('This is the playlist', playlist)
+  }
   // console.log(uploadedFile)
+  //Returns a list of files saved
   useEffect(() => {
-    const getSongList = async () => {
-      let res = await axios.get('http://localhost:5000/upload/list')
-      const data = res.data
-      setPlaylist(data)
-    }
     getSongList()
   }, [props.uploadedFile])
   return (
@@ -42,11 +55,20 @@ const Playlist = (props) => {
         <Card.Title>Playlist</Card.Title>
         <Card.Text className="tabScroll">
           <div>
-            <ol>
-              {playlist?.map((song) => {
-                return <li key={song}>{song}</li>
+            <ul
+              onClick={(event) => {
+                getSong(event.target.firstChild.data)
+              }}
+            >
+              {playlist?.map((song, index) => {
+                console.log('This is the song with index', song, index)
+                return (
+                  <li key={index} value={song}>
+                    {song}
+                  </li>
+                )
               })}
-            </ol>
+            </ul>
           </div>
         </Card.Text>
       </Card.Body>
