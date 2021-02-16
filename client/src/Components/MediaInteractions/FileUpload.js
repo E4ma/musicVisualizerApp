@@ -107,7 +107,7 @@ const FileUpload = (props) => {
             </>
           </Card.Text>
         </Card.Body>
-        <Playlist playlist={playlist} />
+        <Playlist uploadedFile = {uploadedFile} />
       </Card>
     )
   }
