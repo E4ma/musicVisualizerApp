@@ -1,7 +1,14 @@
-import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
+import React, {
+  createRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useContext,
+} from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
 import songList from './MediaInteractions/Playlist'
+import { PlaylistContext } from '../contexts/PlaylistContext'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -39,10 +46,20 @@ const createAudioContext = () => {
 }
 
 const Displayer = (props) => {
+  const {
+    songSelect,
+    setsongSelect,
+    getSong,
+    getSongList,
+    audio,
+    frequency_array,
+    audioContext,
+    analyser,
+  } = useContext(PlaylistContext)
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
   const [isPaused, setIsPaused] = useState(true)
-  const [songSelect, setsongSelect] = useState()
+  // const [songSelect, setsongSelect] = useState()
   const [currentSong, setCurrentSong] = useState(-1)
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -55,19 +72,31 @@ const Displayer = (props) => {
     }
   }, [sliderM, sliderN])
 
-  const getSong = async (song) => {
-    createAudioContext()
-    const response = await axios.get(
-      `http://localhost:5000/upload/media/${song}`,
-      { responseType: 'blob' },
-    )
-    audio.src = URL.createObjectURL(response.data)
-    audio.load()
-    if (audio) {
-              togglePlay()
-            }
-    
-  }
+  // const getSong = async (song) => {
+  //   createAudioContext()
+  //   const response = await axios.get(
+  //     `http://localhost:5000/upload/media/${song}`,
+  //     { responseType: 'blob' },
+  //   )
+  //   audio.src = URL.createObjectURL(response.data)
+  //   audio.load()
+  //   if (audio) {
+  //     togglePlay()
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   const getSongList = async () => {
+  //     let res = await axios.get('http://localhost:5000/upload/list')
+  //     setsongSelect(res.data)
+  //     //console.log(setsongSelect)
+  //   }
+  //   getSongList()
+  // }, [])
+
+  useEffect(() => {
+    getSong()
+  }, [])
   function animationLooper(canvas) {
     canvas.width = width
     canvas.height = height
@@ -80,7 +109,10 @@ const Displayer = (props) => {
       bar_height = frequency_array[i] * 2.5
       const x = center_x + Math.cos(rads * i) * radius
       const y = center_y + Math.sin(rads * i) * radius
-      x_end = center_x + Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) * (radius + bar_height)
+      x_end =
+        center_x +
+        Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) *
+          (radius + bar_height)
       y_end =
         center_y +
         Math.sin(rads * sliderM * i + (Math.PI / 640) * new Date()) *
@@ -191,15 +223,6 @@ const Displayer = (props) => {
     rafId = requestAnimationFrame(tick)
   }
 
-  useEffect(() => {
-    const getSongList = async () => {
-      let res = await axios.get('http://localhost:5000/upload/list')
-      setsongSelect(res.data)
-      //console.log(setsongSelect)
-    }
-    getSongList()
-  },[])
-
   //console.log('This is the songList that is being imported', songList)
 
   return (
@@ -208,24 +231,23 @@ const Displayer = (props) => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="buttonWrapper">
-      <button
+        <button
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
             }
-            if(currentSong === 0) {
-              setCurrentSong(curr => (songSelect.length - 1))
-              getSong(songSelect[(songSelect.length - 1)])
-            } else{
-            setCurrentSong(curr => (curr - 1)%(songSelect.length))
-           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
-          //  togglePlay()
+            if (currentSong === 0) {
+              setCurrentSong((curr) => songSelect.length - 1)
+              getSong(songSelect[songSelect.length - 1])
+            } else {
+              setCurrentSong((curr) => (curr - 1) % songSelect.length)
+              getSong(songSelect[(currentSong - 1) % songSelect.length])
+            }
+            //  togglePlay()
           }}
         >
           Previous
         </button>
-
-
 
         <button
           onClick={() => {
@@ -266,29 +288,30 @@ const Displayer = (props) => {
             if (audio && !isPaused) {
               togglePlay()
             }
-            setCurrentSong(curr => (curr + 1)%(songSelect.length))
-           getSong(songSelect[(currentSong + 1)%(songSelect.length)])
-          //  togglePlay()
+            setCurrentSong((curr) => (curr + 1) % songSelect.length)
+            getSong(songSelect[(currentSong + 1) % songSelect.length])
+            //  togglePlay()
           }}
         >
           Next
         </button>
 
-        {songSelect && 
-        <select
-        value ={songSelect[currentSong]}
-          onChange={(e) => {
-            getSong(e.target.value)
-            setCurrentSong((e.target.selectedIndex - 1)%(songSelect.length))
-          }}
-        >
-          {' '}
-          <option>Choose A Song</option>
-          {songSelect &&
-            songSelect.map((song) => {
-              return <option value={song}>{song}</option>
-            })}
-        </select>}
+        {songSelect && (
+          <select
+            value={songSelect[currentSong]}
+            onChange={(e) => {
+              getSong(e.target.value)
+              setCurrentSong((e.target.selectedIndex - 1) % songSelect.length)
+            }}
+          >
+            {' '}
+            <option>Choose A Song</option>
+            {songSelect &&
+              songSelect.map((song) => {
+                return <option value={song}>{song}</option>
+              })}
+          </select>
+        )}
       </div>
       <div className="songInfoWrapper">
         {/* Inserted by SN */}

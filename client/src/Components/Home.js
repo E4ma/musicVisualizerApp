@@ -5,11 +5,10 @@ import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
 import Navigation from './Navigation'
+import PlaylistContext from '../contexts/PlaylistContext'
 // import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
-
-
   return (
     <div>
       <Navigation />
@@ -87,7 +86,9 @@ const Home = () => {
           <Col md={'auto'}>
             <Tab.Content>
               <Tab.Pane eventKey="uploadAudio" mediatype="audio">
-                <FileUpload mediatype="Audio" />
+                <PlaylistContext>
+                  <FileUpload mediatype="Audio" />
+                </PlaylistContext>
               </Tab.Pane>
               <Tab.Pane eventKey="uploadBackground">
                 <FileUpload mediatype="Background" filetype="image" />
@@ -104,7 +105,9 @@ const Home = () => {
             <br />
             <Card className="visualizer">
               <Card.Body>
-                <Displayer />
+                <PlaylistContext>
+                  <Displayer />
+                </PlaylistContext>
                 <InsertIcon />
               </Card.Body>
             </Card>
