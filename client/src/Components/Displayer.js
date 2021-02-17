@@ -2,6 +2,7 @@ import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
 import songList from './MediaInteractions/Playlist'
+import pictureList from './MediaInteractions/ImageList'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -61,6 +62,7 @@ const Displayer = (props) => {
       `http://localhost:5000/upload/media/${song}`,
       { responseType: 'blob' },
     )
+    //produces url for url
     audio.src = URL.createObjectURL(response.data)
     audio.load()
     if (audio) {
@@ -68,6 +70,22 @@ const Displayer = (props) => {
             }
     
   }
+
+  let picture
+  const getPicture = async (picture) => {
+    
+    const response = await axios.get(
+      `http://localhost:5000/upload/image/${picture}`,
+      { responseType: 'blob' },
+    )
+    console.log(response.data)
+  setBackgroundUrl(URL.createObjectURL(response.data))
+    
+    // picture.load()
+    // let pictureURL = picture.src
+    
+  }
+
   function animationLooper(canvas) {
     canvas.width = width
     canvas.height = height
@@ -202,10 +220,19 @@ const Displayer = (props) => {
 
   //console.log('This is the songList that is being imported', songList)
 
+  useEffect(() => {
+    const getPictureList = async () => {
+      let res = await axios.get('http://localhost:5000/upload/backgroundList')
+      setpictureSelect(res.data)
+      //console.log(setsongSelect)
+    }
+    getPictureList()
+  },[])
+
   return (
     <div
       className="audioControlBackground"
-      style={{ backgroundImage: `url(${background})` }}
+      style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
       <div className="buttonWrapper">
       <button

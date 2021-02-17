@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Row, Col, Nav } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
@@ -10,19 +10,21 @@ import Navigation from './Navigation'
 const Home = () => {
 
 
-   return (
-      <div>
-         <Navigation />
-         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <Row>
-               <Col md={2}>
-                  <Nav
-                     variant="pills"
-                     className="flex-column textbold"
-                     bg="transparent"
-                     style={{ fontWeight: 'bold' }}
-                  >
-                     <br />
+
+  return (
+    <div>
+      <Navigation />
+      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Row>
+          <Col md={2}>
+            <Nav
+              variant="pills"
+              className="flex-column textbold"
+              bg="transparent"
+              style={{ fontWeight: 'bold' }}
+            >
+              <br />
+              <br />
 
                      {/*------ Audio -----*/}
                      <Nav.Item>

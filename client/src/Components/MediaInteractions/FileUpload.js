@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import Playlist from './Playlist'
+import ImageList from './ImageList'
 
 const FileUpload = (props) => {
-	//Need to use a hook to set text in the label to the file namespace
-	const [file, setFile] = useState('')
-	const [filename, setFilename] = useState('Choose File')
-	const [uploadedFile, setUploadedFile] = useState({})
-	const [playlist, setPlaylist] = useState([])
+  //Need to use a hook to set text in the label to the file namespace
+  const [file, setFile] = useState('')
+  const [filename, setFilename] = useState('Choose File')
+  const [uploadedFile, setUploadedFile] = useState({})
+  const [currentUser, setCurrentUser] = useState('USR------1')
+  const [playlist, setPlaylist] = useState()
+  const [imagelist, setImagelist ] = useState([])
+  const [uploadedImage, setUploadedImage] = useState({})
 
 	const onChange = (e) => {
 		//HTML file uploads come as an array so we want the index of the first file
@@ -48,6 +52,74 @@ const FileUpload = (props) => {
 		}
 	}
 
+    if (props.mediatype === 'Audio'){
+      try {
+        const res = await axios.post(
+          'http://localhost:5000/upload/media',
+          formData,
+          {
+            headers: { 'Content-Type': 'multipart/form-data' },
+          },
+        )
+        const { fileName, filePath } = res.data
+        console.log('These are the headers', res.headers)
+        if (res.status === 200) {
+          console.log('Was uploaded successfully ' + res.status)
+        }
+        setUploadedFile({ fileName, filePath })
+      } catch (err) {
+        if (err.response.status === 500) {
+          console.error('There is a problem with the server ' + err.message)
+        } else {
+          //This message is from the server if no file is uploaded
+          // console.error('we had an error??? ' + err.response.data.msg)
+          console.error(err.response.data.msg)
+        }
+      }
+    } 
+     if (props.mediatype === 'Background'){
+        try {
+          const res = await axios.post(
+            'http://localhost:5000/upload/media',
+            formData,
+            {
+              headers: { 'Content-Type': 'multipart/form-data' },
+            },
+          )
+          const { fileName, filePath } = res.data
+          console.log('These are the headers', res.headers)
+          if (res.status === 200) {
+            console.log('image uploaded successfully ' + res.status)
+          }
+          setUploadedImage({ fileName, filePath })
+        } catch (err) {
+          if (err.response.status === 500) {
+            console.error('There is a problem with the server ' + err.message)
+          } else {
+            console.error(err.response.data.msg)
+          }
+        }
+      }
+  }
+  //get imagelist + send to imagelist component
+  const getImagelist = () => {
+    axios
+      .get('http://localhost:5000/upload/backgroundList')
+      .then((res) => {
+        console.log('this is the res', res.data)
+        return res.data
+      })
+      .then((imagelist) => {
+        setImagelist(imagelist)
+      })
+    }
+      useEffect(() => {
+        getImagelist()
+      }, [props.uploadedImage])
+
+ 
+
+  // Gets the playlist and sends to the Playlist Component
 
 	// Gets the playlist and sends to the Playlist Component
 	const getPlaylist = () => {
@@ -117,44 +189,46 @@ const FileUpload = (props) => {
 					<Card.Subtitle className="mb-2 text-muted">
 						Select {props.mediatype} to Upload
           </Card.Subtitle>
-					<Card.Text>
-						<>
-							<div className="mb-2">
-								<form onSubmit={onSubmit}>
-									<div className="input-group mb-3">
-										<input
-											type="file"
-											className="form-control mb-5"
-											id="inputGroupFile02"
-											accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
-											onChange={onChange}
-										/>
-										<input
-											type="submit"
-											value={`Submit`}
-											// className="btn btn-primary btn-block"
-											className="btn1"
-										/>
+          <Card.Text>
+            <>
+              <div className="mb-2">
+                <form onSubmit={onSubmit}>
+                  <div className="input-group mb-3">
+                    <input
+                      type="file"
+                      className="form-control mb-5"
+                      id="inputGroupFile02"
+                      accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
+                      onChange={onChange}
+                    />
+                    <input
+                      type="submit"
+                      value={`Submit`}
+                      // className="btn btn-primary btn-block"
+                      className="btn1"
+                      onClick={() => getImagelist()}
+                    />
 
-										<label
-											className="id=inputGroupFile02"
-											htmlFor="inputGroupFile02"
-										></label>
-									</div>
-								</form>
-							</div>
-						</>
-					</Card.Text>
-				</Card.Body>
-			</Card>
-		)
-	}
-	return (
-		<Card style={{ width: '16rem', margin: '16px' }}>
-			<Card.Body>
-				<Card.Title>{props.mediatype} Upload</Card.Title>
-				<Card.Subtitle className="mb-2 text-muted">
-					Select {props.mediatype} to Upload
+                    <label
+                      className="id=inputGroupFile02"
+                      htmlFor="inputGroupFile02"
+                    ></label>
+                  </div>
+                </form>
+              </div>
+            </>
+          </Card.Text>
+        </Card.Body>
+        <ImageList uploadedImage={uploadedImage} />
+      </Card>
+    )
+  }
+  return (
+    <Card style={{ width: '16rem', margin: '16px' }}>
+      <Card.Body>
+        <Card.Title>{props.mediatype} Upload</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          Select {props.mediatype} to Upload
         </Card.Subtitle>
 				<Card.Text>
 					<>
@@ -187,6 +261,6 @@ const FileUpload = (props) => {
 			</Card.Body>
 		</Card>
 	)
-}
+
 
 export default FileUpload
