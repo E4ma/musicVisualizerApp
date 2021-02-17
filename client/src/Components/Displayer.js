@@ -1,6 +1,7 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
+import songList from './MediaInteractions/Playlist'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -37,12 +38,12 @@ const createAudioContext = () => {
   frequency_array = new Uint8Array(analyser.frequencyBinCount)
 }
 
-const Displayer = () => {
+const Displayer = (props) => {
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
   const [isPaused, setIsPaused] = useState(true)
   const [songSelect, setsongSelect] = useState()
-  const [currentSong, setCurrentSong] = useState(0)
+  const [currentSong, setCurrentSong] = useState(-1)
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
   const center_x = width / 2
@@ -53,6 +54,7 @@ const Displayer = () => {
       rafId = requestAnimationFrame(tick)
     }
   }, [sliderM, sliderN])
+
   const getSong = async (song) => {
     createAudioContext()
     const response = await axios.get(
@@ -61,7 +63,10 @@ const Displayer = () => {
     )
     audio.src = URL.createObjectURL(response.data)
     audio.load()
-    // audio.play()
+    if (audio) {
+              togglePlay()
+            }
+    
   }
   function animationLooper(canvas) {
     canvas.width = width
@@ -75,7 +80,7 @@ const Displayer = () => {
       bar_height = frequency_array[i] * 2.5
       const x = center_x + Math.cos(rads * i) * radius
       const y = center_y + Math.sin(rads * i) * radius
-      x_end = center_x + Math.cos(rads * sliderN * i) * (radius + bar_height)
+      x_end = center_x + Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) * (radius + bar_height)
       y_end =
         center_y +
         Math.sin(rads * sliderM * i + (Math.PI / 640) * new Date()) *
@@ -190,10 +195,12 @@ const Displayer = () => {
     const getSongList = async () => {
       let res = await axios.get('http://localhost:5000/upload/list')
       setsongSelect(res.data)
-      console.log(setsongSelect)
+      //console.log(setsongSelect)
     }
     getSongList()
-  }, [])
+  },[])
+
+  //console.log('This is the songList that is being imported', songList)
 
   return (
     <div
@@ -201,6 +208,25 @@ const Displayer = () => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="buttonWrapper">
+      <button
+          onClick={() => {
+            if (audio && !isPaused) {
+              togglePlay()
+            }
+            if(currentSong === 0) {
+              setCurrentSong(curr => (songSelect.length - 1))
+              getSong(songSelect[(songSelect.length - 1)])
+            } else{
+            setCurrentSong(curr => (curr - 1)%(songSelect.length))
+           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
+          //  togglePlay()
+          }}
+        >
+          Previous
+        </button>
+
+
+
         <button
           onClick={() => {
             if (audio) {
@@ -218,9 +244,42 @@ const Displayer = () => {
           {isPaused ? 'Play' : 'Pause'}
         </button>
 
+        {/* <button
+          onClick={() => {
+            if (audio && !isPaused) {
+              togglePlay()
+            }
+            if(currentSong === 0) {
+              setCurrentSong(curr => (songSelect.length - 1))
+              getSong(songSelect[(songSelect.length - 1)])
+            } else{
+            setCurrentSong(curr => (curr - 1)%(songSelect.length))
+           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
+          //  togglePlay()
+          }}
+        >
+          Previous
+        </button> */}
+
+        <button
+          onClick={() => {
+            if (audio && !isPaused) {
+              togglePlay()
+            }
+            setCurrentSong(curr => (curr + 1)%(songSelect.length))
+           getSong(songSelect[(currentSong + 1)%(songSelect.length)])
+          //  togglePlay()
+          }}
+        >
+          Next
+        </button>
+
+        {songSelect && 
         <select
+        value ={songSelect[currentSong]}
           onChange={(e) => {
             getSong(e.target.value)
+            setCurrentSong((e.target.selectedIndex - 1)%(songSelect.length))
           }}
         >
           {' '}
@@ -229,10 +288,11 @@ const Displayer = () => {
             songSelect.map((song) => {
               return <option value={song}>{song}</option>
             })}
-        </select>
+        </select>}
       </div>
       <div className="songInfoWrapper">
         {/* Inserted by SN */}
+        {/* <div style={{ color: 'red' }}>{currentSong}</div> */}
 
         {/* Removed by SN */}
         {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
@@ -243,24 +303,26 @@ const Displayer = () => {
       <div className="sliders">
         {' '}
         <div>{sliderM}</div>
+        <p>X</p>
         <input
           className="slider"
           type="range"
           min="0"
           max="8"
-          step=".5"
+          step=".1"
           onChange={(e) => {
             setSliderM(e.target.value)
           }}
           value={sliderM}
         />{' '}
         <div>{sliderN}</div>
+        <p>Y</p>
         <input
           className="slider1"
           type="range"
           min="0"
           max="8"
-          step=".5"
+          step=".1"
           onChange={(e) => {
             setSliderN(e.target.value)
           }}

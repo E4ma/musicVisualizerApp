@@ -9,7 +9,7 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
-  const [playlist, setPlaylist] = useState()
+  const [playlist, setPlaylist] = useState([])
 
   console.log('USER.....:', currentUser)
 
@@ -35,7 +35,7 @@ const FileUpload = (props) => {
         },
       )
       const { fileName, filePath } = res.data
-      console.log('These are the headers', res.headers)
+      // console.log('These are the headers', res.headers)
       if (res.status === 200) {
         console.log('Was uploaded successfully ' + res.status)
       }
@@ -56,17 +56,17 @@ const FileUpload = (props) => {
     axios
       .get('http://localhost:5000/upload/list')
       .then((res) => {
-        console.log('this is the res', res)
+        // console.log('this is the res', res)
         return res.data
       })
       .then((playlist) => {
-        console.log('This is the playlist', playlist)
+        // console.log('This is the playlist', playlist)
         setPlaylist(playlist)
       })
   }
   useEffect(() => {
     getPlaylist()
-  }, [])
+  }, [uploadedFile])
 
   // If the audio button is selected
   if (props.mediatype === 'Audio') {
@@ -107,7 +107,7 @@ const FileUpload = (props) => {
             </>
           </Card.Text>
         </Card.Body>
-        <Playlist playlist={playlist} />
+        <Playlist uploadedFile={uploadedFile} />
       </Card>
     )
   }

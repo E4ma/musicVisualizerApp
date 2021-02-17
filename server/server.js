@@ -47,4 +47,4 @@ app.use('/upload', mediaSort)
 
 
 port = process.env.PORT
-app.listen(port, () => console.log('listening on port ' + port) || 8000)
+app.listen(port, () => console.log('listening on port ' + port))
