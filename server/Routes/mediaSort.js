@@ -11,6 +11,7 @@ const fileSizeMax = 100000000
 //Upload endpoints for Icons
 
 const AudioModel = require('../Model/AudioModel')
+const PictureModel = require('../Model/PictureModel')
 
 router.post('/icon', (req, res) => {
   const file = req.files.file
@@ -90,21 +91,26 @@ router.post('/media', async (req, res) => {
   } else if (
     mediaType === 'image/jpeg' ||
     mediaType === 'image/jpg' ||
-    mediaType === 'image/bmp'
+    mediaType === 'image/bmp' ||
+    mediaType === 'image/png'
   ) {
     file.mv(`uploadedFiles/images/${file.name}`)
+    const filePath = `uploadedFiles/images/${file.name}`
     //The code that coninues if a success
     res.json({
       fileName: file.name,
       filePath: `/uploadedFiles/images/${file.name}`,
     })
-    // console.log('WRITE TO MONGO..........:')
+    console.log('WRITE TO MONGO..........:')
     // // console.log('Current-User............:', file.currentUser)
-    // console.log(req.files)
-    // const newBackground = new backgroundModel({
-    //   fileName: file.name,
-    //   filePath: filePath,
-    // })
+    console.log(req.files)
+    const newPicture = new PictureModel({
+      fileName: file.name,
+      filePath: filePath,
+    })
+    console.log('newPicture...', newPicture)
+    // This .save writes to the DB
+    newPicture.save()
   } else {
     return res.status(500).send(console.error('Internal Server Error X|'))
   }
@@ -125,6 +131,23 @@ router.get('/list', async (req, res) => {
 router.get('/media/:song', (req, res) => {
   const song = req.params.song
   res.sendFile(path.join(__dirname, `../uploadedFiles/audio/${song}`))
+})
+
+//export image to displayer
+router.get('/backgroundList', async (req, res) => {
+  fs.readdir('./uploadedFiles/images', (err, files) => {
+    if (err) console.log(err, 'Some error in router.get /background')
+    else {
+      files.forEach((file) => {
+        file
+      })
+      res.json(files)
+    }
+  })
+})
+router.get('/image/:picture', (req, res) => {
+  const picture = req.params.picture
+  res.sendFile(path.join(__dirname, `../uploadedFiles/images/${picture}`))
 })
 
 module.exports = router

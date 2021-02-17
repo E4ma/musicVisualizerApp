@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import Playlist from './Playlist'
+import ImageList from './ImageList'
 
 const FileUpload = (props) => {
   //Need to use a hook to set text in the label to the file namespace
@@ -10,6 +11,8 @@ const FileUpload = (props) => {
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
   const [playlist, setPlaylist] = useState()
+  const [imagelist, setImagelist ] = useState([])
+  const [uploadedImage, setUploadedImage] = useState({})
 
   console.log('USER.....:', currentUser)
 
@@ -26,30 +29,73 @@ const FileUpload = (props) => {
     const formData = new FormData()
     formData.append('file', file)
 
-    try {
-      const res = await axios.post(
-        'http://localhost:5000/upload/media',
-        formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        },
-      )
-      const { fileName, filePath } = res.data
-      console.log('These are the headers', res.headers)
-      if (res.status === 200) {
-        console.log('Was uploaded successfully ' + res.status)
+    if (props.mediatype === 'Audio'){
+      try {
+        const res = await axios.post(
+          'http://localhost:5000/upload/media',
+          formData,
+          {
+            headers: { 'Content-Type': 'multipart/form-data' },
+          },
+        )
+        const { fileName, filePath } = res.data
+        console.log('These are the headers', res.headers)
+        if (res.status === 200) {
+          console.log('Was uploaded successfully ' + res.status)
+        }
+        setUploadedFile({ fileName, filePath })
+      } catch (err) {
+        if (err.response.status === 500) {
+          console.error('There is a problem with the server ' + err.message)
+        } else {
+          //This message is from the server if no file is uploaded
+          // console.error('we had an error??? ' + err.response.data.msg)
+          console.error(err.response.data.msg)
+        }
       }
-      setUploadedFile({ fileName, filePath })
-    } catch (err) {
-      if (err.response.status === 500) {
-        console.error('There is a problem with the server ' + err.message)
-      } else {
-        //This message is from the server if no file is uploaded
-        // console.error('we had an error??? ' + err.response.data.msg)
-        console.error(err.response.data.msg)
+    } 
+     if (props.mediatype === 'Background'){
+        try {
+          const res = await axios.post(
+            'http://localhost:5000/upload/media',
+            formData,
+            {
+              headers: { 'Content-Type': 'multipart/form-data' },
+            },
+          )
+          const { fileName, filePath } = res.data
+          console.log('These are the headers', res.headers)
+          if (res.status === 200) {
+            console.log('image uploaded successfully ' + res.status)
+          }
+          setUploadedImage({ fileName, filePath })
+        } catch (err) {
+          if (err.response.status === 500) {
+            console.error('There is a problem with the server ' + err.message)
+          } else {
+            console.error(err.response.data.msg)
+          }
+        }
       }
-    }
   }
+  //get imagelist + send to imagelist component
+  const getImagelist = () => {
+    axios
+      .get('http://localhost:5000/upload/backgroundList')
+      .then((res) => {
+        console.log('this is the res', res.data)
+        return res.data
+      })
+      .then((imagelist) => {
+        setImagelist(imagelist)
+      })
+    }
+      useEffect(() => {
+        getImagelist()
+      }, [props.uploadedImage])
+
+ 
+
   // Gets the playlist and sends to the Playlist Component
 
   const getPlaylist = () => {
@@ -136,6 +182,7 @@ const FileUpload = (props) => {
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn1"
+                      onClick={() => getImagelist()}
                     />
 
                     <label
@@ -148,6 +195,7 @@ const FileUpload = (props) => {
             </>
           </Card.Text>
         </Card.Body>
+        <ImageList uploadedImage={uploadedImage} />
       </Card>
     )
   }

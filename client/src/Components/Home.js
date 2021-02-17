@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Row, Col, Nav } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
@@ -8,6 +8,7 @@ import Navigation from './Navigation'
 // import Playlist from './MediaInteractions/Playlist'
 
 const Home = () => {
+
 
 
   return (

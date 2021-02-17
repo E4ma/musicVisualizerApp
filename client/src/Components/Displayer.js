@@ -1,6 +1,7 @@
 import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
+import pictureList from './MediaInteractions/ImageList'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -37,11 +38,14 @@ const createAudioContext = () => {
   frequency_array = new Uint8Array(analyser.frequencyBinCount)
 }
 
-const Displayer = () => {
+const Displayer = (props) => {
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
   const [isPaused, setIsPaused] = useState(true)
   const [songSelect, setsongSelect] = useState()
+  const [pictureSelect, setpictureSelect] = useState()
+  const [currentPicture, setCurrentPicture] = useState(-1)
+  const [backgroundUrl, setBackgroundUrl] = useState()
   const [currentSong, setCurrentSong] = useState(0)
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -53,16 +57,34 @@ const Displayer = () => {
       rafId = requestAnimationFrame(tick)
     }
   }, [sliderM, sliderN])
+
   const getSong = async (song) => {
     createAudioContext()
     const response = await axios.get(
       `http://localhost:5000/upload/media/${song}`,
       { responseType: 'blob' },
     )
+    //produces url for url
     audio.src = URL.createObjectURL(response.data)
     audio.load()
     // audio.play()
   }
+
+  let picture
+  const getPicture = async (picture) => {
+    
+    const response = await axios.get(
+      `http://localhost:5000/upload/image/${picture}`,
+      { responseType: 'blob' },
+    )
+    console.log(response.data)
+  setBackgroundUrl(URL.createObjectURL(response.data))
+    
+    // picture.load()
+    // let pictureURL = picture.src
+    
+  }
+
   function animationLooper(canvas) {
     canvas.width = width
     canvas.height = height
@@ -195,10 +217,19 @@ const Displayer = () => {
     getSongList()
   }, [])
 
+  useEffect(() => {
+    const getPictureList = async () => {
+      let res = await axios.get('http://localhost:5000/upload/backgroundList')
+      setpictureSelect(res.data)
+      //console.log(setsongSelect)
+    }
+    getPictureList()
+  },[])
+
   return (
     <div
       className="audioControlBackground"
-      style={{ backgroundImage: `url(${background})` }}
+      style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
       <div className="buttonWrapper">
         <button
@@ -230,6 +261,21 @@ const Displayer = () => {
               return <option value={song}>{song}</option>
             })}
         </select>
+        {pictureSelect && 
+        <select
+        value ={pictureSelect[currentPicture]}
+          onChange={(e) => {
+            getPicture(e.target.value)
+            setCurrentPicture((e.target.selectedIndex - 1)%(pictureSelect.length))
+          }}
+        >
+          {' '}
+          <option>Pick an Image</option>
+          {pictureSelect &&
+            pictureSelect.map((picture) => {
+              return <option value={picture}>{picture}</option>
+            })}
+        </select>}
       </div>
       <div className="songInfoWrapper">
         {/* Inserted by SN */}
