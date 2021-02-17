@@ -11,7 +11,9 @@ const fileSizeMax = 100000000
 //Upload endpoints for Icons
 
 const AudioModel = require('../Model/AudioModel')
+const ImageModel = require('../Model/ImageModel')
 
+// ICONS...................................
 router.post('/icon', (req, res) => {
   const file = req.files.file
 
@@ -34,8 +36,11 @@ router.post('/icon', (req, res) => {
   })
 })
 
+
+// AUDIO........................
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
+
   console.log(req.files)
 
   if (req.files === null) {
@@ -43,14 +48,14 @@ router.post('/media', async (req, res) => {
   }
   //will define what file is in React
   const file = req.files.file
-  // console.log(file)
+  console.log('file..........', file)
   if (file.size > fileSizeMax) {
     return res.status(413).json({ msg: 'File exceeds upload size' })
   }
 
   //This path decides where to send the file (React is the client)
   const mediaType = file.mimetype
-  console.log('this is the media type-', mediaType)
+  console.log('this is the media type........', mediaType)
 
   if (
     mediaType === 'audio/mpeg' ||
@@ -59,7 +64,6 @@ router.post('/media', async (req, res) => {
     mediaType === 'audio/wav'
   ) {
     file.mv(`uploadedFiles/audio/${file.name}`)
-
     const filePath = `uploadedFiles/audio/${file.name}`
 
     //SN: METADATA stuff commented out for now!
@@ -77,34 +81,44 @@ router.post('/media', async (req, res) => {
       // metaData: parsedMetaData,
     })
 
-    console.log('WRITE TO MONGO..........:')
-    // console.log('Current-User............:', file.currentUser)
+    console.log('WRITE audio TO MONGO...')
     console.log(req.files)
     const newAudio = new AudioModel({
       fileName: file.name,
       filePath: filePath,
     })
-    console.log('newAudio...', newAudio)
+    console.log('Record written to Mongo...', newAudio)
     // This .save writes to the DB
     newAudio.save()
+
+    // else do IMAGES........................
+
   } else if (
     mediaType === 'image/jpeg' ||
     mediaType === 'image/jpg' ||
     mediaType === 'image/bmp'
   ) {
     file.mv(`uploadedFiles/images/${file.name}`)
-    //The code that coninues if a success
+    const filePath = `uploadedFiles/images/${file.name}`
+
     res.json({
       fileName: file.name,
-      filePath: `/uploadedFiles/images/${file.name}`,
+      filePath: filePath,
     })
-    // console.log('WRITE TO MONGO..........:')
-    // // console.log('Current-User............:', file.currentUser)
-    // console.log(req.files)
-    // const newBackground = new backgroundModel({
-    //   fileName: file.name,
-    //   filePath: filePath,
-    // })
+
+    console.log('file path...', filePath)
+    console.log('WRITE image TO MONGO...')
+
+    const newImage = new ImageModel({
+      fileName: file.name,
+      filePath: filePath,
+    })
+
+    // This .save writes to the DB
+    console.log('Record written to Mongo...', newImage)
+    newImage.save()
+
+    // else throw an ERROR........................
   } else {
     return res.status(500).send(console.error('Internal Server Error X|'))
   }

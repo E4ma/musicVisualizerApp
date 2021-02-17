@@ -8,10 +8,7 @@ const FileUpload = (props) => {
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
-  const [currentUser, setCurrentUser] = useState('USR------1')
   const [playlist, setPlaylist] = useState([])
-
-  console.log('USER.....:', currentUser)
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -37,7 +34,7 @@ const FileUpload = (props) => {
       const { fileName, filePath } = res.data
       // console.log('These are the headers', res.headers)
       if (res.status === 200) {
-        console.log('Was uploaded successfully ' + res.status)
+        console.log('File was uploaded successfully ' + res.status)
       }
       setUploadedFile({ fileName, filePath })
     } catch (err) {
@@ -50,8 +47,9 @@ const FileUpload = (props) => {
       }
     }
   }
-  // Gets the playlist and sends to the Playlist Component
 
+
+  // Gets the playlist and sends to the Playlist Component
   const getPlaylist = () => {
     axios
       .get('http://localhost:5000/upload/list')
