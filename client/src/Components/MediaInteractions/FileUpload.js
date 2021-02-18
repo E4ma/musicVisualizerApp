@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import Playlist from './Playlist'
+import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const FileUpload = (props) => {
   //Need to use a hook to set text in the label to the file namespace
@@ -9,7 +10,8 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [currentUser, setCurrentUser] = useState('USR------1')
-  const [playlist, setPlaylist] = useState([])
+
+  const { setsongSelect } = useContext(PlaylistContext)
 
   console.log('USER.....:', currentUser)
 
@@ -52,7 +54,7 @@ const FileUpload = (props) => {
   }
   // Gets the playlist and sends to the Playlist Component
 
-  const getPlaylist = () => {
+  const fetchSongSelect = useCallback(() => {
     axios
       .get('http://localhost:5000/upload/list')
       .then((res) => {
@@ -61,12 +63,14 @@ const FileUpload = (props) => {
       })
       .then((playlist) => {
         // console.log('This is the playlist', playlist)
-        setPlaylist(playlist)
+        // console.log(`Playlist length in FileUpload`, playlist.length)
+        setsongSelect(playlist)
       })
-  }
+  }, [setsongSelect])
+
   useEffect(() => {
-    getPlaylist()
-  }, [uploadedFile])
+    fetchSongSelect()
+  }, [uploadedFile, fetchSongSelect])
 
   // If the audio button is selected
   if (props.mediatype === 'Audio') {
@@ -94,7 +98,7 @@ const FileUpload = (props) => {
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn1"
-                      onClick={() => getPlaylist()}
+                      onClick={() => fetchSongSelect()}
                     />
 
                     <label

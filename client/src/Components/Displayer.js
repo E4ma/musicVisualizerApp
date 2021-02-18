@@ -5,9 +5,7 @@ import React, {
   useLayoutEffect,
   useContext,
 } from 'react'
-import axios from 'axios'
 import background from './Images/background1.jpg'
-import songList from './MediaInteractions/Playlist'
 import { PlaylistContext } from '../contexts/PlaylistContext'
 
 const UpdateWindowSize = () => {
@@ -29,74 +27,29 @@ let ctx, x_end, y_end, bar_height
 const bars = 900 //  max 1030 - leave it in 555
 const bar_width = 2 //  good in 1
 const radius = 0 // innercircle
-let audio
-let audioContext
-let source
-let analyser
-let frequency_array
-const createAudioContext = () => {
-  audio = new Audio()
-
-  audioContext = new (window.AudioContext || window.webkitAudioContext)()
-  source = audioContext.createMediaElementSource(audio)
-  analyser = audioContext.createAnalyser()
-  source.connect(analyser)
-  analyser.connect(audioContext.destination)
-  frequency_array = new Uint8Array(analyser.frequencyBinCount)
-}
 
 const Displayer = (props) => {
   const {
     songSelect,
-    setsongSelect,
     getSong,
-    getSongList,
     audio,
     frequency_array,
     audioContext,
     analyser,
   } = useContext(PlaylistContext)
+  //This is the state that lets us know what the current song loaded is
+  const [currentSong, setCurrentSong] = useState(-1)
+
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
+  //State for whether the song is playing or not
   const [isPaused, setIsPaused] = useState(true)
-  // const [songSelect, setsongSelect] = useState()
-  const [currentSong, setCurrentSong] = useState(-1)
+  //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
   const center_x = width / 2
   const center_y = height / 2
-  useEffect(() => {
-    if (rafId) {
-      cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(tick)
-    }
-  }, [sliderM, sliderN])
 
-  // const getSong = async (song) => {
-  //   createAudioContext()
-  //   const response = await axios.get(
-  //     `http://localhost:5000/upload/media/${song}`,
-  //     { responseType: 'blob' },
-  //   )
-  //   audio.src = URL.createObjectURL(response.data)
-  //   audio.load()
-  //   if (audio) {
-  //     togglePlay()
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const getSongList = async () => {
-  //     let res = await axios.get('http://localhost:5000/upload/list')
-  //     setsongSelect(res.data)
-  //     //console.log(setsongSelect)
-  //   }
-  //   getSongList()
-  // }, [])
-
-  useEffect(() => {
-    getSong()
-  }, [])
   function animationLooper(canvas) {
     canvas.width = width
     canvas.height = height
@@ -125,6 +78,7 @@ const Displayer = (props) => {
       drawBar(x, y, x_end, y_end, i, ctx, canvas)
     }
   }
+
   function drawBar(x1 = 0, y1 = 0, x2 = 0, y2 = 0, i, ctx) {
     i = (i + new Date().getTime() * 2) % 600 //  2 is an OK number,  600/6 =100 integer is good
     const gradient = ctx.createLinearGradient(x1, y1, x2, y2)
@@ -202,20 +156,29 @@ const Displayer = (props) => {
     ctx.stroke()
   }
 
-  //Plays Music
+  //Sets the function to toggle if a song is playing or not
   const togglePlay = () => {
-    // createAudioContext()
+    // Plays audio when called
+    console.log('Audio clicked in Displayer', audio)
     if (audio.paused) {
       audioContext.resume()
       audio.play()
       setIsPaused(false)
       rafId = requestAnimationFrame(tick)
     } else {
+      //pauses audio
       audio.pause()
       setIsPaused(true)
       cancelAnimationFrame(rafId)
     }
   }
+
+  useEffect(() => {
+    if (rafId) {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(tick)
+    }
+  }, [sliderM, sliderN])
 
   function tick() {
     animationLooper(canvas.current)
@@ -231,6 +194,7 @@ const Displayer = (props) => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="buttonWrapper">
+        {/* This is to play the previous song */}
         <button
           onClick={() => {
             if (audio && !isPaused) {
@@ -238,19 +202,24 @@ const Displayer = (props) => {
             }
             if (currentSong === 0) {
               setCurrentSong((curr) => songSelect.length - 1)
-              getSong(songSelect[songSelect.length - 1])
+              getSong(songSelect[songSelect.length - 1]).then(() =>
+                togglePlay(),
+              )
             } else {
               setCurrentSong((curr) => (curr - 1) % songSelect.length)
-              getSong(songSelect[(currentSong - 1) % songSelect.length])
+              getSong(
+                songSelect[(currentSong - 1) % songSelect.length],
+              ).then(() => togglePlay())
             }
-            //  togglePlay()
+            // togglePlay();
           }}
         >
           Previous
         </button>
-
+        {/* The play button */}
         <button
           onClick={() => {
+            //console.log('Is audio being called', audio)
             if (audio) {
               togglePlay()
             }
@@ -265,43 +234,27 @@ const Displayer = (props) => {
         >
           {isPaused ? 'Play' : 'Pause'}
         </button>
-
-        {/* <button
-          onClick={() => {
-            if (audio && !isPaused) {
-              togglePlay()
-            }
-            if(currentSong === 0) {
-              setCurrentSong(curr => (songSelect.length - 1))
-              getSong(songSelect[(songSelect.length - 1)])
-            } else{
-            setCurrentSong(curr => (curr - 1)%(songSelect.length))
-           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
-          //  togglePlay()
-          }}
-        >
-          Previous
-        </button> */}
-
+        {/* Plays the next song */}
         <button
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
             }
             setCurrentSong((curr) => (curr + 1) % songSelect.length)
-            getSong(songSelect[(currentSong + 1) % songSelect.length])
-            //  togglePlay()
+            getSong(
+              songSelect[(currentSong + 1) % songSelect.length],
+            ).then(() => togglePlay())
           }}
         >
           Next
         </button>
-
         {songSelect && (
           <select
             value={songSelect[currentSong]}
             onChange={(e) => {
               getSong(e.target.value)
-              setCurrentSong((e.target.selectedIndex - 1) % songSelect.length)
+              let foo = (e.target.selectedIndex - 1) % songSelect.length
+              setCurrentSong(foo)
             }}
           >
             {' '}
@@ -313,13 +266,7 @@ const Displayer = (props) => {
           </select>
         )}
       </div>
-      <div className="songInfoWrapper">
-        {/* Inserted by SN */}
-        {/* <div style={{ color: 'red' }}>{currentSong}</div> */}
-
-        {/* Removed by SN */}
-        {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
-      </div>
+      <div className="songInfoWrapper"></div>
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
       </div>
