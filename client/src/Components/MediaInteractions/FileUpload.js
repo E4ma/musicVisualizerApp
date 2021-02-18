@@ -70,15 +70,16 @@ const FileUpload = (props) => {
   if (props.mediatype === 'Audio') {
     return (
       // <Card style={{ width: '29rem', margin: '16px' }}>
-      <Card >
+      <Card style={{ height: '25rem' }}>
         <Card.Body className="modalUpload">
-          <Card.Title>{props.mediatype} Upload</Card.Title>
+          <Card.Title className="mb-2 text-muted">{props.mediatype} Upload</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             Select {props.mediatype} to Upload
           </Card.Subtitle>
           <Card.Text>
             <>
-              <div className="mb-2">
+              {/* <div className="mb-2"> */}
+              <div>
                 <form onSubmit={onSubmit}>
                   {/* <div className="input-group mb-4"> */}
                   <div >
@@ -86,7 +87,7 @@ const FileUpload = (props) => {
                       type="file"
                       // className="form-control mb-5"
                       className="modalUpload"
-                      id="inputGroupFile02"
+                      // id="inputGroupFile02"
                       accept={`${props.mediatype}/wav, ${props.mediatype}/mp3, ${props.mediatype}/mpeg`}
                       onChange={onChange}
                     />
@@ -97,32 +98,33 @@ const FileUpload = (props) => {
                       className="btn2"
                       onClick={() => getPlaylist()}
                     />
-
-                    <label
+                    {/* <label
                       className="id=inputGroupFile02"
                       htmlFor="inputGroupFile02"
-                    ></label>
+                    ></label> */}
+                    <Playlist uploadedFile={uploadedFile} />
                   </div>
                 </form>
               </div>
             </>
           </Card.Text>
         </Card.Body>
-        <Playlist uploadedFile={uploadedFile} />
+        {/* <Playlist uploadedFile={uploadedFile} /> */}
       </Card>
     )
   }
   if (props.mediatype === 'Background') {
     return (
-      <Card >
+      <Card style={{ height: '25rem' }}>
         <Card.Body className="modalUpload">
-          <Card.Title>{props.mediatype} Upload</Card.Title>
-          <Card.Subtitle  className="mb-2 text-muted">
+          <Card.Title className="mb-2 text-muted">{props.mediatype} Upload</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
             Select {props.mediatype} to Upload
           </Card.Subtitle>
           <Card.Text>
             <>
-              <div className="mb-2">
+              {/* <div className="mb-2"> */}
+              <div>
                 <form onSubmit={onSubmit}>
                   {/* <div className="input-group mb-3"> */}
                   <div>
@@ -130,7 +132,7 @@ const FileUpload = (props) => {
                       type="file"
                       // className="form-control mb-5"
                       className="modalUpload"
-                      id="inputGroupFile02"
+                      // id="inputGroupFile02"
                       accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
                       onChange={onChange}
                     />
@@ -141,10 +143,10 @@ const FileUpload = (props) => {
                       className="btn2"
                     />
 
-                    <label
+                    {/* <label
                       className="id=inputGroupFile02"
                       htmlFor="inputGroupFile02"
-                    ></label>
+                    ></label> */}
                   </div>
                 </form>
               </div>

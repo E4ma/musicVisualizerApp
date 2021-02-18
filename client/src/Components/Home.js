@@ -113,7 +113,7 @@ const Home = () => {
               <Tab.Pane eventKey="uploadAudio" mediatype="audio">
                 <Modal className="modalUpload" show={isOpen} onHide={hideModal}>
                   <FileUpload mediatype="Audio" />
-                  <button className="btn2" onClick={hideModal} > Cancel</button>
+                  <button className="btn2" onClick={hideModal}>Cancel</button>
                 </Modal>
               </Tab.Pane>
 

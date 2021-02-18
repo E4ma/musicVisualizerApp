@@ -1,20 +1,5 @@
-/* .color-nav{
-    background-color: rgb(15, 1, 1);
-} */
-/* Nav.Item {
-  margin: 40rem;
-} */
 
-/* html {
-  background: url(./Components/Images/hummingbirdbackground1.png) no-repeat
-    center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
-/* } */
 html {
-
   margin: 0;
   padding: 0;
   border: 0;
@@ -24,7 +9,6 @@ html {
   height: 800px;
   min-height: 500px;
   max-width: 100%;
-
 }
 
 body {
@@ -109,11 +93,14 @@ body {
   -o-background-size: cover;
   background-size: cover;
 } */
+
+
 .Abountscr {
   /* background-color:transparent !important; */
   color: blanchedalmond;
 }
 
+/* .card is used in visualizer .window */
 .card {
   /* top: 20px;
   right: 150px; */
@@ -229,12 +216,18 @@ canvas {
 .navItem {
   color:white !important;
 }
+
+/* used in Playlist in the upload modals */
 .playlistTab {
-  height: 60%;
+  /* height: 60%; */
+  height: 70%;
 }
+
+/* used in Playlist scroll window */
 .tabScroll {
   background-color: rgba(55, 86, 165, 0.6);
-  height: 80%;
+  /* height: 80%; */
+  height: 40%;
   overflow-y: scroll;
 }
 
@@ -283,7 +276,7 @@ canvas {
   }
 }
 
-
+/* this covers the upper part of the upload modal */
 .modalUpload {
-    background-color:  rgba(25, 176, 187, 0.2);
+    background-color:  rgba(25, 176, 187, 0.1);
 }
