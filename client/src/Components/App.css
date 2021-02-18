@@ -254,7 +254,7 @@ canvas {
     margin: 10px 1px;
     border-radius: 22px;
     /* width: 100%; */
-    font-size: 22px;
+    font-size: 21px;
 }
 
 /* :focus means when a button is clicked */
@@ -281,4 +281,9 @@ canvas {
     /* position: relative; */
     z-index: 10;
   }
+}
+
+
+.modalUpload {
+    background-color:  rgba(25, 176, 187, 0.2);
 }
