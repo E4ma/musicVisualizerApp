@@ -52,7 +52,7 @@ const Playlist = (props) => {
     <>
       <br />
       <Card.Body className="playlistTab">
-        <Card.Title>Playlist</Card.Title>
+        <Card.Title className="mb-2 text-muted">Playlist</Card.Title>
         <Card.Text className="tabScroll">
           <div>
             <ul
