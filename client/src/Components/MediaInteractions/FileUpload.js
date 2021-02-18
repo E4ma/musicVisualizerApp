@@ -9,8 +9,7 @@ const FileUpload = (props) => {
   const [file, setFile] = useState('')
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
-  const [currentUser, setCurrentUser] = useState('USR------1')
-  const [imagelist, setImagelist ] = useState([])
+  const [imagelist, setImagelist] = useState([])
   const [uploadedImage, setUploadedImage] = useState({})
   const [playlist, setPlaylist] = useState([])
 
