@@ -49,7 +49,14 @@ body {
 #nav-wrap #nav-item{
   padding: 8px 13px;
   font-size: 20px;
+  width: 100%;
 }
+
+/* #landingNav-wrap{
+  justify-content: center;
+ 
+} */
+
 
 .Card.Body {
   display: flex;
@@ -223,6 +230,25 @@ canvas {
 .btn1:hover {
   background-color: #2b62d8;
   color: rgb(5, 3, 3);
+}
+
+.navBtn {
+  background-color: black;
+  border-style: solid;
+  color: whitesmoke;
+  padding: 1px 20px;
+  text-align: center;
+  margin: 10px 1px;
+  border-radius: 22px;
+  /* width: 100%; */
+  font-size: 21px;
+  
+}
+
+.navBtn:hover {
+  background-color: #4DA8DA;
+  font-weight: bold;
+  color: black;
 }
 
 

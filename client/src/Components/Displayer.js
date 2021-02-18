@@ -44,6 +44,9 @@ const Displayer = (props) => {
   const [canvas, setCanvas] = useState(createRef())
   const [isPaused, setIsPaused] = useState(true)
   const [songSelect, setsongSelect] = useState()
+  const [pictureSelect, setpictureSelect] = useState()
+  const [currentPicture, setCurrentPicture] = useState(-1)
+  const [backgroundUrl, setBackgroundUrl] = useState()
   const [currentSong, setCurrentSong] = useState(-1)
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -314,6 +317,21 @@ const Displayer = (props) => {
           {songSelect &&
             songSelect.map((song) => {
               return <option value={song}>{song}</option>
+            })}
+        </select>}
+        {pictureSelect && 
+        <select
+        value ={pictureSelect[currentPicture]}
+          onChange={(e) => {
+            getPicture(e.target.value)
+            setCurrentPicture((e.target.selectedIndex - 1)%(pictureSelect.length))
+          }}
+        >
+          {' '}
+          <option>Pick an Image</option>
+          {pictureSelect &&
+            pictureSelect.map((picture) => {
+              return <option value={picture}>{picture}</option>
             })}
         </select>}
       </div>

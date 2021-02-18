@@ -50,7 +50,7 @@ const FileUpload = (props) => {
 				console.error(err.response.data.msg)
 			}
 		}
-	}
+	
 
     if (props.mediatype === 'Audio'){
       try {
@@ -261,6 +261,6 @@ const FileUpload = (props) => {
 			</Card.Body>
 		</Card>
 	)
-
+  }
 
 export default FileUpload

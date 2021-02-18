@@ -55,7 +55,7 @@ import Navigation from "./Navigation"
         </Card>
         <div className="w-100 text-center mt-2">
           <Button variant="link" onClick={handleLogout}>
-            Log Out
+            Sign Out
           </Button>
         </div>
 </div>

@@ -43,10 +43,9 @@ async function handleLogout() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-          <Nav.Item id="nav-item"><Link to="/About" style={{ color: 'white' }}>About</Link></Nav.Item>
           <Nav.Item id="nav-item"><Link to="/Home" style={{ color: 'white' }}>Editor</Link></Nav.Item>
           <Nav.Item id="nav-item"><Link to="/MyAccount" style={{ color: 'white' }}>Profile</Link></Nav.Item>
-          <Nav.Item id="nav-item" onClick={handleLogout}><Link style={{ color: 'white' }} >Logout</Link></Nav.Item>
+          <Nav.Item id="nav-item" onClick={handleLogout}><Link style={{ color: 'white' }} >Sign Out</Link></Nav.Item>
 
           </Nav>
         </Navbar.Collapse>

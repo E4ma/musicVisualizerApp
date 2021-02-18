@@ -25,12 +25,12 @@ function App(){
     <Router>
       <AuthProvider>
         <Switch>
-          <Route path="/About" component={About} />
+          <Route path="/Login" component={Login} />
           <PrivateRoute exact path="/MyAccount" component={Profile} />
           <PrivateRoute exact path="/Home" component={Editor} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <Route path="/signup" component={Signup} />
-          <Route path="/" component={Login} />
+          <Route path="/" component={About} />
           <Route path="/forgot-password" component={ForgotPassword} />
         </Switch>
       </AuthProvider>

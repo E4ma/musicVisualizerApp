@@ -2,7 +2,7 @@ import React from 'react'
 import { Nav, Modal, Jumbotron } from "react-bootstrap";
 import { Link } from "react-router-dom"
 // import Displayer from './Displayer'
-import Navigation from './Navigation'
+import LandingNav from './LandingNav'
 
 import vid1 from "./Vidoes/tunnel1.mp4";
 import vid2 from "./Vidoes/globe1.mp4";
@@ -13,7 +13,7 @@ const About = () => {
     return (
 
         <div>
-            <Navigation />
+            <LandingNav />
             <div>
                 <br></br>
                 <Modal.Dialog >
