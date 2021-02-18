@@ -32,7 +32,7 @@ const About = () => {
                     <br></br>
                     <p>
                         <Nav>
-                            <Nav.Item id="nav-item"><Link to="/Home" style={{ color: 'white' }}>
+                            <Nav.Item id="nav-item"><Link to="/Login" style={{ color: 'white' }}>
                                 <button className="btn2">Create</button>
                             </Link></Nav.Item>
                         </Nav>
