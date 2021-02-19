@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const Playlist = (props) => {
@@ -17,11 +17,12 @@ const Playlist = (props) => {
   return (
     <>
       <br />
-      <Card.Body className="playlistTab">
+      <Card.Body className="playlistTab" style={{ overflow: 'auto' }}>
         <Card.Title className="mb-2 text-muted">Playlist</Card.Title>
         <Card.Text className="tabScroll">
           <div>
-            <ul
+            <ListGroup
+              action
               onClick={(event) => {
                 getSong(event.target.firstChild.data)
                 // console.log(
@@ -33,12 +34,12 @@ const Playlist = (props) => {
               {songSelect?.map((song, index) => {
                 // console.log('This is the song with index', song, index)
                 return (
-                  <li key={index} value={song}>
+                  <ListGroup.Item key={index} value={song}>
                     {song}
-                  </li>
+                  </ListGroup.Item>
                 )
               })}
-            </ul>
+            </ListGroup>
           </div>
         </Card.Text>
       </Card.Body>

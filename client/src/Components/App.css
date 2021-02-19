@@ -1,4 +1,3 @@
-
 html {
   margin: 0;
   padding: 0;
@@ -24,12 +23,12 @@ body {
   /* <img ref="image" src={cheese} className="hidden" /> */
 }
 
-#nav-wrap{
+#nav-wrap {
   line-height: 15px;
   color: #fff;
 }
 
-#nav-wrap #nav-item{
+#nav-wrap #nav-item {
   padding: 8px 13px;
   font-size: 20px;
   width: 100%;
@@ -39,7 +38,6 @@ body {
   justify-content: center;
  
 } */
-
 
 .Card.Body {
   display: flex;
@@ -87,8 +85,9 @@ body {
   /* position: absolute; */
   display: flex;
 }
-.sliders > div {width: 3%;}
-
+.sliders > div {
+  width: 3%;
+}
 
 /* .Frontscr {
   background-image: url(./Components/Images/hummingbirdbackground1.png);
@@ -99,7 +98,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
 } */
-
 
 .Abountscr {
   /* background-color:transparent !important; */
@@ -113,7 +111,7 @@ body {
   /* border: 'solid'; */
   /* top: 20px;
   right: 150px; */
-  color: white;
+  color: rgb(0, 0, 0);
   /* background-color: transparent !important; */
   background-color: rgba(55, 86, 165, 0.2) !important;
   height: 70vh;
@@ -140,9 +138,9 @@ body {
   align-items: center;
 }
 
-#display-box{
-margin-right: 10px;
-padding-right: 5px;
+#display-box {
+  margin-right: 10px;
+  padding-right: 5px;
 }
 
 .iconWrapper {
@@ -156,7 +154,6 @@ padding-right: 5px;
 }
 .iconWrapper img {
   position: static;
-  
 }
 canvas {
   /* position: static;
@@ -179,15 +176,15 @@ canvas {
   z-index: 11;
 }
 
-#editor-cont{
+#editor-cont {
   margin: 10px;
   padding-right: 35px;
   padding-top: 15px;
 }
-#tab-nav{
+#tab-nav {
   margin-left: 0px;
 }
-#tab-cont{
+#tab-cont {
   background-color: transparent;
 }
 
@@ -203,7 +200,6 @@ canvas {
   font-size: 21px;
   /* font-weight: bold; */
 }
-
 
 /* :focus means when a button is clicked */
 .btn1:focus {
@@ -228,7 +224,6 @@ canvas {
   border-radius: 22px;
   /* width: 100%; */
   font-size: 21px;
-  
 }
 
 .navBtn:hover {
@@ -237,42 +232,45 @@ canvas {
   color: black;
 }
 
-
 .navItem {
-  color:white !important;
+  color: white !important;
 }
 
 /* used in Playlist in the upload modals */
-.playlistTab {
-  /* height: 60%; */
+/* .playlistTab {
   height: 70%;
-}
+} */
 
 /* used in Playlist scroll window */
-.tabScroll {
+
+/* .tabScroll {
   background-color: rgba(55, 86, 165, 0.6);
-  /* height: 80%; */
+ 
   height: 40%;
   overflow-y: scroll;
 }
+ */
+modal-content {
+  background-color: #2b62d8;
+}
 
-.aboutScrStyles{
-    margin-left: 10%;
-    margin-right: 10%;
-    background-color: transparent!important;
+.aboutScrStyles {
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: transparent !important;
 }
 
 /* .btn2 is used in About screen */
 .btn2 {
-    background-color: rgb(9, 82, 177);
-    border: none;
-    color: whitesmoke;
-    padding: 10px 20px;
-    text-align: center;
-    margin: 10px 1px;
-    border-radius: 22px;
-    /* width: 100%; */
-    font-size: 21px;
+  background-color: rgb(9, 82, 177);
+  border: none;
+  color: whitesmoke;
+  padding: 10px 20px;
+  text-align: center;
+  margin: 10px 1px;
+  border-radius: 22px;
+  /* width: 100%; */
+  font-size: 21px;
 }
 
 /* :focus means when a button is clicked */
@@ -303,21 +301,22 @@ canvas {
 
 /* this covers the upper part of the upload modal */
 .modalUpload {
-    background-color:  rgba(25, 176, 187, 0.1);
+  background-color: rgba(25, 176, 187, 0.1);
+  overflow: scroll;
 }
 
 .flex-column {
-  width:20%;
+  width: 20%;
 }
 
-@media (min-width: 576px){
+@media (min-width: 576px) {
   .d-inline-block {
-  width:130px;
-  height:30px;
-}
-.navbar-expand-sm .navbar-collapse {
-  flex-grow: 0;
-  display: flex!important;
-  flex-basis: auto;
-}
+    width: 130px;
+    height: 30px;
+  }
+  .navbar-expand-sm .navbar-collapse {
+    flex-grow: 0;
+    display: flex !important;
+    flex-basis: auto;
+  }
 }
