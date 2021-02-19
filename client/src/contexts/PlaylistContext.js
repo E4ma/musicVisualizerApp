@@ -15,7 +15,7 @@ const PlaylistContextProvider = (props) => {
   const createAudioContextSingleton = () => {
     if (!audio) {
       let a = new Audio()
-
+      console.log('This is a', a)
       let ac = new (window.AudioContext || window.webkitAudioContext)()
       let s = ac.createMediaElementSource(a)
       let analy = ac.createAnalyser()
@@ -33,6 +33,7 @@ const PlaylistContextProvider = (props) => {
 
   const getSong = async (song) => {
     // console.log(`This is in getSong(): (${song})`)
+
     createAudioContextSingleton()
     try {
       const response = await axios.request({
@@ -48,11 +49,13 @@ const PlaylistContextProvider = (props) => {
           response.data,
         )
       }
+      // console.log('PlaylistContext: Audio in getSong= ', audio)
+
       audio.src = URL.createObjectURL(response.data)
-      console.log('audio.src in PlaylistContext', audio.src)
+      console.log('PlaylistContext: audio.src', audio.src)
       audio.load()
     } catch (ex) {
-      console.error(`exception in getSong(): `, ex.message)
+      console.error(`PlaylistContext: exception in getSong(): `, ex.message)
     }
     // audio.play()
   }
@@ -63,7 +66,6 @@ const PlaylistContextProvider = (props) => {
     console.log('This is data', data)
 
     setsongSelect(data)
-    // console.log('This is the songSelect', songSelect)
   }
   // console.log(uploadedFile)
   //Returns a list of files saved

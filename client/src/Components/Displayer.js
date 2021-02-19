@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import background from './Images/background1.jpg'
 import { PlaylistContext } from '../contexts/PlaylistContext'
+import AudioControls from './Buttons/AudioControls'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -173,6 +174,38 @@ const Displayer = (props) => {
     }
   }
 
+  const prevTrack = () => {
+    if (audio && !isPaused) {
+      togglePlay()
+    }
+    if (currentSong === 0) {
+      setCurrentSong((curr) => songSelect.length - 1)
+      getSong(songSelect[songSelect.length - 1]).then(() => togglePlay())
+    } else {
+      setCurrentSong((curr) => (curr - 1) % songSelect.length)
+      getSong(songSelect[(currentSong - 1) % songSelect.length]).then(() =>
+        togglePlay(),
+      )
+    }
+  }
+
+  const playTrack = () => {
+    if (audio) {
+      togglePlay()
+      console.log('displayer: togglePlay clicked')
+    }
+  }
+
+  const nextTrack = () => {
+    if (audio && !isPaused) {
+      togglePlay()
+    }
+    setCurrentSong((curr) => (curr + 1) % songSelect.length)
+    getSong(songSelect[(currentSong + 1) % songSelect.length]).then(() =>
+      togglePlay(),
+    )
+  }
+
   useEffect(() => {
     if (rafId) {
       cancelAnimationFrame(rafId)
@@ -194,8 +227,15 @@ const Displayer = (props) => {
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="buttonWrapper">
+        <AudioControls
+          playTrack={playTrack}
+          onClickPrev={prevTrack}
+          onClickNext={nextTrack}
+          isPaused={isPaused}
+        />
         {/* This is to play the previous song */}
-        <button
+
+        {/* <button
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
@@ -217,7 +257,8 @@ const Displayer = (props) => {
           Previous
         </button>
         {/* The play button */}
-        <button
+
+        {/* <button 
           onClick={() => {
             //console.log('Is audio being called', audio)
             if (audio) {
@@ -235,7 +276,7 @@ const Displayer = (props) => {
           {isPaused ? 'Play' : 'Pause'}
         </button>
         {/* Plays the next song */}
-        <button
+        {/* <button 
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
@@ -247,7 +288,8 @@ const Displayer = (props) => {
           }}
         >
           Next
-        </button>
+        </button> */}
+
         {songSelect && (
           <select
             value={songSelect[currentSong]}

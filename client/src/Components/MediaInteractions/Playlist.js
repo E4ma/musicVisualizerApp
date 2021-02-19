@@ -24,14 +24,14 @@ const Playlist = (props) => {
             <ul
               onClick={(event) => {
                 getSong(event.target.firstChild.data)
-                console.log(
-                  'getSong clicked in playlist',
-                  event.target.firstChild.data,
-                )
+                // console.log(
+                //   'getSong clicked in playlist',
+                //   event.target.firstChild.data,
+                // )
               }}
             >
               {songSelect?.map((song, index) => {
-                console.log('This is the song with index', song, index)
+                // console.log('This is the song with index', song, index)
                 return (
                   <li key={index} value={song}>
                     {song}
