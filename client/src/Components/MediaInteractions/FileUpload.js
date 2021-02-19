@@ -106,7 +106,7 @@ const FileUpload = (props) => {
                       type="submit"
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
-                      className="btn1"
+                      className="btn2"
                       onClick={() => fetchSongSelect()}
                     />
                     {/* <label
