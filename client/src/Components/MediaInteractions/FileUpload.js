@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import Playlist from './Playlist'
 import ImageList from './ImageList'
+import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const FileUpload = (props) => {
   //Need to use a hook to set text in the label to the file namespace
@@ -12,6 +13,9 @@ const FileUpload = (props) => {
   const [imagelist, setImagelist] = useState([])
   const [uploadedImage, setUploadedImage] = useState({})
   const [playlist, setPlaylist] = useState([])
+  const [currentUser, setCurrentUser] = useState('USR------1')
+
+  const { setsongSelect } = useContext(PlaylistContext)
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -53,8 +57,7 @@ const FileUpload = (props) => {
 
   // Gets the playlist and sends to the Playlist Component
 
-  // Gets the playlist and sends to the Playlist Component
-  const getPlaylist = () => {
+  const fetchSongSelect = useCallback(() => {
     axios
       .get('http://localhost:5000/upload/list')
       .then((res) => {
@@ -63,12 +66,14 @@ const FileUpload = (props) => {
       })
       .then((playlist) => {
         // console.log('This is the playlist', playlist)
-        setPlaylist(playlist)
+        // console.log(`Playlist length in FileUpload`, playlist.length)
+        setsongSelect(playlist)
       })
-  }
+  }, [setsongSelect])
+
   useEffect(() => {
-    getPlaylist()
-  }, [uploadedFile])
+    fetchSongSelect()
+  }, [uploadedFile, fetchSongSelect])
 
   // If the Audio button is selected
   if (props.mediatype === 'Audio') {
@@ -76,7 +81,9 @@ const FileUpload = (props) => {
       // <Card style={{ width: '29rem', margin: '16px' }}>
       <Card style={{ height: '25rem' }}>
         <Card.Body className="modalUpload">
-          <Card.Title className="mb-2 text-muted">{props.mediatype} Upload</Card.Title>
+          <Card.Title className="mb-2 text-muted">
+            {props.mediatype} Upload
+          </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             Select {props.mediatype} to Upload
           </Card.Subtitle>
@@ -86,7 +93,7 @@ const FileUpload = (props) => {
               <div>
                 <form onSubmit={onSubmit}>
                   {/* <div className="input-group mb-4"> */}
-                  <div >
+                  <div>
                     <input
                       type="file"
                       // className="form-control mb-5"
@@ -99,8 +106,8 @@ const FileUpload = (props) => {
                       type="submit"
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
-                      className="btn2"
-                      onClick={() => getPlaylist()}
+                      className="btn1"
+                      onClick={() => fetchSongSelect()}
                     />
                     {/* <label
                       className="id=inputGroupFile02"
@@ -121,7 +128,9 @@ const FileUpload = (props) => {
     return (
       <Card style={{ height: '25rem' }}>
         <Card.Body className="modalUpload">
-          <Card.Title className="mb-2 text-muted">{props.mediatype} Upload</Card.Title>
+          <Card.Title className="mb-2 text-muted">
+            {props.mediatype} Upload
+          </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             Select {props.mediatype} to Upload
           </Card.Subtitle>

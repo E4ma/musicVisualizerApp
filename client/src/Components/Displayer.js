@@ -1,8 +1,16 @@
-import React, { createRef, useState, useEffect, useLayoutEffect } from 'react'
+import React, {
+  createRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useContext,
+} from 'react'
 import axios from 'axios'
 import background from './Images/background1.jpg'
-import songList from './MediaInteractions/Playlist'
-import pictureList from './MediaInteractions/ImageList'
+// import songList from './MediaInteractions/Playlist'
+// import pictureList from './MediaInteractions/ImageList'
+import { PlaylistContext } from '../contexts/PlaylistContext'
+import AudioControls from './Buttons/AudioControls'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -23,70 +31,43 @@ let ctx, x_end, y_end, bar_height
 const bars = 900 //  max 1030 - leave it in 555
 const bar_width = 2 //  good in 1
 const radius = 0 // innercircle
-let audio
-let audioContext
-let source
-let analyser
-let frequency_array
-const createAudioContext = () => {
-  audio = new Audio()
-
-  audioContext = new (window.AudioContext || window.webkitAudioContext)()
-  source = audioContext.createMediaElementSource(audio)
-  analyser = audioContext.createAnalyser()
-  source.connect(analyser)
-  analyser.connect(audioContext.destination)
-  frequency_array = new Uint8Array(analyser.frequencyBinCount)
-}
 
 const Displayer = (props) => {
+  const {
+    songSelect,
+    getSong,
+    audio,
+    frequency_array,
+    audioContext,
+    analyser,
+  } = useContext(PlaylistContext)
+  //This is the state that lets us know what the current song loaded is
+
   const [width, height] = UpdateWindowSize()
   const [canvas, setCanvas] = useState(createRef())
+  //State for whether the song is playing or not
   const [isPaused, setIsPaused] = useState(true)
-  const [songSelect, setsongSelect] = useState()
   const [pictureSelect, setpictureSelect] = useState()
   const [currentPicture, setCurrentPicture] = useState(-1)
-  const [backgroundUrl, setBackgroundUrl] = useState()
+  const [backgroundUrl, setBackgroundUrl] = useState(background)
   const [currentSong, setCurrentSong] = useState(-1)
+  //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
   const center_x = width / 2
   const center_y = height / 2
-  useEffect(() => {
-    if (rafId) {
-      cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(tick)
-    }
-  }, [sliderM, sliderN])
-
-  const getSong = async (song) => {
-    createAudioContext()
-    const response = await axios.get(
-      `http://localhost:5000/upload/media/${song}`,
-      { responseType: 'blob' },
-    )
-    //produces url for url
-    audio.src = URL.createObjectURL(response.data)
-    audio.load()
-    if (audio) {
-              togglePlay()
-            }
-    
-  }
 
   let picture
   const getPicture = async (picture) => {
-    
     const response = await axios.get(
       `http://localhost:5000/upload/image/${picture}`,
       { responseType: 'blob' },
     )
     console.log(response.data)
-  setBackgroundUrl(URL.createObjectURL(response.data))
-    
+    setBackgroundUrl(URL.createObjectURL(response.data))
+
     // picture.load()
     // let pictureURL = picture.src
-    
   }
 
   function animationLooper(canvas) {
@@ -101,7 +82,10 @@ const Displayer = (props) => {
       bar_height = frequency_array[i] * 2.5
       const x = center_x + Math.cos(rads * i) * radius
       const y = center_y + Math.sin(rads * i) * radius
-      x_end = center_x + Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) * (radius + bar_height)
+      x_end =
+        center_x +
+        Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) *
+          (radius + bar_height)
       y_end =
         center_y +
         Math.sin(rads * sliderM * i + (Math.PI / 640) * new Date()) *
@@ -114,6 +98,7 @@ const Displayer = (props) => {
       drawBar(x, y, x_end, y_end, i, ctx, canvas)
     }
   }
+
   function drawBar(x1 = 0, y1 = 0, x2 = 0, y2 = 0, i, ctx) {
     i = (i + new Date().getTime() * 2) % 600 //  2 is an OK number,  600/6 =100 integer is good
     const gradient = ctx.createLinearGradient(x1, y1, x2, y2)
@@ -191,35 +176,67 @@ const Displayer = (props) => {
     ctx.stroke()
   }
 
-  //Plays Music
+  //Sets the function to toggle if a song is playing or not
   const togglePlay = () => {
-    // createAudioContext()
+    // Plays audio when called
+    console.log('Audio clicked in Displayer', audio)
     if (audio.paused) {
       audioContext.resume()
       audio.play()
       setIsPaused(false)
       rafId = requestAnimationFrame(tick)
     } else {
+      //pauses audio
       audio.pause()
       setIsPaused(true)
       cancelAnimationFrame(rafId)
     }
   }
 
+  const prevTrack = () => {
+    if (audio && !isPaused) {
+      togglePlay()
+    }
+    if (currentSong === 0) {
+      setCurrentSong((curr) => songSelect.length - 1)
+      getSong(songSelect[songSelect.length - 1]).then(() => togglePlay())
+    } else {
+      setCurrentSong((curr) => (curr - 1) % songSelect.length)
+      getSong(songSelect[(currentSong - 1) % songSelect.length]).then(() =>
+        togglePlay(),
+      )
+    }
+  }
+
+  const playTrack = () => {
+    if (audio) {
+      togglePlay()
+      console.log('displayer: togglePlay clicked')
+    }
+  }
+
+  const nextTrack = () => {
+    if (audio && !isPaused) {
+      togglePlay()
+    }
+    setCurrentSong((curr) => (curr + 1) % songSelect.length)
+    getSong(songSelect[(currentSong + 1) % songSelect.length]).then(() =>
+      togglePlay(),
+    )
+  }
+
+  useEffect(() => {
+    if (rafId) {
+      cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(tick)
+    }
+  }, [sliderM, sliderN])
+
   function tick() {
     animationLooper(canvas.current)
     analyser.getByteTimeDomainData(frequency_array)
     rafId = requestAnimationFrame(tick)
   }
-
-  useEffect(() => {
-    const getSongList = async () => {
-      let res = await axios.get('http://localhost:5000/upload/list')
-      setsongSelect(res.data)
-      //console.log(setsongSelect)
-    }
-    getSongList()
-  },[])
 
   //console.log('This is the songList that is being imported', songList)
 
@@ -230,7 +247,7 @@ const Displayer = (props) => {
       //console.log(setsongSelect)
     }
     getPictureList()
-  },[])
+  }, [])
 
   return (
     <div
@@ -238,27 +255,40 @@ const Displayer = (props) => {
       style={{ backgroundImage: `url(${backgroundUrl})` }}
     >
       <div className="buttonWrapper">
-      <button
+        <AudioControls
+          playTrack={playTrack}
+          onClickPrev={prevTrack}
+          onClickNext={nextTrack}
+          isPaused={isPaused}
+        />
+        {/* This is to play the previous song */}
+
+        {/* <button
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
             }
-            if(currentSong === 0) {
-              setCurrentSong(curr => (songSelect.length - 1))
-              getSong(songSelect[(songSelect.length - 1)])
-            } else{
-            setCurrentSong(curr => (curr - 1)%(songSelect.length))
-           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
-          //  togglePlay()
+            if (currentSong === 0) {
+              setCurrentSong((curr) => songSelect.length - 1)
+              getSong(songSelect[songSelect.length - 1]).then(() =>
+                togglePlay(),
+              )
+            } else {
+              setCurrentSong((curr) => (curr - 1) % songSelect.length)
+              getSong(
+                songSelect[(currentSong - 1) % songSelect.length],
+              ).then(() => togglePlay())
+            }
+            // togglePlay();
           }}
         >
           Previous
         </button>
+        {/* The play button */}
 
-
-
-        <button
+        {/* <button 
           onClick={() => {
+            //console.log('Is audio being called', audio)
             if (audio) {
               togglePlay()
             }
@@ -273,32 +303,16 @@ const Displayer = (props) => {
         >
           {isPaused ? 'Play' : 'Pause'}
         </button>
-
-        {/* <button
+        {/* Plays the next song 
+         <button 
           onClick={() => {
             if (audio && !isPaused) {
               togglePlay()
             }
-            if(currentSong === 0) {
-              setCurrentSong(curr => (songSelect.length - 1))
-              getSong(songSelect[(songSelect.length - 1)])
-            } else{
-            setCurrentSong(curr => (curr - 1)%(songSelect.length))
-           getSong(songSelect[(currentSong - 1)%(songSelect.length)])}
-          //  togglePlay()
-          }}
-        >
-          Previous
-        </button> */}
-
-        <button
-          onClick={() => {
-            if (audio && !isPaused) {
-              togglePlay()
-            }
-            setCurrentSong(curr => (curr + 1)%(songSelect.length))
-           getSong(songSelect[(currentSong + 1)%(songSelect.length)])
-          //  togglePlay()
+            setCurrentSong((curr) => (curr + 1) % songSelect.length)
+            getSong(
+              songSelect[(currentSong + 1) % songSelect.length],
+            ).then(() => togglePlay())
           }}
         >
           Next
@@ -318,30 +332,47 @@ const Displayer = (props) => {
             songSelect.map((song) => {
               return <option value={song}>{song}</option>
             })}
-        </select>}
-        {pictureSelect && 
-        <select
-        value ={pictureSelect[currentPicture]}
-          onChange={(e) => {
-            getPicture(e.target.value)
-            setCurrentPicture((e.target.selectedIndex - 1)%(pictureSelect.length))
-          }}
-        >
-          {' '}
-          <option>Pick an Image</option>
-          {pictureSelect &&
-            pictureSelect.map((picture) => {
-              return <option value={picture}>{picture}</option>
-            })}
-        </select>}
+         </select>} */}
+        {pictureSelect && (
+          <select
+            value={pictureSelect[currentPicture]}
+            onChange={(e) => {
+              getPicture(e.target.value)
+              setCurrentPicture(
+                (e.target.selectedIndex - 1) % pictureSelect.length,
+              )
+            }}
+          >
+            {' '}
+            <option>Pick an Image</option>
+            {pictureSelect &&
+              pictureSelect.map((picture) => {
+                return <option value={picture}>{picture}</option>
+              })}
+          </select>
+        )}
       </div>
       <div className="songInfoWrapper">
-        {/* Inserted by SN */}
-        {/* <div style={{ color: 'red' }}>{currentSong}</div> */}
-
-        {/* Removed by SN */}
-        {/* < h3 style={{ color: textColor }}>{songName}</h3> */}
+        <div style={{ color: 'red' }}>{currentSong}</div>
+        {songSelect && (
+          <select
+            value={songSelect[currentSong]}
+            onChange={(e) => {
+              getSong(e.target.value)
+              let foo = (e.target.selectedIndex - 1) % songSelect.length
+              setCurrentSong(foo)
+            }}
+          >
+            {' '}
+            <option>Choose A Song</option>
+            {songSelect &&
+              songSelect.map((song) => {
+                return <option value={song}>{song}</option>
+              })}
+          </select>
+        )}
       </div>
+      <div className="songInfoWrapper"></div>
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
       </div>
