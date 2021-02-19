@@ -4,7 +4,8 @@ import axios from 'axios'
 export const PlaylistContext = createContext()
 
 const PlaylistContextProvider = (props) => {
-  const [songSelect, setsongSelect] = useState([])
+  const [songList, setSongList] = useState([])
+  const [songName, setSongName] = useState('')
   const [audio, setAudio] = useState()
   const [audioContext, setAudioContext] = useState()
   const [source, setSource] = useState()
@@ -31,13 +32,21 @@ const PlaylistContextProvider = (props) => {
     }
   }
 
-  const getSong = async (song) => {
-    // console.log(`This is in getSong(): (${song})`)
+  const getSong = (song) => {
+    if (!audio) {
+      createAudioContextSingleton()
+      console.log('this is createAudioSingleton', audio)
+    }
+    setSongName(song)
+    console.log('songName', songName)
+  }
 
-    createAudioContextSingleton()
+  const loadSongIntoAudio = async () => {
+    if (!songName || !audio) return
+    console.log('PlaylistContext: ', songName)
     try {
       const response = await axios.request({
-        url: `http://localhost:5000/upload/media/${song}`,
+        url: `http://localhost:5000/upload/media/${songName}`,
         responseType: 'blob',
         method: 'GET',
       })
@@ -65,7 +74,7 @@ const PlaylistContextProvider = (props) => {
     const data = res.data
     console.log('This is data', data)
 
-    setsongSelect(data)
+    setSongList(data)
   }
   // console.log(uploadedFile)
   //Returns a list of files saved
@@ -73,14 +82,19 @@ const PlaylistContextProvider = (props) => {
     getSongList()
   }, [])
 
+  useEffect(() => {
+    loadSongIntoAudio()
+  }, [songName, audio])
+
   return (
     <PlaylistContext.Provider
       value={{
         createAudioContextSingleton,
-        songSelect,
-        setsongSelect,
+        songList,
+        setSongList,
         getSong,
         getSongList,
+        loadSongIntoAudio,
         audio,
         frequency_array,
         audioContext,

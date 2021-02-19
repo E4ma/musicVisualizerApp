@@ -34,8 +34,9 @@ const radius = 0 // innercircle
 
 const Displayer = (props) => {
   const {
-    songSelect,
+    songList,
     getSong,
+    loadSongIntoAudio,
     audio,
     frequency_array,
     audioContext,
@@ -50,7 +51,7 @@ const Displayer = (props) => {
   const [pictureSelect, setpictureSelect] = useState()
   const [currentPicture, setCurrentPicture] = useState(-1)
   const [backgroundUrl, setBackgroundUrl] = useState(background)
-  const [currentSong, setCurrentSong] = useState(-1)
+  const [currentSong, setCurrentSong] = useState()
   //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -198,11 +199,11 @@ const Displayer = (props) => {
       togglePlay()
     }
     if (currentSong === 0) {
-      setCurrentSong((curr) => songSelect.length - 1)
-      getSong(songSelect[songSelect.length - 1]).then(() => togglePlay())
+      setCurrentSong((curr) => songList.length - 1)
+      getSong(songList[songList.length - 1]).then(() => togglePlay())
     } else {
-      setCurrentSong((curr) => (curr - 1) % songSelect.length)
-      getSong(songSelect[(currentSong - 1) % songSelect.length]).then(() =>
+      setCurrentSong((curr) => (curr - 1) % songList.length)
+      getSong(songList[(currentSong - 1) % songList.length]).then(() =>
         togglePlay(),
       )
     }
@@ -219,8 +220,8 @@ const Displayer = (props) => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    setCurrentSong((curr) => (curr + 1) % songSelect.length)
-    getSong(songSelect[(currentSong + 1) % songSelect.length]).then(() =>
+    setCurrentSong((curr) => (curr + 1) % songList.length)
+    getSong(songList[(currentSong + 1) % songList.length]).then(() =>
       togglePlay(),
     )
   }
@@ -244,7 +245,7 @@ const Displayer = (props) => {
     const getPictureList = async () => {
       let res = await axios.get('http://localhost:5000/upload/backgroundList')
       setpictureSelect(res.data)
-      //console.log(setsongSelect)
+      //console.log(setSongList)
     }
     getPictureList()
   }, [])
@@ -283,19 +284,20 @@ const Displayer = (props) => {
       </div>
       <div className="songInfoWrapper">
         <div style={{ color: 'red' }}>{currentSong}</div>
-        {songSelect && (
+        {songList && (
           <select
-            value={songSelect[currentSong]}
+            value={songList[currentSong]}
             onChange={(e) => {
+              console.log('e', e.target.value)
               getSong(e.target.value)
-              let foo = (e.target.selectedIndex - 1) % songSelect.length
+              let foo = (e.target.selectedIndex - 1) % songList.length
               setCurrentSong(foo)
             }}
           >
             {' '}
             <option>Choose A Song</option>
-            {songSelect &&
-              songSelect.map((song) => {
+            {songList &&
+              songList.map((song) => {
                 return <option value={song}>{song}</option>
               })}
           </select>

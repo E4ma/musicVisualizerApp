@@ -3,16 +3,7 @@ import { Card, ListGroup } from 'react-bootstrap'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const Playlist = (props) => {
-  const {
-    songSelect,
-    getSong,
-    // setsongSelect,
-    // getSongList,
-    // audio,
-    // frequency_array,
-    // audioContext,
-    // analyser,
-  } = useContext(PlaylistContext)
+  const { songList, getSong, loadSongIntoAudio } = useContext(PlaylistContext)
 
   return (
     <>
@@ -24,14 +15,11 @@ const Playlist = (props) => {
             <ListGroup
               action
               onClick={(event) => {
-                getSong(event.target.firstChild.data)
-                // console.log(
-                //   'getSong clicked in playlist',
-                //   event.target.firstChild.data,
-                // )
+                loadSongIntoAudio(event.target.firstChild.data)
+                console.log('getSong clicked in playlist', event)
               }}
             >
-              {songSelect?.map((song, index) => {
+              {songList?.map((song, index) => {
                 // console.log('This is the song with index', song, index)
                 return (
                   <ListGroup.Item key={index} value={song}>
