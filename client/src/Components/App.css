@@ -5,7 +5,6 @@ html {
   border: 0;
   outline: 0;
   background: transparent;
-  overflow: hidden;
   height: 800px;
   min-height: 500px;
   max-width: 100%;
@@ -57,7 +56,7 @@ body {
   /* top: 40px;
   left: 20vw; */
   /* height: calc(60vh); */
-  width: auto;
+  width: 70vw;
 }
 
 /* .display {
@@ -83,7 +82,7 @@ body {
   appearance: none;
 }
 .sliders {
-  width: 60vw;
+  width: 70vw;
   /* bottom: -60px; */
   /* position: absolute; */
   display: flex;
@@ -123,7 +122,7 @@ body {
 .nav {
   /* display: flex;
   justify-content: flex-end; */
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 350px;
 }
 
@@ -151,7 +150,7 @@ padding-right: 5px;
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -40vh;
+  margin-top: -45vh;
   position: relative;
   z-index: 10;
 }
@@ -305,4 +304,20 @@ canvas {
 /* this covers the upper part of the upload modal */
 .modalUpload {
     background-color:  rgba(25, 176, 187, 0.1);
+}
+
+.flex-column {
+  width:20%;
+}
+
+@media (min-width: 576px){
+  .d-inline-block {
+  width:130px;
+  height:30px;
+}
+.navbar-expand-sm .navbar-collapse {
+  flex-grow: 0;
+  display: flex!important;
+  flex-basis: auto;
+}
 }
