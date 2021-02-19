@@ -40,15 +40,19 @@ body {
 background-image: url(./Images/navWave.svg);
 background-repeat: no-repeat, repeat;
 background-size: cover;
-height: 300px;
+height: 400px;
 }
 
 .navContainer{
-  margin-top: -210px;
+  margin-top: -330px;
 }
 
 .signinContainer{
-  margin-top: -160px;
+  margin-top: -230px;
+}
+
+.landingContainer{
+  margin-top: -210px;
 }
 
 .signinWrapper{

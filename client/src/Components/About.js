@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav, Modal, Jumbotron } from "react-bootstrap";
+import { Nav, Modal, Jumbotron, Container } from "react-bootstrap";
 import { Link } from "react-router-dom"
 // import Displayer from './Displayer'
 import LandingNav from './LandingNav'
@@ -14,8 +14,8 @@ const About = () => {
 
         <div>
             <LandingNav />
+            <Container className="landingContainer">
             <div>
-                <br></br>
                 <Modal.Dialog >
                     <video src={vid1}
                         controls autoPlay loop
@@ -23,22 +23,20 @@ const About = () => {
                 </Modal.Dialog>
             </div>
 
-            <div>
-                <Jumbotron className='aboutScrStyles' >
+            <div className='aboutScrStyles'>
+                
                     <h1>Turn your music into a visual!</h1>
-                    <br></br>
                     <h4>HummingBird makes it fast and easy to create your </h4>
                     <h4>own custom visualizers..</h4>
-                    <br></br>
-                    <p>
-                        <Nav>
-                            <Nav.Item id="nav-item"><Link to="/Login" style={{ color: 'white' }}>
+                    
+                      
+                            <Link to="/Login" style={{ color: 'white' }}>
                                 <button className="btn2">Create</button>
-                            </Link></Nav.Item>
-                        </Nav>
-                    </p>
-                </Jumbotron>
+                            </Link>
+                        
+                    
             </div >
+            </Container>
         </div>
 
     )
