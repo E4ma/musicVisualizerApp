@@ -261,78 +261,7 @@ const Displayer = (props) => {
           onClickNext={nextTrack}
           isPaused={isPaused}
         />
-        {/* This is to play the previous song */}
 
-        {/* <button
-          onClick={() => {
-            if (audio && !isPaused) {
-              togglePlay()
-            }
-            if (currentSong === 0) {
-              setCurrentSong((curr) => songSelect.length - 1)
-              getSong(songSelect[songSelect.length - 1]).then(() =>
-                togglePlay(),
-              )
-            } else {
-              setCurrentSong((curr) => (curr - 1) % songSelect.length)
-              getSong(
-                songSelect[(currentSong - 1) % songSelect.length],
-              ).then(() => togglePlay())
-            }
-            // togglePlay();
-          }}
-        >
-          Previous
-        </button>
-        {/* The play button */}
-
-        {/* <button 
-          onClick={() => {
-            //console.log('Is audio being called', audio)
-            if (audio) {
-              togglePlay()
-            }
-          }}
-          style={{
-            width: '150px',
-            backgroundColor: isPaused
-              ? // this is the play/pause button colors
-                'yellow'
-              : 'green',
-          }}
-        >
-          {isPaused ? 'Play' : 'Pause'}
-        </button>
-        {/* Plays the next song 
-         <button 
-          onClick={() => {
-            if (audio && !isPaused) {
-              togglePlay()
-            }
-            setCurrentSong((curr) => (curr + 1) % songSelect.length)
-            getSong(
-              songSelect[(currentSong + 1) % songSelect.length],
-            ).then(() => togglePlay())
-          }}
-        >
-          Next
-        </button>
-
-        {songSelect && 
-        <select
-        value ={songSelect[currentSong]}
-          onChange={(e) => {
-            getSong(e.target.value)
-            setCurrentSong((e.target.selectedIndex - 1)%(songSelect.length))
-          }}
-        >
-          {' '}
-          <option>Choose A Song</option>
-          {songSelect &&
-            songSelect.map((song) => {
-              return <option value={song}>{song}</option>
-            })}
-         </select>} */}
         {pictureSelect && (
           <select
             value={pictureSelect[currentPicture]}
