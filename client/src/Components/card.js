@@ -26,7 +26,7 @@ const styles = {
     }
 };
 
-const Card = () => {
+const CardComp = () => {
     return (
         <>
             {/* each card has name of visualizer & edit button to take user to page that allows user edit visualizer to his liking */}
@@ -41,4 +41,4 @@ const Card = () => {
     )
 };
 
-export default Card;
+export default CardComp;

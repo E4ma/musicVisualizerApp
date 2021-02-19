@@ -6,7 +6,7 @@ import wave from './Images/navWave.svg'
 // import pic from './Logo1sn.png'
 
 
-const LandingNav = () => {
+const SigninNav = () => {
 
 
   return (
@@ -27,7 +27,7 @@ const LandingNav = () => {
         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" >
           <Nav fill >
 
-          <Nav.Item><Link to="/Login" className="navBtn">Sign In</Link></Nav.Item>
+          <Nav.Item><Link to="/Signup" className="navBtn">Sign Up</Link></Nav.Item>
 
           </Nav>
         </Navbar.Collapse>
@@ -39,4 +39,4 @@ const LandingNav = () => {
   )
 }
 
-export default LandingNav
+export default SigninNav
