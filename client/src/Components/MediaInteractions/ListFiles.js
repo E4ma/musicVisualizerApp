@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Card, ListGroup } from 'react-bootstrap'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
-const Playlist = (props) => {
+const ListFiles = ({ audio, background }) => {
   const { songList, loadSongIntoAudio } = useContext(PlaylistContext)
 
   return (
@@ -22,8 +22,8 @@ const Playlist = (props) => {
               {songList?.map((song, index) => {
                 // console.log('This is the song with index', song, index)
                 return (
-                  <ListGroup.Item key={index} value={song}>
-                    {song}
+                  <ListGroup.Item key={index} value={(song, picture)}>
+                    {(song, picture)}
                   </ListGroup.Item>
                 )
               })}
@@ -35,4 +35,4 @@ const Playlist = (props) => {
   )
 }
 
-export default Playlist
+export default ListFiles

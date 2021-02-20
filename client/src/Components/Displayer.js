@@ -34,10 +34,8 @@ const radius = 0 // innercircle
 
 const Displayer = (props) => {
   const {
-    songName,
     songList,
     getSong,
-    loadSongIntoAudio,
     audio,
     frequency_array,
     audioContext,
@@ -49,8 +47,8 @@ const Displayer = (props) => {
   const [canvas, setCanvas] = useState(createRef())
   //State for whether the song is playing or not
   const [isPaused, setIsPaused] = useState(true)
-  const [pictureSelect, setpictureSelect] = useState()
-  const [currentPicture, setCurrentPicture] = useState(-1)
+  const [listOfPictures, setListOfPictures] = useState()
+  const [currentPictureIndex, setCurrentPictureIndex] = useState(-1)
   const [backgroundUrl, setBackgroundUrl] = useState(background)
   const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   //Slider for changing peak lengths
@@ -194,7 +192,11 @@ const Displayer = (props) => {
       cancelAnimationFrame(rafId)
     }
   }
-
+  const playTrack = () => {
+    if (audio) {
+      togglePlay()
+    }
+  }
   const prevTrack = () => {
     if (audio && !isPaused) {
       togglePlay()
@@ -205,12 +207,6 @@ const Displayer = (props) => {
     } else {
       setCurrentSongIndex((curr) => (curr - 1) % songList.length)
       getSong(songList[(currentSongIndex - 1) % songList.length])
-    }
-  }
-
-  const playTrack = () => {
-    if (audio) {
-      togglePlay()
     }
   }
 
@@ -240,7 +236,7 @@ const Displayer = (props) => {
   useEffect(() => {
     const getPictureList = async () => {
       let res = await axios.get('http://localhost:5000/upload/backgroundList')
-      setpictureSelect(res.data)
+      setListOfPictures(res.data)
       //console.log(setSongList)
     }
     getPictureList()
@@ -259,20 +255,20 @@ const Displayer = (props) => {
           isPaused={isPaused}
         />
 
-        {pictureSelect && (
+        {listOfPictures && (
           <select
-            value={pictureSelect[currentPicture]}
+            value={listOfPictures[currentPictureIndex]}
             onChange={(e) => {
               getPicture(e.target.value)
-              setCurrentPicture(
-                (e.target.selectedIndex - 1) % pictureSelect.length,
+              setCurrentPictureIndex(
+                (e.target.selectedIndex - 1) % listOfPictures.length,
               )
             }}
           >
             {' '}
             <option>Pick an Image</option>
-            {pictureSelect &&
-              pictureSelect.map((picture) => {
+            {listOfPictures &&
+              listOfPictures.map((picture) => {
                 return <option value={picture}>{picture}</option>
               })}
           </select>
@@ -303,6 +299,7 @@ const Displayer = (props) => {
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
       </div>
+
       <div className="sliders">
         {' '}
         <div>{sliderM}</div>
