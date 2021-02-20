@@ -15,7 +15,7 @@ const FileUpload = (props) => {
   const [playlist, setPlaylist] = useState([])
   const [currentUser, setCurrentUser] = useState('USR------1')
 
-  const { setsongSelect } = useContext(PlaylistContext)
+  const { setSongList } = useContext(PlaylistContext)
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -67,9 +67,9 @@ const FileUpload = (props) => {
       .then((playlist) => {
         // console.log('This is the playlist', playlist)
         // console.log(`Playlist length in FileUpload`, playlist.length)
-        setsongSelect(playlist)
+        setSongList(playlist)
       })
-  }, [setsongSelect])
+  }, [setSongList])
 
   useEffect(() => {
     fetchSongSelect()
@@ -106,7 +106,7 @@ const FileUpload = (props) => {
                       type="submit"
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
-                      className="btn1"
+                      className="btn2"
                       onClick={() => fetchSongSelect()}
                     />
                     {/* <label
