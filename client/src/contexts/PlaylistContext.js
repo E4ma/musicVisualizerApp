@@ -11,6 +11,9 @@ const PlaylistContextProvider = (props) => {
   const [source, setSource] = useState()
   const [analyser, setAnalyser] = useState()
   const [frequency_array, setFrequency_array] = useState()
+  const [duration, setDuration] = useState()
+  const [curTime, setCurTime] = useState()
+  const [clickedTime, setClickedTime] = useState()
 
   // createAudioContextSingleton runs the file only once not again and again
   const createAudioContextSingleton = () => {

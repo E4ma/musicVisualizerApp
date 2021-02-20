@@ -49,11 +49,13 @@ body {
 .audioControlBackground {
   /* background-image: url(./Components/Images/background1.jpg); */
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+
   /* align-self: center; */
   /* top: 40px;
   left: 20vw; */
-  /* height: calc(60vh); */
+  height: 78vh;
   width: 70vw;
 }
 
@@ -133,6 +135,7 @@ body {
 
 .visualizer {
   display: flex;
+  flex-direction: column;
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -159,8 +162,11 @@ canvas {
   /* position: static;
   justify-content: center;
   align-items: center; */
+  padding: 10px;
+  position: relative;
+  margin-top: -65px;
   width: 100%;
-  height: 60vh;
+  height: 30rem;
   z-index: 1;
 }
 
