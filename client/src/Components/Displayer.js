@@ -34,6 +34,7 @@ const radius = 0 // innercircle
 
 const Displayer = (props) => {
   const {
+    songName,
     songList,
     getSong,
     loadSongIntoAudio,
@@ -51,7 +52,7 @@ const Displayer = (props) => {
   const [pictureSelect, setpictureSelect] = useState()
   const [currentPicture, setCurrentPicture] = useState(-1)
   const [backgroundUrl, setBackgroundUrl] = useState(background)
-  const [currentSong, setCurrentSong] = useState()
+  const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -198,21 +199,18 @@ const Displayer = (props) => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    if (currentSong === 0) {
-      setCurrentSong((curr) => songList.length - 1)
-      getSong(songList[songList.length - 1]).then(() => togglePlay())
+    if (currentSongIndex === 0) {
+      setCurrentSongIndex((curr) => songList.length - 1)
+      getSong(songList[songList.length - 1])
     } else {
-      setCurrentSong((curr) => (curr - 1) % songList.length)
-      getSong(songList[(currentSong - 1) % songList.length]).then(() =>
-        togglePlay(),
-      )
+      setCurrentSongIndex((curr) => (curr - 1) % songList.length)
+      getSong(songList[(currentSongIndex - 1) % songList.length])
     }
   }
 
   const playTrack = () => {
     if (audio) {
       togglePlay()
-      console.log('displayer: togglePlay clicked')
     }
   }
 
@@ -220,10 +218,8 @@ const Displayer = (props) => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    setCurrentSong((curr) => (curr + 1) % songList.length)
-    getSong(songList[(currentSong + 1) % songList.length]).then(() =>
-      togglePlay(),
-    )
+    setCurrentSongIndex((curr) => (curr + 1) % songList.length)
+    getSong(songList[(currentSongIndex + 1) % songList.length])
   }
 
   useEffect(() => {
@@ -283,15 +279,15 @@ const Displayer = (props) => {
         )}
       </div>
       <div className="songInfoWrapper">
-        <div style={{ color: 'red' }}>{currentSong}</div>
+        <div style={{ color: 'red' }}>{currentSongIndex}</div>
         {songList && (
           <select
-            value={songList[currentSong]}
+            value={songList[currentSongIndex]}
             onChange={(e) => {
               console.log('e', e.target.value)
               getSong(e.target.value)
               let foo = (e.target.selectedIndex - 1) % songList.length
-              setCurrentSong(foo)
+              setCurrentSongIndex(foo)
             }}
           >
             {' '}

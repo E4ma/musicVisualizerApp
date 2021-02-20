@@ -38,12 +38,12 @@ const PlaylistContextProvider = (props) => {
       console.log('this is createAudioSingleton', audio)
     }
     setSongName(song)
-    console.log('songName', songName)
+    console.log('PlaylistContext: songName', songName)
   }
 
   const loadSongIntoAudio = async () => {
     if (!songName || !audio) return
-    console.log('PlaylistContext: ', songName)
+
     try {
       const response = await axios.request({
         url: `http://localhost:5000/upload/media/${songName}`,
@@ -90,6 +90,7 @@ const PlaylistContextProvider = (props) => {
     <PlaylistContext.Provider
       value={{
         createAudioContextSingleton,
+        songName,
         songList,
         setSongList,
         getSong,
