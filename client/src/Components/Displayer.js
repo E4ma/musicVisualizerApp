@@ -279,7 +279,7 @@ const Displayer = (props) => {
         )}
       </div>
       <div className="songInfoWrapper">
-        <div style={{ color: 'red' }}>{currentSongIndex}</div>
+        <div style={{ color: 'red' }}>{songName}</div>
         {songList && (
           <select
             value={songList[currentSongIndex]}
