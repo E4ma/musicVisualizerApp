@@ -5,6 +5,7 @@ import React, {
   useLayoutEffect,
   useContext,
 } from 'react'
+import { Fragment } from 'react-bootstrap'
 import axios from 'axios'
 import background from './Images/background1.jpg'
 // import songList from './MediaInteractions/Playlist'
@@ -275,7 +276,7 @@ const Displayer = (props) => {
         )}
       </div>
       <div className="songInfoWrapper">
-        <div style={{ color: 'red' }}>{currentSongIndex}</div>
+        <div style={{ color: 'red' }}>{songList[currentSongIndex]}</div>
         {songList && (
           <select
             value={songList[currentSongIndex]}
@@ -295,7 +296,7 @@ const Displayer = (props) => {
           </select>
         )}
       </div>
-      <div className="songInfoWrapper"></div>
+
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
       </div>

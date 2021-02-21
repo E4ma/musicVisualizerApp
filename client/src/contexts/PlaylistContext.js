@@ -45,7 +45,10 @@ const PlaylistContextProvider = (props) => {
   }
 
   const loadSongIntoAudio = async () => {
-    if (!songName || !audio) return
+    if (!songName || !audio) {
+      console.log('nothing here')
+      return
+    }
 
     try {
       const response = await axios.request({
@@ -89,11 +92,38 @@ const PlaylistContextProvider = (props) => {
     loadSongIntoAudio()
   }, [songName, audio])
 
+  //Scrollbar
+  // useEffect(() => {
+  //   const setAudiodata = () => {
+  //     setDuration(audio.duration)
+  //     setCurTime(audio.currentTime)
+  //   }
+
+  //   const setAudioTime = () => {
+  //     setCurTime(audio.currentTime)
+  //   }
+
+  //   audio.addEventListener('loadeddata', setAudioData)
+  //   audio.addEventListener('timeupdate', setAudioTime)
+
+  //   playing ? audio.play() : audio.pause()
+
+  //   if (clickedTime && clickedTime !== curTime) {
+  //     audio.currentTime = clickedTime
+  //     setClickedTime(null)
+  //   }
+
+  //   return () => {
+  //     audio.removeEventListener('loadeddata', setAudioData)
+  //     audio.removeEventListener('timeupdate', setAudioTime)
+  //   }
+  // }, [])
   return (
     <PlaylistContext.Provider
       value={{
         createAudioContextSingleton,
         songName,
+        setSongName,
         songList,
         setSongList,
         getSong,

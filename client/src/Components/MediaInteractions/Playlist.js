@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Card, ListGroup } from 'react-bootstrap'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const Playlist = (props) => {
-  const { songList, loadSongIntoAudio } = useContext(PlaylistContext)
-
+  const { getSong, songList, loadSongIntoAudio } = useContext(PlaylistContext)
+  // const [songName, setSongName] = useState('')
   return (
     <>
       <br />
@@ -15,8 +15,12 @@ const Playlist = (props) => {
             <ListGroup
               action
               onClick={(event) => {
-                loadSongIntoAudio(event.target.firstChild.data)
-                console.log('getSong clicked in playlist', event)
+                // setSongName(event.target.firstChild.data)
+                getSong(event.target.firstChild.data)
+                console.log(
+                  'getSong clicked in playlist',
+                  event.target.firstChild.data,
+                )
               }}
             >
               {songList?.map((song, index) => {
