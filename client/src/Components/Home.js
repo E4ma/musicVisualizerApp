@@ -18,12 +18,21 @@ const Home = () => {
   }
 
   // This is for controlling the Modal window (BACKGROUND)
-  const [BackModelOpen, setBackModelOpen] = useState(false)
+  const [BackModalOpen, setBackModalOpen] = useState(false)
   const showBackModal = () => {
-    setBackModelOpen(true)
+    setBackModalOpen(true)
   }
   const hideBackModal = () => {
-    setBackModelOpen(false)
+    setBackModalOpen(false)
+  }
+
+  // This is for controlling the Modal window (ICON)
+  const [IconModalOpen, setIconModalOpen] = useState(false)
+  const showIconModal = () => {
+    setIconModalOpen(true)
+  }
+  const hideIconModal = () => {
+    setIconModalOpen(false)
   }
 
   return (
@@ -86,7 +95,7 @@ const Home = () => {
                       backgroundColor: 'transparent',
                     }}
                   >
-                    <button className="btn1">Icon</button>
+                    <button className="btn1" onClick={showIconModal}>Icon</button>
                   </Nav.Link>
                 </Nav.Item>
                 <br />
@@ -123,7 +132,7 @@ const Home = () => {
                 </Tab.Pane>
 
                 <Tab.Pane eventKey="uploadBackground" mediatype="image">
-                  <Modal show={BackModelOpen} onHide={hideBackModal}>
+                  <Modal show={BackModalOpen} onHide={hideBackModal}>
                     <FileUpload mediatype="Background" filetype="image" />
                     <button className="btn2" onClick={hideBackModal}>
                       {' '}
@@ -132,9 +141,19 @@ const Home = () => {
                   </Modal>
                 </Tab.Pane>
 
-                <Tab.Pane eventKey="uploadIcon">
-                  <FileUpload mediatype="Icon" filetype="image" />
+                <Tab.Pane eventKey="uploadIcon" mediatype="image">
+                  <Modal show={IconModalOpen} onHide={hideIconModal}>
+                    <FileUpload mediatype="Icon" filetype="image" />
+                    <button className="btn2" onClick={hideIconModal}>
+                      {' '}
+                      Cancel
+                    </button>
+                  </Modal>
                 </Tab.Pane>
+
+                {/* <Tab.Pane eventKey="uploadIcon">
+                  <FileUpload mediatype="Icon" filetype="image" />
+                </Tab.Pane> */}
               </Tab.Content>
             </Col>
 

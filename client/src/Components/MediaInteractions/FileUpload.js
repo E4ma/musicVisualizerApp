@@ -169,44 +169,48 @@ const FileUpload = (props) => {
       </Card>
     )
   }
-  return (
-    <Card style={{ width: '16rem', margin: '16px' }}>
-      <Card.Body>
-        <Card.Title>{props.mediatype} Upload</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          Select {props.mediatype} to Upload
-        </Card.Subtitle>
-        <Card.Text>
-          <>
-            <div className="mb-2">
-              <form onSubmit={onSubmit}>
-                <div className="input-group mb-3">
-                  <input
-                    type="file"
-                    className="form-control mb-5"
-                    id="inputGroupFile02"
-                    accept={`${props.filetype}/gif, ${props.filetype}/png, ${props.filetype}/jpg`}
-                    onChange={onChange}
-                  />
-                  <input
-                    type="submit"
-                    value={`Submit`}
-                    // className="btn btn-primary btn-block"
-                    className="btn1"
-                  />
 
-                  <label
-                    className="id=inputGroupFile02"
-                    htmlFor="inputGroupFile02"
-                  ></label>
-                </div>
-              </form>
-            </div>
-          </>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  )
+  if (props.mediatype === 'Icon') {
+    return (
+      <Card style={{ height: '25rem' }}>
+        <Card.Body className="modalUpload">
+          <Card.Title className="mb-2 text-muted">
+            {props.mediatype} Upload
+          </Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            Select {props.mediatype} to Upload
+          </Card.Subtitle>
+          <Card.Text>
+            <>
+              {/* <div className="mb-2"> */}
+              <div>
+                <form onSubmit={onSubmit}>
+                  {/* <div className="input-group mb-3"> */}
+                  <div>
+                    <input
+                      type="file"
+                      // className="form-control mb-5"
+                      className="modalUpload"
+                      // id="inputGroupFile02"
+                      accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
+                      onChange={onChange}
+                    />
+                    <input
+                      type="submit"
+                      value={`Submit`}
+                      // className="btn btn-primary btn-block"
+                      className="btn2"
+                    />
+                  </div>
+                </form>
+              </div>
+            </>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    )
+  }
+
 }
 
 export default FileUpload
