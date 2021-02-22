@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Card, Row, Col, Nav, Modal } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
@@ -6,6 +7,7 @@ import FileUpload from './MediaInteractions/FileUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
 import Navigation from './Navigation'
 import PlaylistContext from '../contexts/PlaylistContext'
+import background from './Images/background1.jpg'
 
 const Home = () => {
   // This is for controlling the Modal window (AUDIO)
@@ -25,6 +27,19 @@ const Home = () => {
   const hideBackModal = () => {
     setBackModelOpen(false)
   }
+
+  //Background image change
+  const [backgroundUrl, setBackgroundUrl] = useState(background)
+  const getPicture = async (picture) => {
+    const response = await axios.get(
+      `http://localhost:5000/upload/image/${picture}`,
+      { responseType: 'blob' },
+    )
+    console.log(response.data)
+    setBackgroundUrl(URL.createObjectURL(response.data))
+
+  }
+
 
   return (
     <PlaylistContext>
@@ -124,7 +139,7 @@ const Home = () => {
 
                 <Tab.Pane eventKey="uploadBackground" mediatype="image">
                   <Modal show={BackModelOpen} onHide={hideBackModal}>
-                    <FileUpload mediatype="Background" filetype="image" />
+                    <FileUpload getPicture={getPicture} mediatype="Background" filetype="image"/>
                     <button className="btn2" onClick={hideBackModal}>
                       {' '}
                       Cancel
@@ -144,7 +159,7 @@ const Home = () => {
               <br />
               <Card className="visualizer">
                 <Card.Body>
-                  <Displayer />
+                  <Displayer backgroundUrl={backgroundUrl} />
                   <InsertIcon />
                 </Card.Body>
               </Card>
