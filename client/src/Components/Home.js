@@ -66,139 +66,141 @@ const Home = () => {
 
   return (
     <PlaylistContext>
-      <div>
-        <Navigation />
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <Row>
-            <Col md={2}>
-              <Nav
-                variant="pills"
-                className="flex-column textbold"
-                bg="transparent"
-                style={{ fontWeight: 'bold' }}
-              >
-                <br />
-
-                {/*------ Audio -----*/}
-
-                <Nav.Item>
-                  <Nav.Link
-                    eventKey="uploadAudio"
-                    style={{
-                      borderRadius: '22px',
-                      backgroundColor: 'transparent',
-                    }}
+      <Navigation />
+      <div className="editorContainer">
+        <Row className="editorRow justify-content-md-center">
+          <Col xs={2}>
+            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+              <Row>
+                <Col md={2}>
+                  <Nav
+                    variant="pills"
+                    className="flex-column textbold"
+                    bg="transparent"
+                    style={{ fontWeight: 'bold' }}
                   >
-                    <button className="btn1" onClick={showModal}>
-                      Audio
+                    <br />
+
+                    {/*------ Audio -----*/}
+
+                    <Nav.Item>
+                      <Nav.Link
+                        eventKey="uploadAudio"
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <button className="btn1" onClick={showModal}>
+                          Audio
                     </button>
-                  </Nav.Link>
-                </Nav.Item>
+                      </Nav.Link>
+                    </Nav.Item>
 
-                <br />
-                <br />
+                    <br />
+                    <br />
 
-                {/*------ Background -----*/}
-                <Nav.Item>
-                  <Nav.Link
-                    eventKey="uploadBackground"
-                    style={{
-                      borderRadius: '22px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <button className="btn1" onClick={showBackModal}>
-                      Background
+                    {/*------ Background -----*/}
+                    <Nav.Item>
+                      <Nav.Link
+                        eventKey="uploadBackground"
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <button className="btn1" onClick={showBackModal}>
+                          Background
                     </button>
-                  </Nav.Link>
-                </Nav.Item>
-                <br />
-                <br />
+                      </Nav.Link>
+                    </Nav.Item>
+                    <br />
+                    <br />
 
-                {/*------ Icon -----*/}
-                <Nav.Item>
-                  <Nav.Link
-                    eventKey="uploadIcon"
-                    style={{
-                      borderRadius: '22px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <button className="btn1" onClick={showIconModal}>Icon</button>
-                  </Nav.Link>
-                </Nav.Item>
-                <br />
-                <br />
+                    {/*------ Icon -----*/}
+                    <Nav.Item>
+                      <Nav.Link
+                        eventKey="uploadIcon"
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <button className="btn1" onClick={showIconModal}>Icon</button>
+                      </Nav.Link>
+                    </Nav.Item>
+                    <br />
+                    <br />
 
-                {/*------ Text -----*/}
-                <Nav.Item>
-                  <Nav.Link
-                    eventKey="home"
-                    style={{
-                      borderRadius: '22px',
-                      backgroundColor: 'transparent',
-                    }}
-                  >
-                    <button className="btn1">Visualizer</button>
-                  </Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Col>
+                    {/*------ Text -----*/}
+                    <Nav.Item>
+                      <Nav.Link
+                        eventKey="home"
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <button className="btn1">Visualizer</button>
+                      </Nav.Link>
+                    </Nav.Item>
+                  </Nav>
+                </Col>
 
-            <Col md={'auto'}>
-              <Tab.Content>
-                <Tab.Pane eventKey="uploadAudio" mediatype="audio">
-                  <Modal
-                    className="modalUpload"
-                    show={isOpen}
-                    onHide={hideModal}
-                  >
-                    <FileUpload mediatype="Audio" />
-                    <button className="btn2" onClick={hideModal}>
+                <Col md={'auto'}>
+                  <Tab.Content>
+                    <Tab.Pane eventKey="uploadAudio" mediatype="audio">
+                      <Modal
+                        className="modalUpload"
+                        show={isOpen}
+                        onHide={hideModal}
+                      >
+                        <FileUpload mediatype="Audio" />
+                        <button className="btn2" onClick={hideModal}>
+                          Cancel
+                    </button>
+                      </Modal>
+                    </Tab.Pane>
+
+                    <Tab.Pane eventKey="uploadBackground" mediatype="image">
+                      <Modal show={BackModelOpen} onHide={hideBackModal}>
+                        <FileUpload getPicture={getPicture} mediatype="Background" />
+                        <button className="btn2" onClick={hideBackModal}>
+                          {' '}
                       Cancel
                     </button>
-                  </Modal>
-                </Tab.Pane>
+                      </Modal>
+                    </Tab.Pane>
 
-                <Tab.Pane eventKey="uploadBackground" mediatype="image">
-                  <Modal show={backModalOpen} onHide={hideBackModal}>
-                    <FileUpload getPicture={getPicture} mediatype="Background" />
-                    <button className="btn2" onClick={hideBackModal}>
-                      {' '}
+                    <Tab.Pane eventKey="uploadIcon">
+                      <Modal show={iconModalOpen} onHide={hideIconModal}>
+                        <IconUpload getIcon={getIcon} mediatype="Icon" />
+                        <button className="btn2" onClick={hideIconModal}>
+                          {' '}
                       Cancel
                     </button>
-                  </Modal>
-                </Tab.Pane>
+                      </Modal>
+                    </Tab.Pane>
 
-                <Tab.Pane eventKey="uploadIcon">
-                  <Modal show={iconModalOpen} onHide={hideIconModal}>
-                    <IconUpload getIcon={getIcon} mediatype="Icon" />
-                    <button className="btn2" onClick={hideIconModal}>
-                      {' '}
-                      Cancel
-                    </button>
-                  </Modal>
-                </Tab.Pane>
+                  </Tab.Content>
+                </Col>
+              </Row>
+            </Tab.Container>
+          </Col>
 
-              </Tab.Content>
-            </Col>
+          {/* card for displaying the visualizer on the right panel*/}
 
-            {/* card for displaying the visualizer on the right panel*/}
+          <Col md={9}>
+            <div className="visualizer">
+              <Card.Body>
+                <Displayer backgroundUrl={backgroundUrl} />
+                <InsertIcon iconUrl={iconUrl} />
+              </Card.Body>
+            </div>
+          </Col>
 
-            <Col md xl={'auto'}>
-              <br />
-              <Card
-                className="visualizer"
-                style={{ height: '85vh', padding: '5px', margin: '20px' }}
-              >
-                <Card.Body>
-                  <Displayer backgroundUrl={backgroundUrl} />
-                  <InsertIcon iconUrl={iconUrl} />
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Tab.Container>
+        </Row>
+
       </div>
     </PlaylistContext >
   )

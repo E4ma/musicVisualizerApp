@@ -42,6 +42,17 @@ body {
   height: 400px;
 }
 
+.mainNav {
+  padding: 1px 20px;
+  margin: 10px 1px;
+  font-size: 21px;
+  color: #EEFBFB;
+}
+
+.mainNav:hover{
+  color: #4da8da;
+}
+
 .navContainer {
   margin-top: -330px;
 }
@@ -52,6 +63,14 @@ body {
 
 .landingContainer {
   margin-top: -210px;
+}
+
+.editorContainer{
+  margin-top: -270px;
+}
+
+.profileContainer{
+  margin-top: -270px;
 }
 
 .signinWrapper {
@@ -126,8 +145,8 @@ body {
   /* align-self: center; */
   /* top: 40px;
   left: 20vw; */
-  height: 78vh;
-  width: 70vw;
+  /* height: calc(60vh); */
+  /* width: 70vw; */
 }
 
 /* .display {
@@ -210,6 +229,8 @@ body {
   position: absolute;
   justify-content: center;
   align-items: center;
+  margin-left: 5px;
+  padding-left: 10px;
 }
 
 #display-box {
@@ -269,7 +290,7 @@ canvas {
   background-color: rgb(9, 82, 177);
   border: none;
   color: whitesmoke;
-  padding: 10px 20px;
+  padding: 10px 15px;
   text-align: center;
   margin: 10px 1px;
   border-radius: 22px;
@@ -296,12 +317,13 @@ canvas {
   border-style: solid;
   border-color: #12232e;
   color: #c7002c;
-  padding: 1px 20px;
-  text-align: center;
+  padding: 1px 10px;
   margin: 10px 1px;
-  border-radius: 22px;
-  /* width: 100%; */
   font-size: 21px;
+  text-align: center;
+  border-radius: 21px;
+  /* width: 100%; */
+  
 }
 
 .navBtn:hover {
