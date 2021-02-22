@@ -22,7 +22,7 @@ const Home = () => {
   }
 
   // This is for controlling the Modal window (BACKGROUND)
-  const [BackModalOpen, setBackModalOpen] = useState(false)
+  const [backModalOpen, setBackModalOpen] = useState(false)
   const showBackModal = () => {
     setBackModalOpen(true)
   }
@@ -31,15 +31,6 @@ const Home = () => {
   }
 
   // This is for controlling the Modal window (ICON)
-  const [IconModalOpen, setIconModalOpen] = useState(false)
-  const showIconModal = () => {
-    setIconModalOpen(true)
-  }
-  const hideIconModal = () => {
-    setIconModalOpen(false)
-  }
-
-  // This is for controlling the Modal window (Icon)
   const [iconModalOpen, setIconModalOpen] = useState(false)
   const showIconModal = () => {
     setIconModalOpen(true)
@@ -170,7 +161,7 @@ const Home = () => {
                 </Tab.Pane>
 
                 <Tab.Pane eventKey="uploadBackground" mediatype="image">
-                  <Modal show={BackModalOpen} onHide={hideBackModal}>
+                  <Modal show={backModalOpen} onHide={hideBackModal}>
                     <FileUpload getPicture={getPicture} mediatype="Background" />
                     <button className="btn2" onClick={hideBackModal}>
                       {' '}
