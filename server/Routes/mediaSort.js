@@ -13,28 +13,6 @@ const fileSizeMax = 100000000
 const AudioModel = require('../Model/AudioModel')
 const PictureModel = require('../Model/PictureModel')
 
-// ICONS...................................
-router.post('/icon', (req, res) => {
-  const file = req.files.file
-
-  //defines what the max size that can be uploaded otherwise will get an error
-  if (file.size > fileSizeMax) {
-    return res.status(413).json({ msg: 'File exceeds upload size' })
-  }
-
-  if (req.files === null) {
-    return res.status(400).json({ msg: 'no file found' })
-  }
-
-  file.mv(`uploadedFiles/icons/${file.name}`)
-
-  console.log('icon............', file)
-
-  res.json({
-    fileName: file.name,
-    filePath: `/uploadedFiles/icons/${file.name}`,
-  })
-})
 
 
 // AUDIO........................
@@ -148,6 +126,7 @@ router.get('/backgroundList', async (req, res) => {
     }
   })
 })
+//get from db
 router.get('/image/:picture', (req, res) => {
   const picture = req.params.picture
   res.sendFile(path.join(__dirname, `../uploadedFiles/images/${picture}`))
