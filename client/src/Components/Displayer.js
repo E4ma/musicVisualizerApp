@@ -207,7 +207,7 @@ const Displayer = (props) => {
     setCurrentSongIndex((curr) => {
       let newSongNum
       if (currentSongIndex === 0) {
-        newSongNum = curr - 1
+        newSongNum = songList.length - 1
       } else {
         newSongNum = (curr - 1) % songList.length
       }
@@ -227,16 +227,9 @@ const Displayer = (props) => {
       let newSongNum
       if (curr === 0) {
         newSongNum = curr + 1
-        console.log(newSongNum)
       } else {
         newSongNum = (curr + 1) % songList.length
-        console.log(
-          'This is the songList[newSongNum] else = ',
-          songList[newSongNum],
-        )
-        console.log('This is the songList else = ', songList)
       }
-      console.log('This is curr', curr)
       getSong(songList[newSongNum])
       return newSongNum
     })
