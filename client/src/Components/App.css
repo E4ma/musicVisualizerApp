@@ -141,12 +141,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   /* align-self: center; */
   /* top: 40px;
   left: 20vw; */
   /* height: calc(60vh); */
-  /* width: 70vw; */
+  width: 70vw;
 }
 
 /* .display {
@@ -183,7 +182,6 @@ body {
 
 /* .Frontscr {
   background-image: url(./Components/Images/hummingbirdbackground1.png);
-
    background-color: rgb(16, 17, 17); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -225,7 +223,6 @@ body {
 
 .visualizer {
   display: flex;
-  flex-direction: column;
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -254,11 +251,8 @@ canvas {
   /* position: static;
   justify-content: center;
   align-items: center; */
-  padding: 10px;
-  position: relative;
-  margin-top: -65px;
   width: 100%;
-  height: 30rem;
+  height: 60vh;
   z-index: 1;
 }
 
