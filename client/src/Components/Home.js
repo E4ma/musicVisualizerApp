@@ -147,8 +147,8 @@ const Home = () => {
                 </Tab.Pane>
 
                 <Tab.Pane eventKey="uploadBackground" mediatype="image">
-                  <Modal show={BackModelOpen} onHide={hideBackModal}>
-                    <FileUpload getPicture={getPicture} mediatype="Background" filetype="image"/>
+                  <Modal show={BackModalOpen} onHide={hideBackModal}>
+                    <FileUpload getPicture={getPicture} mediatype="Background" filetype="image" />
                     <button className="btn2" onClick={hideBackModal}>
                       {' '}
                       Cancel
