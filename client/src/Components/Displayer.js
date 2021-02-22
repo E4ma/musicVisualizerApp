@@ -6,7 +6,7 @@ import React, {
   useContext,
 } from 'react'
 import axios from 'axios'
-import background from './Images/background1.jpg'
+// import background from './Images/background1.jpg'
 // import songList from './MediaInteractions/Playlist'
 // import pictureList from './MediaInteractions/ImageList'
 import { PlaylistContext } from '../contexts/PlaylistContext'
@@ -51,7 +51,7 @@ const Displayer = (props) => {
   const [isPaused, setIsPaused] = useState(true)
   const [pictureSelect, setpictureSelect] = useState()
   const [currentPicture, setCurrentPicture] = useState(-1)
-  const [backgroundUrl, setBackgroundUrl] = useState(background)
+  // const [backgroundUrl, setBackgroundUrl] = useState(background)
   const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
@@ -59,18 +59,18 @@ const Displayer = (props) => {
   const center_x = width / 2
   const center_y = height / 2
 
-  let picture
-  const getPicture = async (picture) => {
-    const response = await axios.get(
-      `http://localhost:5000/upload/image/${picture}`,
-      { responseType: 'blob' },
-    )
-    console.log(response.data)
-    setBackgroundUrl(URL.createObjectURL(response.data))
+  // let picture
+  // const getPicture = async (picture) => {
+  //   const response = await axios.get(
+  //     `http://localhost:5000/upload/image/${picture}`,
+  //     { responseType: 'blob' },
+  //   )
+  //   console.log(response.data)
+  //   setBackgroundUrl(URL.createObjectURL(response.data))
 
-    // picture.load()
-    // let pictureURL = picture.src
-  }
+  //   // picture.load()
+  //   // let pictureURL = picture.src
+  // }
 
   function animationLooper(canvas) {
     canvas.width = width
@@ -241,7 +241,7 @@ const Displayer = (props) => {
     const getPictureList = async () => {
       let res = await axios.get('http://localhost:5000/upload/backgroundList')
       setpictureSelect(res.data)
-      //console.log(setSongList)
+      //for the dropdown
     }
     getPictureList()
   }, [])
@@ -249,7 +249,7 @@ const Displayer = (props) => {
   return (
     <div
       className="audioControlBackground"
-      style={{ backgroundImage: `url(${backgroundUrl})` }}
+      style={{ backgroundImage: `url(${props.backgroundUrl})` }}
     >
       <div className="buttonWrapper">
         <AudioControls
@@ -259,24 +259,6 @@ const Displayer = (props) => {
           isPaused={isPaused}
         />
 
-        {pictureSelect && (
-          <select
-            value={pictureSelect[currentPicture]}
-            onChange={(e) => {
-              getPicture(e.target.value)
-              setCurrentPicture(
-                (e.target.selectedIndex - 1) % pictureSelect.length,
-              )
-            }}
-          >
-            {' '}
-            <option>Pick an Image</option>
-            {pictureSelect &&
-              pictureSelect.map((picture) => {
-                return <option value={picture}>{picture}</option>
-              })}
-          </select>
-        )}
       </div>
       <div className="songInfoWrapper">
         <div style={{ color: 'red' }}>{currentSongIndex}</div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react'
 import axios from 'axios'
-import { Card } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 import Playlist from './Playlist'
-import ImageList from './ImageList'
+// import ImageList from './ImageList'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const FileUpload = (props) => {
@@ -11,7 +11,6 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [imagelist, setImagelist] = useState([])
-  const [uploadedImage, setUploadedImage] = useState({})
   const [playlist, setPlaylist] = useState([])
   const [currentUser, setCurrentUser] = useState('USR------1')
 
@@ -74,6 +73,22 @@ const FileUpload = (props) => {
   useEffect(() => {
     fetchSongSelect()
   }, [uploadedFile, fetchSongSelect])
+
+  //get imagelist + send to imagelist component
+  const getImagelist = useCallback(() => {
+    axios
+      .get('http://localhost:5000/upload/backgroundList')
+      .then((res) => {
+        console.log('this is the res', res.data)
+        return res.data
+      })
+      .then((imagelist) => {
+        setImagelist(imagelist)
+      })
+  }, [setImagelist])
+  useEffect(() => {
+    getImagelist()
+  }, [uploadedFile, getImagelist])
 
   // If the Audio button is selected
   if (props.mediatype === 'Audio') {
@@ -146,7 +161,7 @@ const FileUpload = (props) => {
                       // className="form-control mb-5"
                       className="modalUpload"
                       // id="inputGroupFile02"
-                      accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/bmp`}
+                      accept={`${props.filetype}/jpg, ${props.filetype}/jpeg, ${props.filetype}/png, ${props.filetype}/bmp`}
                       onChange={onChange}
                     />
                     <input
@@ -154,12 +169,27 @@ const FileUpload = (props) => {
                       value={`Submit`}
                       // className="btn btn-primary btn-block"
                       className="btn2"
+                      onClick={() => getImagelist()}
                     />
 
                     {/* <label
                       className="id=inputGroupFile02"
                       htmlFor="inputGroupFile02"
                     ></label> */}
+                    <ListGroup
+                      action
+                      onClick={(event) => {
+                        props.getPicture(event.target.firstChild.data)
+                      }}
+                    >
+                      {imagelist?.map((picture, index) => {
+                        return (
+                          <ListGroup.Item action key={index} value={picture}>
+                            {picture}
+                          </ListGroup.Item>
+                        )
+                      })}
+                    </ListGroup>
                   </div>
                 </form>
               </div>
