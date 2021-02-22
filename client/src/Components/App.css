@@ -51,6 +51,7 @@ body {
 
 .mainNav:hover{
   color: #4da8da;
+  text-decoration-line: none;
 }
 
 .navContainer {
@@ -114,9 +115,22 @@ body {
   font-weight: 800;
 }
 
+.formBtn a {
+  color: #c7002c;
+  border: none;
+  font-weight: 800;
+}
+
 .formBtn:hover {
   background-color: #203647;
   color: #c7002c;
+  text-decoration-line: none;
+}
+
+.formBtn a:hover {
+  background-color: #203647;
+  color: #c7002c;
+  text-decoration-line: none;
 }
 
 .formLink {
@@ -144,7 +158,7 @@ body {
   /* align-self: center; */
   /* top: 40px;
   left: 20vw; */
-  /* height: calc(60vh); */
+  height: calc(85vh);
   width: 70vw;
 }
 
@@ -240,8 +254,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -45vh;
-  position: relative;
+  margin-top: -54vh;
   z-index: 10;
 }
 .iconWrapper img {

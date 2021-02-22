@@ -29,36 +29,36 @@ export default function Login() {
 
   return (
     <>
-    <SigninNav />
-<Container className="signinContainer">
-<div className="signinWrapper">
-        <div >
+      <SigninNav />
+      <Container className="signinContainer">
+        <div className="signinWrapper">
+          <div >
 
-          <h2 className="text-center m-4">Welcome Back!</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <input type="email" placeholder="Email" className="signinInput" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-            <input type="password" placeholder="Password" className="signinInput" ref={passwordRef} required />
-            </Form.Group>
-            <button disabled={loading} className="formBtn" type="submit">
-              Sign In
+            <h2 className="text-center m-4">Welcome Back!</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleSubmit}>
+              <Form.Group id="email">
+                <input type="email" placeholder="Email" className="signinInput" ref={emailRef} required />
+              </Form.Group>
+              <Form.Group id="password">
+                <input type="password" placeholder="Password" className="signinInput" ref={passwordRef} required />
+              </Form.Group>
+              <button disabled={loading} className="formBtn" type="submit">
+                Sign In
             </button>
-          </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password" className="formLink">Forgot Password?</Link>
+            </Form>
+            <div className="w-100 text-center mt-3">
+              <Link to="/forgot-password" className="formLink">Forgot Password?</Link>
+            </div>
+
+          </div>
+
+          <div className="w-100 text-center m-2">
+            Need an account? <Link to="/signup" className="formLink">Sign Up</Link>
           </div>
 
         </div>
-      
-      <div className="w-100 text-center m-2">
-        Need an account? <Link to="/signup" className="formLink">Sign Up</Link>
-      </div>
-
-</div>
-</Container>
+      </Container>
     </>
   )
 }
