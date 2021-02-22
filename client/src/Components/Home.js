@@ -187,7 +187,10 @@ const Home = () => {
 
             <Col md xl={'auto'}>
               <br />
-              <Card className="visualizer">
+              <Card
+                className="visualizer"
+                style={{ height: '85vh', padding: '5px', margin: '20px' }}
+              >
                 <Card.Body>
                   <Displayer backgroundUrl={backgroundUrl} />
                   <InsertIcon iconUrl={iconUrl} />

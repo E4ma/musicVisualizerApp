@@ -5,7 +5,6 @@ import React, {
   useLayoutEffect,
   useContext,
 } from 'react'
-
 import { PlaylistContext } from '../contexts/PlaylistContext'
 import AudioControls from './Buttons/AudioControls'
 
@@ -31,10 +30,10 @@ const radius = 0 // innercircle
 
 const Displayer = (props) => {
   const {
-    songName,
+    currentSongIndex,
+    setCurrentSongIndex,
     songList,
     getSong,
-    loadSongIntoAudio,
     audio,
     frequency_array,
     audioContext,
@@ -46,9 +45,8 @@ const Displayer = (props) => {
   const [canvas, setCanvas] = useState(createRef())
   //State for whether the song is playing or not
   const [isPaused, setIsPaused] = useState(true)
- 
-  
-  const [currentSongIndex, setCurrentSongIndex] = useState(-1)
+
+  // const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -177,32 +175,45 @@ const Displayer = (props) => {
       cancelAnimationFrame(rafId)
     }
   }
-
-  const prevTrack = () => {
-    if (audio && !isPaused) {
-      togglePlay()
-    }
-    if (currentSongIndex === 0) {
-      setCurrentSongIndex((curr) => songList.length - 1)
-      getSong(songList[songList.length - 1])
-    } else {
-      setCurrentSongIndex((curr) => (curr - 1) % songList.length)
-      getSong(songList[(currentSongIndex - 1) % songList.length])
-    }
-  }
-
   const playTrack = () => {
     if (audio) {
       togglePlay()
     }
   }
+  const prevTrack = () => {
+    if (audio && !isPaused) {
+      togglePlay()
+    }
+    setCurrentSongIndex((curr) => {
+      let newSongNum
+      if (currentSongIndex === 0) {
+        newSongNum = songList.length - 1
+      } else {
+        newSongNum = (curr - 1) % songList.length
+      }
+      getSong(songList[newSongNum])
+      return newSongNum
+    })
+    console.log('This is the currentsongindex click prev', currentSongIndex)
+  }
 
+  console.log('This is the current song index', currentSongIndex)
   const nextTrack = () => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    setCurrentSongIndex((curr) => (curr + 1) % songList.length)
-    getSong(songList[(currentSongIndex + 1) % songList.length])
+    setCurrentSongIndex((curr) => {
+      console.log('This is curr', curr)
+      let newSongNum
+      if (curr === 0) {
+        newSongNum = curr + 1
+      } else {
+        newSongNum = (curr + 1) % songList.length
+      }
+      getSong(songList[newSongNum])
+      return newSongNum
+    })
+    // getSong(songList[(currentSongIndex + 1) % songList.length])
   }
 
   useEffect(() => {
@@ -220,7 +231,6 @@ const Displayer = (props) => {
 
   //console.log('This is the songList that is being imported', songList)
 
-
   return (
     <div
       className="audioControlBackground"
@@ -233,10 +243,9 @@ const Displayer = (props) => {
           onClickNext={nextTrack}
           isPaused={isPaused}
         />
-
       </div>
       <div className="songInfoWrapper">
-        <div style={{ color: 'red' }}>{songName}</div>
+        <div style={{ color: 'red' }}>{songList[currentSongIndex]}</div>
         {songList && (
           <select
             value={songList[currentSongIndex]}
@@ -256,10 +265,11 @@ const Displayer = (props) => {
           </select>
         )}
       </div>
-      <div className="songInfoWrapper"></div>
+
       <div className="canvasWrapper">
         {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
       </div>
+
       <div className="sliders">
         {' '}
         <div>{sliderM}</div>

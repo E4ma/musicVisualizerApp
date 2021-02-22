@@ -5,18 +5,22 @@ export const PlaylistContext = createContext()
 
 const PlaylistContextProvider = (props) => {
   const [songList, setSongList] = useState([])
-  const [songName, setSongName] = useState('')
+  // const [songName, setSongName] = useState('')
+  const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   const [audio, setAudio] = useState()
   const [audioContext, setAudioContext] = useState()
   const [source, setSource] = useState()
   const [analyser, setAnalyser] = useState()
   const [frequency_array, setFrequency_array] = useState()
+  const [duration, setDuration] = useState()
+  const [curTime, setCurTime] = useState()
+  const [clickedTime, setClickedTime] = useState()
 
   // createAudioContextSingleton runs the file only once not again and again
   const createAudioContextSingleton = () => {
     if (!audio) {
       let a = new Audio()
-      console.log('This is a', a)
+      console.log('CreateAudioContextSingleton: a =', a)
       let ac = new (window.AudioContext || window.webkitAudioContext)()
       let s = ac.createMediaElementSource(a)
       let analy = ac.createAnalyser()
@@ -37,16 +41,20 @@ const PlaylistContextProvider = (props) => {
       createAudioContextSingleton()
       console.log('this is createAudioSingleton', audio)
     }
-    setSongName(song)
-    console.log('PlaylistContext: songName', songName)
+    console.log('this is song =', song)
+
+    console.log('PlaylistContext: songList[currentSongIndex]', currentSongIndex)
   }
 
   const loadSongIntoAudio = async () => {
-    if (!songName || !audio) return
+    if (!songList[currentSongIndex] || !audio) {
+      console.log('nothing here')
+      return
+    }
 
     try {
       const response = await axios.request({
-        url: `http://localhost:5000/upload/media/${songName}`,
+        url: `http://localhost:5000/upload/media/${songList[currentSongIndex]}`,
         responseType: 'blob',
         method: 'GET',
       })
@@ -84,13 +92,40 @@ const PlaylistContextProvider = (props) => {
 
   useEffect(() => {
     loadSongIntoAudio()
-  }, [songName, audio])
+  }, [currentSongIndex, audio])
 
+  //Scrollbar
+  // useEffect(() => {
+  //   const setAudiodata = () => {
+  //     setDuration(audio.duration)
+  //     setCurTime(audio.currentTime)
+  //   }
+
+  //   const setAudioTime = () => {
+  //     setCurTime(audio.currentTime)
+  //   }
+
+  //   audio.addEventListener('loadeddata', setAudioData)
+  //   audio.addEventListener('timeupdate', setAudioTime)
+
+  //   playing ? audio.play() : audio.pause()
+
+  //   if (clickedTime && clickedTime !== curTime) {
+  //     audio.currentTime = clickedTime
+  //     setClickedTime(null)
+  //   }
+
+  //   return () => {
+  //     audio.removeEventListener('loadeddata', setAudioData)
+  //     audio.removeEventListener('timeupdate', setAudioTime)
+  //   }
+  // }, [])
   return (
     <PlaylistContext.Provider
       value={{
         createAudioContextSingleton,
-        songName,
+        currentSongIndex,
+        setCurrentSongIndex,
         songList,
         setSongList,
         getSong,
