@@ -6,7 +6,7 @@ const app = express()
 //this before routes to enable cors for all routes
 app.use(cors())
 const mediaSort = require('./Routes/mediaSort')
-// const userRoutes = require('./Routes/userRoutes')
+const iconSort = require('./Routes/iconSort')
 const storeUser = require('./Routes/storeUser')
 
 
@@ -38,7 +38,7 @@ app.use('/register', storeUser)
 
 
 app.use('/upload', mediaSort)
-// app.use('/user', userRoutes)
+app.use('/iconUpload', iconSort)
 // A middleware which will enable cors with various options like exposeHeader etc.
 // app.use(cors({ exposeHeader: 'id' }))
 
