@@ -5,7 +5,8 @@ export const PlaylistContext = createContext()
 
 const PlaylistContextProvider = (props) => {
   const [songList, setSongList] = useState([])
-  const [songName, setSongName] = useState('')
+  // const [songName, setSongName] = useState('')
+  const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   const [audio, setAudio] = useState()
   const [audioContext, setAudioContext] = useState()
   const [source, setSource] = useState()
@@ -19,7 +20,7 @@ const PlaylistContextProvider = (props) => {
   const createAudioContextSingleton = () => {
     if (!audio) {
       let a = new Audio()
-      console.log('This is a', a)
+      console.log('CreateAudioContextSingleton: a =', a)
       let ac = new (window.AudioContext || window.webkitAudioContext)()
       let s = ac.createMediaElementSource(a)
       let analy = ac.createAnalyser()
@@ -40,19 +41,20 @@ const PlaylistContextProvider = (props) => {
       createAudioContextSingleton()
       console.log('this is createAudioSingleton', audio)
     }
-    setSongName(song)
-    console.log('PlaylistContext: songName', songName)
+    console.log('this is song =', song)
+
+    console.log('PlaylistContext: songList[currentSongIndex]', currentSongIndex)
   }
 
   const loadSongIntoAudio = async () => {
-    if (!songName || !audio) {
+    if (!songList[currentSongIndex] || !audio) {
       console.log('nothing here')
       return
     }
 
     try {
       const response = await axios.request({
-        url: `http://localhost:5000/upload/media/${songName}`,
+        url: `http://localhost:5000/upload/media/${songList[currentSongIndex]}`,
         responseType: 'blob',
         method: 'GET',
       })
@@ -90,7 +92,7 @@ const PlaylistContextProvider = (props) => {
 
   useEffect(() => {
     loadSongIntoAudio()
-  }, [songName, audio])
+  }, [currentSongIndex, audio])
 
   //Scrollbar
   // useEffect(() => {
@@ -122,8 +124,8 @@ const PlaylistContextProvider = (props) => {
     <PlaylistContext.Provider
       value={{
         createAudioContextSingleton,
-        songName,
-        setSongName,
+        currentSongIndex,
+        setCurrentSongIndex,
         songList,
         setSongList,
         getSong,

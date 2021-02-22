@@ -35,6 +35,8 @@ const radius = 0 // innercircle
 
 const Displayer = (props) => {
   const {
+    currentSongIndex,
+    setCurrentSongIndex,
     songList,
     getSong,
     audio,
@@ -51,7 +53,7 @@ const Displayer = (props) => {
   const [listOfPictures, setListOfPictures] = useState()
   const [currentPictureIndex, setCurrentPictureIndex] = useState(-1)
   const [backgroundUrl, setBackgroundUrl] = useState(background)
-  const [currentSongIndex, setCurrentSongIndex] = useState(-1)
+  // const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   //Slider for changing peak lengths
   const [sliderM, setSliderM] = useState(1)
   const [sliderN, setSliderN] = useState(1)
@@ -202,21 +204,43 @@ const Displayer = (props) => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    if (currentSongIndex === 0) {
-      setCurrentSongIndex((curr) => songList.length - 1)
-      getSong(songList[songList.length - 1])
-    } else {
-      setCurrentSongIndex((curr) => (curr - 1) % songList.length)
-      getSong(songList[(currentSongIndex - 1) % songList.length])
-    }
+    setCurrentSongIndex((curr) => {
+      let newSongNum
+      if (currentSongIndex === 0) {
+        newSongNum = curr - 1
+      } else {
+        newSongNum = (curr - 1) % songList.length
+      }
+      getSong(songList[newSongNum])
+      return newSongNum
+    })
+    console.log('This is the currentsongindex click prev', currentSongIndex)
   }
 
+  console.log('This is the current song index', currentSongIndex)
   const nextTrack = () => {
     if (audio && !isPaused) {
       togglePlay()
     }
-    setCurrentSongIndex((curr) => (curr + 1) % songList.length)
-    getSong(songList[(currentSongIndex + 1) % songList.length])
+    setCurrentSongIndex((curr) => {
+      console.log('This is curr', curr)
+      let newSongNum
+      if (curr === 0) {
+        newSongNum = curr + 1
+        console.log(newSongNum)
+      } else {
+        newSongNum = (curr + 1) % songList.length
+        console.log(
+          'This is the songList[newSongNum] else = ',
+          songList[newSongNum],
+        )
+        console.log('This is the songList else = ', songList)
+      }
+      console.log('This is curr', curr)
+      getSong(songList[newSongNum])
+      return newSongNum
+    })
+    // getSong(songList[(currentSongIndex + 1) % songList.length])
   }
 
   useEffect(() => {

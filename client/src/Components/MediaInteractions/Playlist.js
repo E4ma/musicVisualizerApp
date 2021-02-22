@@ -3,8 +3,11 @@ import { Card, ListGroup } from 'react-bootstrap'
 import { PlaylistContext } from '../../contexts/PlaylistContext'
 
 const Playlist = (props) => {
-  const { getSong, songList, loadSongIntoAudio } = useContext(PlaylistContext)
-  // const [songName, setSongName] = useState('')
+  const { setCurrentSongIndex, songList } = useContext(PlaylistContext)
+
+  const generateKey = (pre) => {
+    return `${pre}_${new Date().getTime()}`
+  }
   return (
     <>
       <br />
@@ -12,21 +15,16 @@ const Playlist = (props) => {
         <Card.Title className="mb-2 text-muted">Playlist</Card.Title>
         <Card.Text className="tabScroll">
           <div>
-            <ListGroup
-              action
-              onClick={(event) => {
-                // setSongName(event.target.firstChild.data)
-                getSong(event.target.firstChild.data)
-                console.log(
-                  'getSong clicked in playlist',
-                  event.target.firstChild.data,
-                )
-              }}
-            >
+            <ListGroup action>
               {songList?.map((song, index) => {
                 // console.log('This is the song with index', song, index)
+
                 return (
-                  <ListGroup.Item key={index} value={song}>
+                  <ListGroup.Item
+                    onClick={() => setCurrentSongIndex(index)}
+                    key={generateKey(index)}
+                    value={song}
+                  >
                     {song}
                   </ListGroup.Item>
                 )
