@@ -5,16 +5,12 @@ export const PlaylistContext = createContext()
 
 const PlaylistContextProvider = (props) => {
   const [songList, setSongList] = useState([])
-  // const [songName, setSongName] = useState('')
   const [currentSongIndex, setCurrentSongIndex] = useState(-1)
   const [audio, setAudio] = useState()
   const [audioContext, setAudioContext] = useState()
   const [source, setSource] = useState()
   const [analyser, setAnalyser] = useState()
   const [frequency_array, setFrequency_array] = useState()
-  const [duration, setDuration] = useState()
-  const [curTime, setCurTime] = useState()
-  const [clickedTime, setClickedTime] = useState()
 
   // createAudioContextSingleton runs the file only once not again and again
   const createAudioContextSingleton = () => {
@@ -94,32 +90,6 @@ const PlaylistContextProvider = (props) => {
     loadSongIntoAudio()
   }, [currentSongIndex, audio])
 
-  //Scrollbar
-  // useEffect(() => {
-  //   const setAudiodata = () => {
-  //     setDuration(audio.duration)
-  //     setCurTime(audio.currentTime)
-  //   }
-
-  //   const setAudioTime = () => {
-  //     setCurTime(audio.currentTime)
-  //   }
-
-  //   audio.addEventListener('loadeddata', setAudioData)
-  //   audio.addEventListener('timeupdate', setAudioTime)
-
-  //   playing ? audio.play() : audio.pause()
-
-  //   if (clickedTime && clickedTime !== curTime) {
-  //     audio.currentTime = clickedTime
-  //     setClickedTime(null)
-  //   }
-
-  //   return () => {
-  //     audio.removeEventListener('loadeddata', setAudioData)
-  //     audio.removeEventListener('timeupdate', setAudioTime)
-  //   }
-  // }, [])
   return (
     <PlaylistContext.Provider
       value={{

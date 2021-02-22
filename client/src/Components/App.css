@@ -3,7 +3,7 @@ html {
   padding: 0;
   border: 0;
   outline: 0;
-  background: transparent;
+  /* background: transparent; */
   height: 800px;
   min-height: 500px;
   max-width: 100%;
@@ -13,13 +13,14 @@ body {
   font-family: 'Raleway' !important;
   margin: 0;
   color: blanchedalmond;
-  background: url(./Images/hummingbirdbackground1.png) no-repeat center fixed;
+  /* background: url(./Images/hummingbirdbackground1.png) no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
 
+  background-color: #4da8da !important;
   /* <canvas ref="canvas" width={640} height={425} /> */
   /* <img ref="image" src={cheese} className="hidden" /> */
 }
@@ -46,10 +47,10 @@ body {
   padding: 1px 20px;
   margin: 10px 1px;
   font-size: 21px;
-  color: #EEFBFB;
+  color: #eefbfb;
 }
 
-.mainNav:hover{
+.mainNav:hover {
   color: #4da8da;
   text-decoration-line: none;
 }
@@ -66,11 +67,11 @@ body {
   margin-top: -210px;
 }
 
-.editorContainer{
+.editorContainer {
   margin-top: -270px;
 }
 
-.profileContainer{
+.profileContainer {
   margin-top: -270px;
 }
 
@@ -175,13 +176,13 @@ body {
 .slider1 {
   width: 50%;
   height: 20px;
-  background: red;
+  background: #203647cd;
   appearance: none;
 }
 .slider {
   width: 50%;
   height: 20px;
-  background: rgb(89, 0, 255);
+  background: #eefbfbd9;
   appearance: none;
 }
 .sliders {
@@ -294,7 +295,8 @@ canvas {
 }
 
 .btn1 {
-  background-color: rgb(9, 82, 177);
+  /* background-color: rgb(9, 82, 177); */
+  background-color: #203647;
   border: none;
   color: whitesmoke;
   padding: 10px 15px;
@@ -308,15 +310,16 @@ canvas {
 
 /* :focus means when a button is clicked */
 .btn1:focus {
-  /* outline: none; */
-  outline-width: 1px;
+  outline: none;
+  /* outline-width: 1px;
   outline-style: dashed;
-  outline-color: #2b62d8;
+  outline-color: #007cc7; */
 }
 
 .btn1:hover {
-  background-color: #2b62d8;
-  color: rgb(5, 3, 3);
+  background-color: #007cc7;
+  color: #12232e;
+  font-weight: bold;
 }
 
 .navBtn {
@@ -330,7 +333,6 @@ canvas {
   text-align: center;
   border-radius: 21px;
   /* width: 100%; */
-  
 }
 
 .navBtn:hover {
@@ -372,9 +374,9 @@ modal-content {
 
 /* .btn2 is used in About screen */
 .btn2 {
-  background-color: rgb(9, 82, 177);
+  background-color: #203647;
   border: none;
-  color: whitesmoke;
+  color: #eefbfb;
   padding: 10px 20px;
   text-align: center;
   margin: 10px 1px;
@@ -388,11 +390,11 @@ modal-content {
   /* outline: none; */
   outline-width: 1px;
   outline-style: dashed;
-  outline-color: #2b62d8;
+  outline-color: #007cc7;
 }
 
 .btn2:hover {
-  background-color: #2b62d8;
+  background-color: #007cc7;
   color: rgb(5, 3, 3);
 }
 

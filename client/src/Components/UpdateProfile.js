@@ -33,7 +33,7 @@ export default function UpdateProfile() {
     //runs if all promises are successful
     Promise.all(promises)
       .then(() => {
-        history.push("/")
+        history.push("/MyAccount")
       })
       .catch(() => {
         setError("Failed to update account")
