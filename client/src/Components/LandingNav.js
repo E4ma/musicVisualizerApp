@@ -2,8 +2,7 @@ import React from 'react'
 import { Link} from "react-router-dom"
 import { Navbar, Nav, Container, Button } from 'react-bootstrap'
 import pic from './Images/logogrey-bird.png'
-import wave from './Images/navWave.svg'
-// import pic from './Logo1sn.png'
+
 
 
 const LandingNav = () => {

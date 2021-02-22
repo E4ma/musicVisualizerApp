@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Navbar, Nav, Container } from 'react-bootstrap'
 
-import pic from './Images/logogrey.png'
+import pic from './Images/logogrey-bird.png'
 // import pic from './Logo1sn.png'
 
 
@@ -29,25 +29,25 @@ const Navigation = () => {
   return (
 
 
-    <Navbar style={{ backgroundColor: 'black' }} variant="dark" expand="sm" sticky="top" className="justify-content-end">
-      <Container id="nav-wrap">
-        <Navbar.Brand href="/About">
+    <Navbar className="landingNav" variant="dark" expand="sm">
+      <Container className="navContainer">
+      <Navbar.Brand href="/About">
           {/* <img src={pic} alt={''} width={80} height={80} /> */}
-          <img
-            src={pic}
-            alt={''}
-            height={'30%'}
-            width={'30%'}
-            className="d-inline-block align-top" />
+          <img 
+          src={pic} 
+          alt={''} 
+          height={'40'} 
+          width={'45'} 
+          className="d-inline-block"/>{' '}HUMMINGBIRD
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>
+        <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+          <Nav fill >
 
-            <Nav.Item id="nav-item"><Link to="/Home" style={{ color: 'white' }}>Editor</Link></Nav.Item>
-            <Nav.Item id="nav-item"><Link to="/MyAccount" style={{ color: 'white' }}>Profile</Link></Nav.Item>
-            <Nav.Item id="nav-item" onClick={handleLogout}><Link style={{ color: 'white' }} >Sign Out</Link></Nav.Item>
+            <Nav.Item ><Link className="mainNav" to="/Home" >Editor</Link></Nav.Item>
+            <Nav.Item ><Link className="mainNav" to="/MyAccount" >Profile</Link></Nav.Item>
+            <Nav.Item onClick={handleLogout}><Link className="navBtn" >Sign Out</Link></Nav.Item>
 
           </Nav>
         </Navbar.Collapse>

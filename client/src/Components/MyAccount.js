@@ -42,7 +42,7 @@ import Navigation from "./Navigation"
     return (
 <div>
   <Navigation />
-<Card>
+<Card className="profileContainer">
           <Card.Body>
             <h2 className="text-center mb-4">Profile</h2>
             {error && <Alert variant="danger">{error}</Alert>}
