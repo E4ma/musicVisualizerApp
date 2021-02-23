@@ -1,4 +1,4 @@
-//to make route to user's account is private
+//to make sure route to user's account is private
 
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
