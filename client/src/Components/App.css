@@ -113,7 +113,7 @@ body {
 }
 
 .signinInput:focus {
-outline: none;
+  outline: none;
 }
 
 .formBtn {
@@ -171,15 +171,16 @@ outline: none;
   width: 70vw;
 }
 
-.sliderRow{
+.sliderRow {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.sliderContainer{
+.sliderContainer {
   display: flex;
   /* justify-content: center; */
+  margin-top: 20px;
   margin-bottom: 1px;
 }
 
@@ -192,18 +193,18 @@ outline: none;
 .slider {
   width: 25%;
   height: 20px;
-  background: #eefbfbd9;
+  background: #203647cd;
   appearance: none;
 }
 .sliders {
   width: 70vw;
-   display: flex;
+  display: flex;
   align-items: center;
 }
 .sliders div {
- margin: 3px;
- padding: 5px;
- font-weight: bold;
+  margin: 3px;
+  padding: 5px;
+  font-weight: bold;
 }
 
 /* .Frontscr {
@@ -215,6 +216,9 @@ outline: none;
   background-size: cover;
 } */
 
+.sliderRow.row {
+  background-color: rgba(55, 86, 165, 0.2);
+}
 .Abountscr {
   /* background-color:transparent !important; */
   color: blanchedalmond;
@@ -260,7 +264,7 @@ outline: none;
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -50vh;
+  margin-top: -55vh;
   z-index: 10;
 }
 .iconWrapper img {
@@ -284,10 +288,11 @@ canvas {
 
 .buttonWrapper {
   position: relative;
+
   z-index: 11;
 }
 
-.songInfoWrapper{
+.songInfoWrapper {
   display: flex;
   align-self: center;
   margin-left: 207px;
@@ -350,7 +355,6 @@ canvas {
   color: #c7002c;
   text-decoration-line: none;
 }
-
 
 /* used in Playlist in the upload modals */
 /* .playlistTab {
@@ -443,6 +447,10 @@ modal-content {
   z-index: 20;
 }
 
+.audiocontrols {
+  display: flex;
+  align-content: space-between;
+}
 @media only screen and (max-width: 600px) {
   .iconWrapper {
     right: 40px;
@@ -466,6 +474,27 @@ modal-content {
   width: 20%;
 }
 
+.prevButton {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+}
+.playButton {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+}
+
+.pauseButton {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+}
+.nextButton {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+}
 @media (min-width: 576px) {
   /* .d-inline-block {
   width:130px;
