@@ -45,11 +45,11 @@ export default function Dashboard() {
                   <strong>Password</strong>
                 </Form.Label>
                 <Col sm="10">
-                  <input className="signinInput" type="password" placeholder="Update Profile" readOnly />
+                  <Form.Control plaintext readOnly defaultValue='' />
                 </Col>
               </Form.Group>
               <div className="w-100 text-center m-2">
-                <button className="mt-3 formBtn"><a href="/update-profile" >Update Profile</a>
+                <button className="mt-3 formBtn"><Link to="/update-profile" >Update</Link>
                   
             </button>
               </div>

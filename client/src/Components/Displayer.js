@@ -7,6 +7,9 @@ import React, {
 } from 'react'
 import { PlaylistContext } from '../contexts/PlaylistContext'
 import AudioControls from './Buttons/AudioControls'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { Container } from 'react-bootstrap'
 
 const UpdateWindowSize = () => {
   const [size, setSize] = useState([1000, 1000])
@@ -68,11 +71,11 @@ const Displayer = (props) => {
       x_end =
         center_x +
         Math.cos(rads * sliderN * i + (Math.PI / 640) * new Date()) *
-          (radius + bar_height)
+        (radius + bar_height)
       y_end =
         center_y +
         Math.sin(rads * sliderM * i + (Math.PI / 640) * new Date()) *
-          (radius + bar_height)
+        (radius + bar_height)
       //draw a bar
       // const x = bar_width / 2 + (i * window.innerWidth) / bars;
       // const y = 900;
@@ -232,74 +235,95 @@ const Displayer = (props) => {
   //console.log('This is the songList that is being imported', songList)
 
   return (
-    <div
-      className="audioControlBackground"
-      style={{ backgroundImage: `url(${props.backgroundUrl})` }}
-    >
-      <div className="buttonWrapper">
-        <AudioControls
-          playTrack={playTrack}
-          onClickPrev={prevTrack}
-          onClickNext={nextTrack}
-          isPaused={isPaused}
-        />
-      </div>
-      <div className="songInfoWrapper">
-        <div style={{ color: 'red' }}>{songList[currentSongIndex]}</div>
-        {songList && (
-          <select
-            value={songList[currentSongIndex]}
-            onChange={(e) => {
-              console.log('e', e.target.value)
-              getSong(e.target.value)
-              let foo = (e.target.selectedIndex - 1) % songList.length
-              setCurrentSongIndex(foo)
-            }}
-          >
-            {' '}
-            <option>Choose A Song</option>
-            {songList &&
-              songList.map((song) => {
-                return <option value={song}>{song}</option>
-              })}
-          </select>
-        )}
+    <>
+      <Container>
+      <div className="sliderContainer" >
+        <Row className="sliderRow" >
+          <Col xs={4}>
+            <div className="sliders">
+              <div>X</div>
+              <div>{sliderM}</div>
+              <input
+                className="slider"
+                type="range"
+                min="0"
+                max="8"
+                step=".1"
+                onChange={(e) => {
+                  setSliderM(e.target.value)
+                }}
+                value={sliderM}
+              />
+            </div>
+          </Col>
+          <Col xs={'auto'}>
+            <div className="buttonWrapper">
+              <AudioControls
+                playTrack={playTrack}
+                onClickPrev={prevTrack}
+                onClickNext={nextTrack}
+                isPaused={isPaused}
+              />
+            </div>
+
+          </Col>
+          <Col xs={4}>
+
+            <div className="sliders">
+              <input
+                className="slider1"
+                type="range"
+                min="0"
+                max="8"
+                step=".1"
+                onChange={(e) => {
+                  setSliderN(e.target.value)
+                }}
+                value={sliderN}
+              />
+              <div>{sliderN}</div>
+              <div>Y</div>
+
+            </div>
+
+          </Col>
+        </Row>
       </div>
 
-      <div className="canvasWrapper">
-        {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
-      </div>
+      <div
+        className="audioControlBackground"
+        style={{ backgroundImage: `url(${props.backgroundUrl})` }}
+      >
 
-      <div className="sliders">
-        {' '}
-        <div>{sliderM}</div>
-        <p>X</p>
-        <input
-          className="slider"
-          type="range"
-          min="0"
-          max="8"
-          step=".1"
-          onChange={(e) => {
-            setSliderM(e.target.value)
-          }}
-          value={sliderM}
-        />{' '}
-        <div>{sliderN}</div>
-        <p>Y</p>
-        <input
-          className="slider1"
-          type="range"
-          min="0"
-          max="8"
-          step=".1"
-          onChange={(e) => {
-            setSliderN(e.target.value)
-          }}
-          value={sliderN}
-        />
+        <div className="songInfoWrapper">
+          {/* <div style={{ color: 'red' }}>{songList[currentSongIndex]}</div> */}
+          {songList && (
+            <select
+              value={songList[currentSongIndex]}
+              onChange={(e) => {
+                console.log('e', e.target.value)
+                getSong(e.target.value)
+                let foo = (e.target.selectedIndex - 1) % songList.length
+                setCurrentSongIndex(foo)
+              }}
+            >
+              {' '}
+              <option>Choose A Song</option>
+              {songList &&
+                songList.map((song) => {
+                  return <option value={song}>{song}</option>
+                })}
+            </select>
+          )}
+        </div>
+
+        <div className="canvasWrapper">
+          {audio && audio.paused ? <canvas /> : <canvas ref={canvas} />}
+        </div>
+
       </div>
-    </div>
+      </Container>
+    </>
   )
 }
 

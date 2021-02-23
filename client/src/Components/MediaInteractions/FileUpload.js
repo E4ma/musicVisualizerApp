@@ -11,8 +11,6 @@ const FileUpload = (props) => {
   const [filename, setFilename] = useState('Choose File')
   const [uploadedFile, setUploadedFile] = useState({})
   const [imagelist, setImagelist] = useState([])
-  const [playlist, setPlaylist] = useState([])
-  const [currentUser, setCurrentUser] = useState('USR------1')
 
   const { setSongList } = useContext(PlaylistContext)
 
