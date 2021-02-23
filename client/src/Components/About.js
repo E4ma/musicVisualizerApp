@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import LandingNav from './LandingNav'
 
 import vid1 from './Vidoes/tunnel1.mp4'
-import vid2 from './Vidoes/globe1.mp4'
+// import vid2 from './Vidoes/globe1.mp4'
 
 // styling for About is in App.css
 

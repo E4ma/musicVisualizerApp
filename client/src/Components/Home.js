@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Card, Row, Col, Nav, Modal } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'

@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Container, Row, Col, Image } from 'react-bootstrap'
 
 
 //Icon input
@@ -15,6 +14,7 @@ const InsertIcon = (props) => {
           height: '15%',
         }}
         src={`${props.iconUrl}`}
+        alt=''
       />
     </div>
   )
