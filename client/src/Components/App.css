@@ -25,6 +25,15 @@ body {
   /* <img ref="image" src={cheese} className="hidden" /> */
 }
 
+.particles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
 #nav-wrap {
   line-height: 15px;
   color: #fff;
@@ -139,7 +148,6 @@ outline: none;
 }
 
 .formLink {
-  color: #c7c200;
   color: #203647;
 }
 
@@ -337,10 +345,8 @@ canvas {
 
 .navBtn {
   background-color: #12232e;
-  border-style: solid;
-  border-color: #12232e;
   color: #c7002c;
-  padding: 1px 10px;
+  padding: 5px 10px;
   margin: 10px 1px;
   font-size: 21px;
   text-align: center;
@@ -349,17 +355,12 @@ canvas {
 }
 
 .navBtn:hover {
-  background-color: #00c9f5;
+  background-color: #4da8da;
   font-weight: bold;
-  border-style: solid;
-  border-color: #12232e;
   color: #c7002c;
   text-decoration-line: none;
 }
 
-.navItem {
-  color: white !important;
-}
 
 /* used in Playlist in the upload modals */
 /* .playlistTab {
