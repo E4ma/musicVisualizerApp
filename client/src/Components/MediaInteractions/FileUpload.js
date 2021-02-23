@@ -98,7 +98,7 @@ const FileUpload = (props) => {
             {props.mediatype} Upload
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Select {props.mediatype} to Upload
+            Select {props.mediatype} (mpeg/mp3/flac/wav) to Upload
           </Card.Subtitle>
           <Card.Text>
             <>
@@ -145,7 +145,7 @@ const FileUpload = (props) => {
             {props.mediatype} Upload
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Select {props.mediatype} to Upload
+            Select {props.mediatype} (jpeg/jpg/bmp/png) to Upload
           </Card.Subtitle>
           <Card.Text>
             <>

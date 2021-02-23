@@ -8,7 +8,7 @@ const IconUpload = (props) => {
   const [uploadedFile, setUploadedFile] = useState({})
   const [imagelist, setImagelist] = useState([])
 
- 
+
 
   const onChange = (e) => {
     //HTML file uploads come as an array so we want the index of the first file
@@ -74,7 +74,7 @@ const IconUpload = (props) => {
             {props.mediatype} Upload
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Select {props.mediatype} to Upload
+            Select {props.mediatype} (jpeg/jpg/bmp/png) to Upload
           </Card.Subtitle>
           <Card.Text>
             <>
