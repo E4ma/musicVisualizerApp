@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import { Container, Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import LandingNav from "./LandingNav"
+import Navigation from "./Navigation"
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -45,7 +45,7 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <LandingNav />
+      <Navigation />
       <Container className="signinContainer">
         <div className="signinWrapper">
           <div>
@@ -62,16 +62,16 @@ export default function UpdateProfile() {
                 className="signinInput"
                   type="password"
                   ref={passwordRef}
-                  placeholder="Leave blank to keep the same"
+                  placeholder="Input new password. Leave blank to keep the same"
                 />
               </Form.Group>
 
               <Form.Group id="password-confirm">
-                <Form.Control
+                <input
                 className="signinInput"
                   type="password"
                   ref={passwordConfirmRef}
-                  placeholder="Leave blank to keep the same"
+                  placeholder="Confirm Password"
                 />
               </Form.Group>
 

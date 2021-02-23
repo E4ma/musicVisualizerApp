@@ -20,6 +20,15 @@ body {
   background-size: cover;
 }
 
+.particles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
 #nav-wrap {
   line-height: 15px;
   color: #fff;
@@ -103,10 +112,14 @@ body {
   border: none;
 }
 
+.signinInput:focus {
+outline: none;
+}
+
 .formBtn {
   width: 100%;
   border-radius: 25px;
-  background-color: #4da8da;
+  background-color: #007cc7;
   color: #c7002c;
   border: none;
   font-weight: 800;
@@ -131,7 +144,6 @@ body {
 }
 
 .formLink {
-  color: #c7c200;
   color: #203647;
 }
 
@@ -155,40 +167,43 @@ body {
   /* align-self: center; */
   /* top: 40px;
   left: 20vw; */
-  height: calc(85vh);
+  height: calc(75vh);
   width: 70vw;
 }
 
-/* .display {
-  /* margin-left: 20px;
-  margin-right: 130px; 
-} */
+.sliderRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
-/* .nav-buttons{
-    background-color: black;
-    justify-items: "right";
-} */
+.sliderContainer{
+  display: flex;
+  /* justify-content: center; */
+  margin-bottom: 1px;
+}
 
 .slider1 {
-  width: 50%;
+  width: 25%;
   height: 20px;
   background: #203647cd;
   appearance: none;
 }
 .slider {
-  width: 50%;
+  width: 25%;
   height: 20px;
   background: #eefbfbd9;
   appearance: none;
 }
 .sliders {
   width: 70vw;
-  /* bottom: -60px; */
-  /* position: absolute; */
-  display: flex;
+   display: flex;
+  align-items: center;
 }
-.sliders > div {
-  width: 3%;
+.sliders div {
+ margin: 3px;
+ padding: 5px;
+ font-weight: bold;
 }
 
 /* .Frontscr {
@@ -245,7 +260,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -54vh;
+  margin-top: -50vh;
   z-index: 10;
 }
 .iconWrapper img {
@@ -253,10 +268,10 @@ body {
 }
 canvas {
   /* position: static;
-  justify-content: center;
-  align-items: center; */
+  justify-content: center; */
+  align-self: center;
   width: 100%;
-  height: 60vh;
+  height: calc(65vh);
   z-index: 1;
 }
 
@@ -270,6 +285,12 @@ canvas {
 .buttonWrapper {
   position: relative;
   z-index: 11;
+}
+
+.songInfoWrapper{
+  display: flex;
+  align-self: center;
+  margin-left: 207px;
 }
 
 #editor-cont {
@@ -314,10 +335,8 @@ canvas {
 
 .navBtn {
   background-color: #12232e;
-  border-style: solid;
-  border-color: #12232e;
   color: #c7002c;
-  padding: 1px 10px;
+  padding: 5px 10px;
   margin: 10px 1px;
   font-size: 21px;
   text-align: center;
@@ -326,17 +345,12 @@ canvas {
 }
 
 .navBtn:hover {
-  background-color: #00c9f5;
+  background-color: #4da8da;
   font-weight: bold;
-  border-style: solid;
-  border-color: #12232e;
   color: #c7002c;
   text-decoration-line: none;
 }
 
-.navItem {
-  color: white !important;
-}
 
 /* used in Playlist in the upload modals */
 /* .playlistTab {
@@ -377,10 +391,10 @@ modal-content {
 
 /* :focus means when a button is clicked */
 .btn2:focus {
-  /* outline: none; */
-  outline-width: 1px;
+  outline: none;
+  /* outline-width: 1px;
   outline-style: dashed;
-  outline-color: #007cc7;
+  outline-color: #007cc7; */
 }
 
 .btn2:hover {

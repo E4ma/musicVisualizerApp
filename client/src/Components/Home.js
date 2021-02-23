@@ -80,6 +80,7 @@ const Home = () => {
                     style={{ fontWeight: 'bold' }}
                   >
                     <br />
+                    <br />
 
                     {/*------ Audio -----*/}
 
@@ -129,21 +130,7 @@ const Home = () => {
                         <button className="btn1" onClick={showIconModal}>Icon</button>
                       </Nav.Link>
                     </Nav.Item>
-                    <br />
-                    <br />
 
-                    {/*------ Text -----*/}
-                    <Nav.Item>
-                      <Nav.Link
-                        eventKey="home"
-                        style={{
-                          borderRadius: '22px',
-                          backgroundColor: 'transparent',
-                        }}
-                      >
-                        <button className="btn1">Visualizer</button>
-                      </Nav.Link>
-                    </Nav.Item>
                   </Nav>
                 </Col>
 
