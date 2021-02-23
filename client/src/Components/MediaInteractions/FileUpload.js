@@ -225,7 +225,7 @@ const FileUpload = (props) => {
                     />
                     <input
                       type="submit"
-                      value={`Submit`}
+                      value={`OK`}
                       // className="btn btn-primary btn-block"
                       className="btn2"
                     />
@@ -238,7 +238,6 @@ const FileUpload = (props) => {
       </Card>
     )
   }
-
 }
 
 export default FileUpload

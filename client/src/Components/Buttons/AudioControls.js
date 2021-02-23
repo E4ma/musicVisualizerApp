@@ -15,11 +15,11 @@ const AudioControls = ({ isPaused, onClickPrev, onClickNext, playTrack }) => {
 
       {isPaused ? (
         <button className="playButton" onClick={() => playTrack(true)}>
-          <img src={play} alt="play" height={30} width={30} />
+          <img src={play} alt="play" height={50} width={50} />
         </button>
       ) : (
         <button className="pauseButton" onClick={() => playTrack(false)}>
-          <img src={pause} alt="pause" height={30} width={30} />
+          <img src={pause} alt="pause" height={50} width={50} />
         </button>
       )}
 

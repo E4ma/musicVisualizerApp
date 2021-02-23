@@ -48,7 +48,6 @@ const Home = () => {
     )
     console.log(response.data)
     setBackgroundUrl(URL.createObjectURL(response.data))
-
   }
 
   //icon image change
@@ -60,9 +59,7 @@ const Home = () => {
     )
     console.log(response.data)
     setIconUrl(URL.createObjectURL(response.data))
-
   }
-
 
   return (
     <PlaylistContext>
@@ -81,7 +78,9 @@ const Home = () => {
                   >
                     <br />
                     <br />
-
+                    <br />
+                    <br />
+                    <br />
                     {/*------ Audio -----*/}
 
                     <Nav.Item>
@@ -94,7 +93,7 @@ const Home = () => {
                       >
                         <button className="btn1" onClick={showModal}>
                           Audio
-                    </button>
+                        </button>
                       </Nav.Link>
                     </Nav.Item>
 
@@ -112,7 +111,7 @@ const Home = () => {
                       >
                         <button className="btn1" onClick={showBackModal}>
                           Background
-                    </button>
+                        </button>
                       </Nav.Link>
                     </Nav.Item>
                     <br />
@@ -127,10 +126,11 @@ const Home = () => {
                           backgroundColor: 'transparent',
                         }}
                       >
-                        <button className="btn1" onClick={showIconModal}>Icon</button>
+                        <button className="btn1" onClick={showIconModal}>
+                          Icon
+                        </button>
                       </Nav.Link>
                     </Nav.Item>
-
                   </Nav>
                 </Col>
 
@@ -144,18 +144,21 @@ const Home = () => {
                       >
                         <FileUpload mediatype="Audio" />
                         <button className="btn2" onClick={hideModal}>
-                          Cancel
-                    </button>
+                          OK
+                        </button>
                       </Modal>
                     </Tab.Pane>
 
                     <Tab.Pane eventKey="uploadBackground" mediatype="image">
                       <Modal show={backModalOpen} onHide={hideBackModal}>
-                        <FileUpload getPicture={getPicture} mediatype="Background" />
+                        <FileUpload
+                          getPicture={getPicture}
+                          mediatype="Background"
+                        />
                         <button className="btn2" onClick={hideBackModal}>
                           {' '}
-                      Cancel
-                    </button>
+                          OK
+                        </button>
                       </Modal>
                     </Tab.Pane>
 
@@ -164,11 +167,10 @@ const Home = () => {
                         <IconUpload getIcon={getIcon} mediatype="Icon" />
                         <button className="btn2" onClick={hideIconModal}>
                           {' '}
-                      Cancel
-                    </button>
+                          OK
+                        </button>
                       </Modal>
                     </Tab.Pane>
-
                   </Tab.Content>
                 </Col>
               </Row>
@@ -185,11 +187,9 @@ const Home = () => {
               </Card.Body>
             </div>
           </Col>
-
         </Row>
-
       </div>
-    </PlaylistContext >
+    </PlaylistContext>
   )
 }
 
