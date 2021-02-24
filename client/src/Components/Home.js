@@ -167,7 +167,11 @@ const Home = () => {
                     {/*------ Icon -----*/}
                     <Tab.Pane eventKey="uploadIcon">
                       <Modal show={iconModalOpen} onHide={hideIconModal}>
-                        <IconUpload getIcon={getIcon} mediatype="Icon" filetype="image" />
+                        <IconUpload
+                          getIcon={getIcon}
+                          mediatype="Icon"
+                          filetype="image"
+                        />
                         <button className="btn2" onClick={hideIconModal}>
                           {' '}
                           OK

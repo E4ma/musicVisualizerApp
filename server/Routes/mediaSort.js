@@ -13,8 +13,6 @@ const fileSizeMax = 100000000
 const AudioModel = require('../Model/AudioModel')
 const PictureModel = require('../Model/PictureModel')
 
-
-
 // AUDIO........................
 //Upload endpoints for music and audio not related to the icon
 router.post('/media', async (req, res) => {
@@ -43,15 +41,6 @@ router.post('/media', async (req, res) => {
     file.mv(`uploadedFiles/audio/${file.name}`)
 
     const filePath = `uploadedFiles/audio/${file.name}`
-
-    //SN: METADATA stuff commented out for now!
-    // const metadata = await mm.parseFile(`${filePath}`)
-    // console.log("Line 54" )
-    // const parsedMetaData = util.inspect(metadata, {
-    //   showHidden: false,
-    //   depth: null,
-    // })
-    // console.log(`${parsedMetaData}`)
 
     res.json({
       fileName: file.name,
