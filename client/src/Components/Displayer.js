@@ -271,7 +271,7 @@ const Displayer = (props) => {
           <Row className="sliderRow">
             <Col xs={4}>
               <div className="sliders">
-                <div>X</div>
+                <div>Y</div>
                 <div>{sliderM}</div>
                 <input
                   className="slider"
@@ -310,7 +310,7 @@ const Displayer = (props) => {
                   value={sliderN}
                 />
                 <div>{sliderN}</div>
-                <div>Y</div>
+                <div>X</div>
               </div>
             </Col>
           </Row>
