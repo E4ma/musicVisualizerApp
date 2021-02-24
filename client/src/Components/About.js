@@ -20,7 +20,7 @@ const About = () => {
           </Modal.Dialog>
 
           <div className="aboutScrStyles">
-            <h1>Turn your music into a visual!</h1>
+            <h1>Turn your music into a visual experience!</h1>
             <h4>HummingBird makes it fast and easy to create your </h4>
             <h4>own custom visualizers..</h4>
 
