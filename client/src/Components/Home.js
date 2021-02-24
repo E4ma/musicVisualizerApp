@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Card, Row, Col, Nav, Modal } from 'react-bootstrap'
+import { Card, Row, Col, Nav, Modal, Dropdown, DropdownButton } from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
@@ -8,10 +8,18 @@ import IconUpload from './MediaInteractions/IconUpload'
 import InsertIcon from './MediaInteractions/InsertIcon'
 import Navigation from './Navigation'
 import PlaylistContext from '../contexts/PlaylistContext'
-import background from './Images/background1.jpg'
+import background from './Images/Capture.JPG'
 import icon from './Images/Daco.png'
 
 const Home = () => {
+
+  const [displayIcon, setDisplayIcon] = useState(false)
+  const showIcon = () => {
+    setDisplayIcon(true)
+  }
+  const hideIcon = () => {
+    setDisplayIcon(false)
+  }
   // This is for controlling the Modal window (AUDIO)
   const [isOpen, setIsOpen] = useState(false)
   const showModal = () => {
@@ -78,7 +86,19 @@ const Home = () => {
                   >
                     <br />
                     <br />
-                    <br />
+                    <Nav.Item>
+                      <Nav.Link
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                    <DropdownButton variant='info' className="btn1"  title="Add Icon">
+                      <Dropdown.Item href="#/action-1" onClick={showIcon}>Yes</Dropdown.Item>
+                      <Dropdown.Item href="#/action-2" onClick={hideIcon}>No</Dropdown.Item>
+                    </DropdownButton>
+                      </Nav.Link>
+                    </Nav.Item>
                     <br />
                     <br />
                     {/*------ Audio -----*/}
@@ -190,7 +210,9 @@ const Home = () => {
             <div className="visualizer">
               <Card.Body>
                 <Displayer backgroundUrl={backgroundUrl} />
-                <InsertIcon iconUrl={iconUrl} />
+                {displayIcon
+                  ? <InsertIcon iconUrl={iconUrl} />
+                  : <div></div>}
               </Card.Body>
             </div>
           </Col>
