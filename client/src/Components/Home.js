@@ -82,7 +82,6 @@ const Home = () => {
                     <br />
                     <br />
                     {/*------ Audio -----*/}
-
                     <Nav.Item>
                       <Nav.Link
                         eventKey="uploadAudio"
@@ -134,26 +133,29 @@ const Home = () => {
                   </Nav>
                 </Col>
 
+                {/*------ Audio -----*/}
                 <Col md={'auto'}>
                   <Tab.Content>
-                    <Tab.Pane eventKey="uploadAudio" mediatype="audio">
+                    <Tab.Pane eventKey="uploadAudio" filetype="audio">
                       <Modal
                         className="modalUpload"
                         show={isOpen}
                         onHide={hideModal}
                       >
-                        <FileUpload mediatype="Audio" />
+                        <FileUpload mediatype="Audio" filetype="audio" />
                         <button className="btn2" onClick={hideModal}>
                           OK
                         </button>
                       </Modal>
                     </Tab.Pane>
 
+                    {/*------ Background -----*/}
                     <Tab.Pane eventKey="uploadBackground" mediatype="image">
                       <Modal show={backModalOpen} onHide={hideBackModal}>
                         <FileUpload
                           getPicture={getPicture}
                           mediatype="Background"
+                          filetype="image"
                         />
                         <button className="btn2" onClick={hideBackModal}>
                           {' '}
@@ -162,9 +164,10 @@ const Home = () => {
                       </Modal>
                     </Tab.Pane>
 
+                    {/*------ Icon -----*/}
                     <Tab.Pane eventKey="uploadIcon">
                       <Modal show={iconModalOpen} onHide={hideIconModal}>
-                        <IconUpload getIcon={getIcon} mediatype="Icon" />
+                        <IconUpload getIcon={getIcon} mediatype="Icon" filetype="image" />
                         <button className="btn2" onClick={hideIconModal}>
                           {' '}
                           OK

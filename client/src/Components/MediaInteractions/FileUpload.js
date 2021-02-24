@@ -112,7 +112,8 @@ const FileUpload = (props) => {
                       // className="form-control mb-5"
                       className="modalUpload"
                       // id="inputGroupFile02"
-                      accept={`${props.mediatype}/wav, ${props.mediatype}/mp3, ${props.mediatype}/mpeg`}
+                      // accept={`${props.mediatype}/wav, ${props.mediatype}/mp3, ${props.mediatype}/mpeg`}
+                      accept={`${props.filetype}/wav, ${props.filetype}/mp3, ${props.filetype}/mpeg`}
                       onChange={onChange}
                     />
                     <input
