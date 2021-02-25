@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const path = require('path')
 const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
@@ -10,10 +9,6 @@ const mediaSort = require('./Routes/mediaSort')
 const iconSort = require('./Routes/iconSort')
 const storeUser = require('./Routes/storeUser')
 
-app.use(express.static(path.join(__dirname, 'build')))
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
 
 //Models
 // require('./Model/UserModel')
