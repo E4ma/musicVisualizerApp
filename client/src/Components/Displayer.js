@@ -197,10 +197,10 @@ const Displayer = (props) => {
       getSong(songList[newSongNum])
       return newSongNum
     })
-    console.log('This is the currentsongindex click prev', currentSongIndex)
+    // console.log('This is the currentsongindex click prev', currentSongIndex)
   }
 
-  console.log('This is the current song index', currentSongIndex)
+  // console.log('This is the current song index', currentSongIndex)
   const nextTrack = () => {
     if (audio && !isPaused) {
       togglePlay()

@@ -17,7 +17,7 @@ import InsertIcon from './MediaInteractions/InsertIcon'
 import Navigation from './Navigation'
 import PlaylistContext from '../contexts/PlaylistContext'
 import background from './Images/Capture.JPG'
-import icon from './Images/Daco.png'
+import icon from './Images/hummingbirdlogosvg.png'
 
 const Home = () => {
   const [displayIcon, setDisplayIcon] = useState(false)

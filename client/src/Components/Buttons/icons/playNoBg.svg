@@ -37,15 +37,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1327"
-     inkscape:window-height="559"
+     inkscape:window-width="1383"
+     inkscape:window-height="743"
      id="namedview3045"
      showgrid="false"
-     inkscape:zoom="1.1285545"
-     inkscape:cx="230.47155"
-     inkscape:cy="126.79911"
-     inkscape:window-x="1662"
-     inkscape:window-y="155"
+     inkscape:zoom="0.70468599"
+     inkscape:cx="245.22874"
+     inkscape:cy="207.07669"
+     inkscape:window-x="1809"
+     inkscape:window-y="52"
      inkscape:window-maximized="0"
      inkscape:current-layer="g3051" />
   <g
@@ -54,7 +54,9 @@
      id="g3051">
     <g
        id="g3616"
-       transform="translate(1.7721805,13.291338)">
+       transform="translate(3.1912523,1.9387638)"
+       inkscape:export-xdpi="79.400002"
+       inkscape:export-ydpi="79.400002">
       <path
          style="fill:#a3a3a3;fill-opacity:1;stroke-width:0.623377"
          d="m 15.890837,159.58441 c 0,-79.371426 0.07249,-111.841555 0.161085,-72.155842 0.0886,39.685712 0.0886,104.625972 0,144.311682 -0.0886,39.68571 -0.161085,7.21559 -0.161085,-72.15584 z"
