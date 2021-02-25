@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
 const dotenv = require('dotenv')
 const cors = require('cors')
 const app = express()
@@ -9,13 +10,16 @@ const mediaSort = require('./Routes/mediaSort')
 const iconSort = require('./Routes/iconSort')
 const storeUser = require('./Routes/storeUser')
 
+app.use(express.static(path.join(__dirname, 'build')))
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
 
 //Models
 // require('./Model/UserModel')
 
 //Needed for the process.env code, Used to keep private information hidden
 dotenv.config()
-
 
 //Connecting to the db
 mongoose
@@ -26,16 +30,11 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Could not connect to MongoDB...', err))
 
-
 //Middleware
 // A middleware which will extract req.body for us...allows express read req.body
 app.use(express.json())
 //endpoint to add new user
 app.use('/register', storeUser)
-
-
-
-
 
 app.use('/upload', mediaSort)
 app.use('/iconUpload', iconSort)
@@ -44,7 +43,6 @@ app.use('/iconUpload', iconSort)
 
 // A middleware which will extract re.files for us
 // app.use(fileuploader());
-
 
 port = process.env.PORT
 app.listen(port, () => console.log('listening on port ' + port))
