@@ -10,7 +10,7 @@ const mediaSort = require('./Routes/mediaSort')
 const iconSort = require('./Routes/iconSort')
 const storeUser = require('./Routes/storeUser')
 
-app.use(express.static(path.join('../build')))
+app.use(express.static('../build'))
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
 });
