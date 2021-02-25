@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Card, Row, Col, Nav, Modal, Dropdown, DropdownButton } from 'react-bootstrap'
+import {
+  Card,
+  Row,
+  Col,
+  Nav,
+  Modal,
+  Dropdown,
+  DropdownButton,
+} from 'react-bootstrap'
 import Tab from 'react-bootstrap/Tab'
 import Displayer from './Displayer'
 import FileUpload from './MediaInteractions/FileUpload'
@@ -12,7 +20,6 @@ import background from './Images/Capture.JPG'
 import icon from './Images/Daco.png'
 
 const Home = () => {
-
   const [displayIcon, setDisplayIcon] = useState(false)
   const showIcon = () => {
     setDisplayIcon(true)
@@ -86,21 +93,6 @@ const Home = () => {
                   >
                     <br />
                     <br />
-                    <Nav.Item>
-                      <Nav.Link
-                        style={{
-                          borderRadius: '22px',
-                          backgroundColor: 'transparent',
-                        }}
-                      >
-                    <DropdownButton variant='info' className="btn1"  title="Add Icon">
-                      <Dropdown.Item href="#/action-1" onClick={showIcon}>Yes</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2" onClick={hideIcon}>No</Dropdown.Item>
-                    </DropdownButton>
-                      </Nav.Link>
-                    </Nav.Item>
-                    <br />
-                    <br />
                     {/*------ Audio -----*/}
                     <Nav.Item>
                       <Nav.Link
@@ -148,6 +140,29 @@ const Home = () => {
                         <button className="btn1" onClick={showIconModal}>
                           Icon
                         </button>
+                      </Nav.Link>
+                    </Nav.Item>
+                    <br />
+                    <br />
+                    <Nav.Item>
+                      <Nav.Link
+                        style={{
+                          borderRadius: '22px',
+                          backgroundColor: 'transparent',
+                        }}
+                      >
+                        <DropdownButton
+                          variant="info"
+                          className="btn1"
+                          title="Add Icon"
+                        >
+                          <Dropdown.Item href="#/action-1" onClick={showIcon}>
+                            Yes
+                          </Dropdown.Item>
+                          <Dropdown.Item href="#/action-2" onClick={hideIcon}>
+                            No
+                          </Dropdown.Item>
+                        </DropdownButton>
                       </Nav.Link>
                     </Nav.Item>
                   </Nav>
@@ -210,9 +225,7 @@ const Home = () => {
             <div className="visualizer">
               <Card.Body>
                 <Displayer backgroundUrl={backgroundUrl} />
-                {displayIcon
-                  ? <InsertIcon iconUrl={iconUrl} />
-                  : <div></div>}
+                {displayIcon ? <InsertIcon iconUrl={iconUrl} /> : <div></div>}
               </Card.Body>
             </div>
           </Col>
