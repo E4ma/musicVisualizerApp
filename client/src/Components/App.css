@@ -264,7 +264,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: -55vh;
+  margin-top: -59vh;
   z-index: 10;
 }
 .iconWrapper img {
